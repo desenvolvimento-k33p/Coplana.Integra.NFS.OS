@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Osvaldo\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2024-03-19T14:15:52.8262130Z;True|2024-03-19T11:13:45.1431970-03:00;True|2024-03-19T11:08:28.7325653-03:00;True|2024-03-19T10:15:37.6161078-03:00;True|2024-03-19T10:03:24.9163846-03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
