@@ -22,25 +22,13 @@ namespace Coplana.Integracao.NfsOs.Domain.Configuration
 
     public class CoplanaBusiness
     {
-        public int SeqCodeNFE { get; set; }
 
-        public int SeqCodeNFS { get; set; }
-        public string ModelNFE { get; set; }
-        public string WareHouseNFE { get; set; } = String.Empty;
-        public string TaxCodeNFE { get; set; }
-        public string ModelNFS { get; set; }
-        public string WareHouseNFS { get; set; } = String.Empty;
-        public int BranchId { get; set; }
-        public int UsageEntrada { get; set; }
-        public int UsageSaida { get; set; }
-        public int SeriesCardCodeNumeration { get; set; }
-        public int SeqCodeDEVNFE { get; set; }
-        public string ModelDEVNFE { get; set; }
-        public int GroupCodeBP { get; set; }
-        public int Series { get; set; }
-        public string DebitorAccount { get; set; }
-        public string DownPaymentClearAct { get; set; }
-        public string DownPaymentInterimAccount { get; set; }
+        public string TaxCodeNFS { get; set; }
+        public string CFOPNFS { get; set; }
+
+        public int SeriesNFS { get; set; }
+        public int SequenceCodeNFS { get; set; }
+      
     }
 
     public class HanaDbConnection

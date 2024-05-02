@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Coplana.Integracao.NfsOs.Domain
-build_property.ProjectDir = C:\Osvaldo\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs.Domain\
+build_property.ProjectDir = C:\Osvaldo\GIT\GIT_CENTRAL\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

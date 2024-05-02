@@ -1,0 +1,61 @@
+﻿using AutoMapper.Configuration.Annotations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+
+namespace Coplana.Integracao.NfsOs.Services.Models
+{
+    public class InvoiceDTO
+    {
+        [JsonIgnore]
+        public string DocNumPedTransf { get; set; }
+        public string DocDate { get; set; }
+        public string DocDueDate { get; set; }
+        public string CardCode { get; set; }
+        public string Comments { get; set; }
+        //public int Series { get; set; }
+        public string TaxDate { get; set; }
+        public int BPL_IDAssignedToInvoice { get; set; }
+        public int SequenceCode { get; set; }
+
+        public List<DocumentLine> DocumentLines { get; set; }
+
+        
+    }
+
+    public class DocumentLine
+    {
+        public string ItemCode { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal Price { get; set; }
+        public string WarehouseCode { get; set; }
+
+        public string TaxCode { get; set; }
+        public string CFOPCode { get; set; }
+        public int Usage { get; set; }
+
+        public List<BatchNumbers> BatchNumbers { get; set; }
+
+        // public string CostingCode { get; set; }
+        //  public decimal UnitPrice { get; set; }
+        //  public string COGSCostingCode { get; set; }
+        //   public string COGSAccountCode { get; set; }
+        //   public string CostingCode2 { get; set; }
+        //   public string CostingCode3 { get; set; }
+        //    public string CostingCode4 { get; set; }
+        //    public string CostingCode5 { get; set; }
+
+    }
+
+    public class BatchNumbers
+    {
+        public string ItemCode { get; set; }
+        public string BatchNumber { get; set; }
+        public decimal Quantity { get; set; }
+
+        public int SystemSerialNumber { get; set; }
+    }
+}

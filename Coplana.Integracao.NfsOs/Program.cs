@@ -109,6 +109,13 @@ using (var app = builder.Build())
         WorkerCount = 1
     };
 
+    //Transferência Entre UG1 e SemiElaborado
+    var insertNFS = new BackgroundJobServerOptions
+    {
+        ServerName = string.Format("{0}:insertnfs", Environment.MachineName),
+        Queues = new[] { "insertnfsqueue" },
+        WorkerCount = 1
+    };
 
 
     app.UseHangfireDashboard("/scheduler", new DashboardOptions
@@ -120,6 +127,8 @@ using (var app = builder.Build())
 
     app.UseHangfireServer(insertItensOS);
     app.UseHangfireServer(deleteItensOS);
+
+    app.UseHangfireServer(insertNFS);
 
     app.UseHangfireDashboard();
 
@@ -138,6 +147,8 @@ using (var app = builder.Build())
     RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronServiceDebug);
     RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronServiceDebug);
 
+    RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronServiceDebug);
+
 
 
 
@@ -155,6 +166,7 @@ using (var app = builder.Build())
     RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronService_, null, "insertitensqueue");
     RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronService_, null, "deleteitensqueue");
  
+    RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronService_, null, "insertnfsqueue");
 
 
 
