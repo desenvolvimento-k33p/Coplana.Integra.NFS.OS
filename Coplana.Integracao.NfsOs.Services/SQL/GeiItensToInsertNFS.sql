@@ -1,7 +1,7 @@
 ﻿SELECT 
-T1."BaseRef" as "DocNumPedTransf",
-T0."DocNum" as "DocNum Transf.",
-
+IFNULL(T1."BaseRef",'') as "DocNumPedTransf",
+T0."DocNum" as "DocNumTransf",
+T0."DocEntry" as "DocEntryTransf",
 (select "U_PNSaida" from "@K33P_TRAN_PADC" WHERE "U_FilialSai" = 
 CASE 
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 6 
@@ -49,7 +49,8 @@ T1."BaseRef",
 T1."ItemCode",
 T1."FromWhsCod" ,
 T1."WhsCode" ,
-T0."DocNum"
+T0."DocNum",
+T0."DocEntry"
 
 
 
@@ -58,8 +59,9 @@ UNION ALL
 --------------------------------******* Transferencia nao atreladas a pedidos de tr.----------------------------------------------
 
 SELECT 
-T1."BaseRef" as "DocNumPedTransf",
-T0."DocNum" as "DocNum Transf.",
+IFNULL(T1."BaseRef",'') as "DocNumPedTransf",
+T0."DocNum" as "DocNum Transf",
+T0."DocEntry" as "DocEntryTransf",
 
 (select "U_PNSaida" from "@K33P_TRAN_PADC" WHERE "U_FilialSai" = 
 CASE 
@@ -108,9 +110,10 @@ T1."BaseRef",
 T1."ItemCode",
 T1."FromWhsCod" ,
 T1."WhsCode" ,
-T0."DocNum"
+T0."DocNum",
+T0."DocEntry"
 
-ORDER BY 1
+ORDER BY 1,2
 ;
 
 

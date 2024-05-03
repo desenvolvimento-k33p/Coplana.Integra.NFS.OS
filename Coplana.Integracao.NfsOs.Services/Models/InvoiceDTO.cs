@@ -12,6 +12,15 @@ namespace Coplana.Integracao.NfsOs.Services.Models
     {
         [JsonIgnore]
         public string DocNumPedTransf { get; set; }
+
+        [JsonIgnore]
+        public string DocNumTransf { get; set; }
+        [JsonIgnore]
+        public string DocEntryTransf { get; set; }
+
+        [JsonIgnore]
+        public string DocEntry { get; set; }
+
         public string DocDate { get; set; }
         public string DocDueDate { get; set; }
         public string CardCode { get; set; }
@@ -23,7 +32,9 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
         public List<DocumentLine> DocumentLines { get; set; }
 
-        
+        public ErrorInvoiceDto error { get; set; }
+
+        public TaxExtension TaxExtension { get; set; }
     }
 
     public class DocumentLine
@@ -57,5 +68,26 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         public decimal Quantity { get; set; }
 
         public int SystemSerialNumber { get; set; }
+    }
+
+    public class TaxExtension
+    {
+        //public string TaxId0 { get; set; }
+        //public string TaxId1 { get; set; }
+
+        public string Incoterms { get; set; }
+
+    }
+
+    public class ErrorInvoiceDto
+    {
+        public int code { get; set; }
+        public MessageInvoiceDto message { get; set; }
+    }
+
+    public class MessageInvoiceDto
+    {
+        public string lang { get; set; }
+        public string value { get; set; }
     }
 }

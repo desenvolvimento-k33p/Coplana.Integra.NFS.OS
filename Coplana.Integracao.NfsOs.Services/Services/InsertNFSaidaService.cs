@@ -181,7 +181,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
         {
             var nfsSAP = await _populateSOACollection(item);
 
-            var responseOrder = await _serviceLayerAdapter.Call<InvoiceDTO>(
+            var responseOrder = await _serviceLayerAdapter.Call<InvoiceDTOReturn>(
                     $"Invoices", HttpMethod.Post, nfsSAP, _serviceLayerHttp.Uri);
 
             await _logger.Logger(new LogIntegration
@@ -190,8 +190,8 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 Message = $"Resposta da Service Layer",
                 Owner = nomeServico,
                 Method = "_createItemNFS",
-                Key = "",//itemLiberali.DocEntry.ToString(),
-                Key2 = (object)responseOrder != null ? "" : "",
+                Key = (object)responseOrder != null ? responseOrder.DocEntry.ToString() : "",//chave NFS
+                Key2 ="",
                 RequestObject = JsonSerializer.Serialize(nfsSAP),
                 ResponseObject = JsonSerializer.Serialize(responseOrder)
             });
@@ -218,7 +218,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 //string itensLote = "";
 
                 var query = SQLSupport.GetConsultas("GeiItensToInsertNFS1");
-                query = String.Format(query, obj.DocNumPedTransf);
+                query = String.Format(query, obj.DocNumTransf);
                 var retLinhas = await _hanaAdapter.Query<DocumentLine>(query);
                 var itensResult = retLinhas.ToList();
 
@@ -239,7 +239,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                   
 
                     query = SQLSupport.GetConsultas("GetLotes");
-                    query = String.Format(query, lines.ItemCode);//itensLote
+                    query = String.Format(query,obj.DocEntryTransf, lines.ItemCode);//itensLote
                     BatchNumbers retlotes = await _hanaAdapter.QueryFirst<BatchNumbers>(query);
                     retlotes.Quantity = lines.Quantity;
                     retlotes.ItemCode = lines.ItemCode;
@@ -271,7 +271,9 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 //obj.Series = _configuration.Value.CoplanaBusiness.SeriesNFS;//ássa config
                 obj.SequenceCode = item.SequenceCode;
 
-
+                TaxExtension tax = new TaxExtension();
+                tax.Incoterms ="9";
+                obj.TaxExtension = tax;
 
                 return obj;
 
