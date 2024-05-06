@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8HcaKfYjaRgLGoP4eOVQ6MhkmyLQTm3Ua8DN0+2RVnVaXwe35sIa8+roUCDsjLSCxSR/OooSOAR3QHmpU8EJtQ==",
+  "dgSpecHash": "sL1O0eSvNqOCY7atBGhLDZg693bIbCqHCxKrQ+LcxGIlYvwnE4+SPvGBmiJGCuKTW/qsstiOatmgE0jioE30/g==",
   "success": true,
-  "projectFilePath": "C:\\Osvaldo\\GIT\\GIT_CENTRAL\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj",
+  "projectFilePath": "C:\\Osvaldo\\GIT\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\partner\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\partner\\.nuget\\packages\\fastmember\\1.5.0\\fastmember.1.5.0.nupkg.sha512",
@@ -12,10 +12,7 @@
     "C:\\Users\\partner\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\partner\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\partner\\.nuget\\packages\\restsharp\\108.0.3\\restsharp.108.0.3.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512"
+    "C:\\Users\\partner\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

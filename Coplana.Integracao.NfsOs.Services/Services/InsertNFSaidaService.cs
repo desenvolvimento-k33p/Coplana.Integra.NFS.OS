@@ -224,6 +224,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                 foreach (var lines in itensResult)
                 {
+                    lotes = new List<BatchNumbers>();
                     DocumentLine l = new DocumentLine();
                     l.Price = lines.Price;
 

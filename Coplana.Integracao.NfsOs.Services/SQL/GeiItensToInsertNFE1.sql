@@ -5,10 +5,10 @@ T1."ItemCode" ,
 SUM(T1."Quantity") as "Quantity",
 SUM(T1."StockPrice") as "Price",
 CASE 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN '10-PRPAS' 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN '10-PRSEL' 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN '10-26AR1' 
-WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN '26-10AR1' 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN '26-PRPAS' 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN '26-PRSEL' 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN '26-ARM01' 
+WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN '10-ARM01' 
 END as "WarehouseCode",
 (select "U_UtilizSai" from "@K33P_TRAN_PADC" WHERE "U_FilialSai" = 
 CASE 
@@ -32,7 +32,7 @@ AND TQ."CANCELED" = 'N'
 AND TQ."DocStatus" = 'C'
 AND T1."FromWhsCod" IN ('10-ARM01','26-ARM01')--colocar no config essa string
 AND T1."WhsCode" IN ('10-PRPAS','10-PRSEL','10-26AR1','26-10AR1')--colocar no config essa string
-AND IFNULL(T0."U_ImportNFS",'N') = 'N'
+AND IFNULL(T0."U_ImportNFE",'N') = 'N'
 AND T0."DocNum" = {0}
 
 GROUP BY 
@@ -53,10 +53,10 @@ T1."ItemCode" ,
 SUM(T1."Quantity") as "Quantity",
 SUM(T1."StockPrice") as "Price",
 CASE 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN '10-PRPAS' 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN '10-PRSEL' 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN '10-26AR1' 
-WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN '26-10AR1' 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN '26-PRPAS' 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN '26-PRSEL' 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN '26-ARM01' 
+WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN '10-ARM01' 
 END as "WarehouseCode",
 (select "U_UtilizSai" from "@K33P_TRAN_PADC" WHERE "U_FilialSai" = 
 CASE 
@@ -81,7 +81,7 @@ AND T0."CANCELED" = 'N'
 --AND TQ."DocStatus" = 'C'
 AND T1."FromWhsCod" IN ('10-ARM01','26-ARM01')--colocar no config essa string
 AND T1."WhsCode" IN ('10-PRPAS','10-PRSEL','10-26AR1','26-10AR1')--colocar no config essa string
-AND IFNULL(T0."U_ImportNFS",'N') = 'N'
+AND IFNULL(T0."U_ImportNFE",'N') = 'N'
 AND T0."DocNum" = {0}
 
 GROUP BY 

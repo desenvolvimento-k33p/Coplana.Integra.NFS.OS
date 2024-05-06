@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <None Remove="SQL\GeiItensToDeleteOS.sql" />
+    <None Remove="SQL\GeiItensToInsertNFE.sql" />
+    <None Remove="SQL\GeiItensToInsertNFE1.sql" />
     <None Remove="SQL\GeiItensToInsertNFS.sql" />
     <None Remove="SQL\GeiItensToInsertNFS1.sql" />
     <None Remove="SQL\GeiItensToInsertOS.sql" />
@@ -16,6 +18,8 @@
 
   <ItemGroup>
     <EmbeddedResource Include="SQL\GeiItensToDeleteOS.sql" />
+    <EmbeddedResource Include="SQL\GeiItensToInsertNFE.sql" />
+    <EmbeddedResource Include="SQL\GeiItensToInsertNFE1.sql" />
     <EmbeddedResource Include="SQL\GetLotes.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFS1.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFS.sql" />

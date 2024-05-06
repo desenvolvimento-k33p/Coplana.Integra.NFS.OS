@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wZWqFTa0/z1taXALSDrtHnpAcSOzcyyHnfAv+GGKxOjUUGPNNNWz8y00K1DO+hXcr4F+dDMYO4Y2ad/gdfW+5Q==",
+  "dgSpecHash": "nO9K07RRdWyKeNci0+bUKgvkdRvvKxqsRscXCfNAQIoCI72jcsb1mMsa2de9a2/5Uh3/orT/TFQ9ypdrmEQffw==",
   "success": true,
-  "projectFilePath": "C:\\Osvaldo\\GIT\\GIT_CENTRAL\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj",
+  "projectFilePath": "C:\\Osvaldo\\GIT\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\partner\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\partner\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
@@ -28,10 +28,7 @@
     "C:\\Users\\partner\\.nuget\\packages\\system.runtime.extensions\\4.3.0\\system.runtime.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\partner\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\partner\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512"
+    "C:\\Users\\partner\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

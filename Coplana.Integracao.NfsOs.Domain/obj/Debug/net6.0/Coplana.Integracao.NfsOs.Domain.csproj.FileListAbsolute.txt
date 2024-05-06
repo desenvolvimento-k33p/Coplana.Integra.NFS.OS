@@ -21,3 +21,15 @@ C:\Osvaldo\GIT\GIT_CENTRAL\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domai
 C:\Osvaldo\GIT\GIT_CENTRAL\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\refint\Coplana.Integracao.NfsOs.Domain.dll
 C:\Osvaldo\GIT\GIT_CENTRAL\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.pdb
 C:\Osvaldo\GIT\GIT_CENTRAL\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\ref\Coplana.Integracao.NfsOs.Domain.dll
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\bin\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.deps.json
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\bin\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.dll
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\bin\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.pdb
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.AssemblyInfoInputs.cache
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.AssemblyInfo.cs
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.csproj.CoreCompileInputs.cache
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.sourcelink.json
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.dll
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\refint\Coplana.Integracao.NfsOs.Domain.dll
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\Coplana.Integracao.NfsOs.Domain.pdb
+C:\Osvaldo\GIT\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Debug\net6.0\ref\Coplana.Integracao.NfsOs.Domain.dll

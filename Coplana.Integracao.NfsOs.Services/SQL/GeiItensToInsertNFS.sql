@@ -19,12 +19,18 @@ WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 6--10
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 6--10
 WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 11 --26
 END as "BPL_IDAssignedToInvoice",
-(SELECT "SeqCode" FROM NFN1 WHERE "BPLId" = CASE 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 6--10 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 6--10
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 6--10
-WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 11 --26
-END) as "SequenceCode",
+--(SELECT "SeqCode" FROM NFN1 WHERE "BPLId" = CASE 
+--WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 6
+--WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 6
+--WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 6
+--WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 11 
+--END) as "SequenceCode",
+CASE 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 32
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 32
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 32
+WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 37 
+END as "SequenceCode",
 
 T1."FromWhsCod" as "Origem",
 T1."WhsCode" as "Destino",
@@ -42,7 +48,7 @@ AND TQ."CANCELED" = 'N'
 AND TQ."DocStatus" = 'C'
 AND T1."FromWhsCod" IN ('10-ARM01','26-ARM01')--colocar no config essa string
 AND T1."WhsCode" IN ('10-PRPAS','10-PRSEL','10-26AR1','26-10AR1')--colocar no config essa string
-AND IFNULL(T0."U_ImportSN",'N') = 'N'
+AND IFNULL(T0."U_ImportNFS",'N') = 'N'
 
 GROUP BY 
 T1."BaseRef",
@@ -80,12 +86,18 @@ WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 6--10
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 6--10
 WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 11 --26
 END as "BPL_IDAssignedToInvoice",
-(SELECT "SeqCode" FROM NFN1 WHERE "BPLId" = CASE 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 6--10 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 6--10
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 6--10
-WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 11 --26
-END) as "SequenceCode",
+--(SELECT "SeqCode" FROM NFN1 WHERE "BPLId" = CASE 
+--WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 6
+--WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 6
+--WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 6
+--WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 11 
+--END) as "SequenceCode",
+CASE 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 32
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 32
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 32
+WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 37 
+END as "SequenceCode",
 
 T1."FromWhsCod" as "Origem",
 T1."WhsCode" as "Destino",
@@ -96,13 +108,14 @@ INNER JOIN WTR1 T1 ON T0."DocEntry" = T1."DocEntry"
 --INNER JOIN OWTQ TQ ON CAST(TQ."DocNum" as nvarchar) = T1."BaseRef"
 
 WHERE 
-T1."BaseRef" NOT IN (SELECT CAST("DocNum" as nvarchar) FROM OWTQ WHERE "CANCELED" = 'N' AND "DocStatus" = 'C')
+IFNULL(T1."BaseRef",'') = ''
+--T1."BaseRef" NOT IN (SELECT CAST("DocNum" as nvarchar) FROM OWTQ WHERE "CANCELED" = 'N' AND "DocStatus" = 'C')
 AND T0."CANCELED" = 'N'
 --AND TQ."CANCELED" = 'N' 
 --AND TQ."DocStatus" = 'C'
 AND T1."FromWhsCod" IN ('10-ARM01','26-ARM01')--colocar no config essa string
 AND T1."WhsCode" IN ('10-PRPAS','10-PRSEL','10-26AR1','26-10AR1')--colocar no config essa string
-AND IFNULL(T0."U_ImportSN",'N') = 'N'
+AND IFNULL(T0."U_ImportNFS",'N') = 'N'
 --AND T1."
 
 GROUP BY 
