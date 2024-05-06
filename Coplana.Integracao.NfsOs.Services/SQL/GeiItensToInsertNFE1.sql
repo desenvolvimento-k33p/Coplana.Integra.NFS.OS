@@ -40,7 +40,7 @@ T1."BaseRef",
 T1."ItemCode",
 T1."FromWhsCod" ,
 T1."WhsCode" ,
-T0."DocNum"
+T0."DocNum" 
 
 UNION ALL
 
