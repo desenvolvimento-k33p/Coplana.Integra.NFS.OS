@@ -116,6 +116,12 @@ using (var app = builder.Build())
         Queues = new[] { "insertnfsqueue" },
         WorkerCount = 1
     };
+    var insertNFE = new BackgroundJobServerOptions
+    {
+        ServerName = string.Format("{0}:insertnfe", Environment.MachineName),
+        Queues = new[] { "insertnfequeue" },
+        WorkerCount = 1
+    };
 
 
     app.UseHangfireDashboard("/scheduler", new DashboardOptions
@@ -129,6 +135,7 @@ using (var app = builder.Build())
     app.UseHangfireServer(deleteItensOS);
 
     app.UseHangfireServer(insertNFS);
+    app.UseHangfireServer(insertNFE);
 
     app.UseHangfireDashboard();
 
@@ -148,6 +155,7 @@ using (var app = builder.Build())
     RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronServiceDebug);
 
     RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronServiceDebug);
+    RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServiceDebug);
 
 
 
@@ -167,6 +175,7 @@ using (var app = builder.Build())
     RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronService_, null, "deleteitensqueue");
  
     RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronService_, null, "insertnfsqueue");
+    RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronService_, null, "insertnfequeue");
 
 
 
