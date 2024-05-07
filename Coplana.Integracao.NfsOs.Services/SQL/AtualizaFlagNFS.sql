@@ -1,0 +1,1 @@
+﻿UPDATE OWTR SET "U_ImportNFS" = 'S' WHERE "DocNum" = {0}

@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SQL\AtualizaFlagNFE.sql" />
+    <None Remove="SQL\AtualizaFlagNFS.sql" />
     <None Remove="SQL\GeiItensToDeleteOS.sql" />
     <None Remove="SQL\GeiItensToInsertNFE.sql" />
     <None Remove="SQL\GeiItensToInsertNFE1.sql" />
@@ -20,6 +22,8 @@
     <EmbeddedResource Include="SQL\GeiItensToDeleteOS.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFE.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFE1.sql" />
+    <EmbeddedResource Include="SQL\AtualizaFlagNFS.sql" />
+    <EmbeddedResource Include="SQL\AtualizaFlagNFE.sql" />
     <EmbeddedResource Include="SQL\GetLotes.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFS1.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFS.sql" />

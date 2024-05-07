@@ -1,4 +1,4 @@
-﻿SELECT 
+﻿SELECT DISTINCT
 IFNULL(T1."BaseRef",'') as "DocNumPedTransf",
 T0."DocNum" as "DocNumTransf",
 T0."DocEntry" as "DocEntryTransf",
@@ -40,6 +40,13 @@ T1."WhsCode" as "Destino",
 FROM OWTR T0 
 INNER JOIN WTR1 T1 ON T0."DocEntry" = T1."DocEntry"
 INNER JOIN OWTQ TQ ON CAST(TQ."DocNum" as nvarchar) = T1."BaseRef"
+LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum") AND DB."DocType" = 13
+AND DB."CompanyId" = CASE 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 51
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 51
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 51
+WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 56 
+END
 
 WHERE 
 --T1."BaseRef" IN (SELECT CAST("DocNum" as nvarchar) FROM OWTQ WHERE "CANCELED" = 'N' AND "DocStatus" = 'C')
@@ -49,6 +56,19 @@ AND TQ."DocStatus" = 'C'
 AND T1."FromWhsCod" IN ('10-ARM01','26-ARM01')--colocar no config essa string
 AND T1."WhsCode" IN ('10-PRPAS','10-PRSEL','10-26AR1','26-10AR1')--colocar no config essa string
 AND IFNULL(T0."U_ImportNFE",'N') = 'N'
+AND DB."StatusId" = 4
+--(SELECT
+
+--"S"."Description" AS "STATUS"
+--FROM
+--"DBInvOne"."Process" AS "P"
+--INNER JOIN "DBInvOne"."ProcessHist" AS "H" ON
+--"P"."BatchId" = "H"."BatchId"
+--LEFT JOIN "DBInvOne"."ProcessStatus" AS "S" ON
+--"S"."ID" = "P"."StatusId"
+--WHERE "P"."DocEntry" = (SELECT "DocEntry" FROm OINV WHERE "U_NumTransf" = CAST(T0."DocNum" as nvarchar))
+--AND "P"."DocType" = 13
+--AND "P"."CompanyId" = (SELECT "BPLId" FROm OINV WHERE "U_NumTransf" = CAST(T0."DocNum" as nvarchar))) = 4
 
 GROUP BY 
 T1."BaseRef",
@@ -64,7 +84,7 @@ UNION ALL
 
 --------------------------------******* Transferencia nao atreladas a pedidos de tr.----------------------------------------------
 
-SELECT 
+SELECT DISTINCT
 IFNULL(T1."BaseRef",'') as "DocNumPedTransf",
 T0."DocNum" as "DocNum Transf",
 T0."DocEntry" as "DocEntryTransf",
@@ -105,6 +125,13 @@ T1."WhsCode" as "Destino",
 
 FROM OWTR T0 
 INNER JOIN WTR1 T1 ON T0."DocEntry" = T1."DocEntry"
+LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum") AND DB."DocType" = 13
+AND DB."CompanyId" = CASE 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 51
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 51
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 51
+WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 56 
+END
 --INNER JOIN OWTQ TQ ON CAST(TQ."DocNum" as nvarchar) = T1."BaseRef"
 
 WHERE 
@@ -116,7 +143,19 @@ AND T0."CANCELED" = 'N'
 AND T1."FromWhsCod" IN ('10-ARM01','26-ARM01')--colocar no config essa string
 AND T1."WhsCode" IN ('10-PRPAS','10-PRSEL','10-26AR1','26-10AR1')--colocar no config essa string
 AND IFNULL(T0."U_ImportNFE",'N') = 'N'
---AND T1."
+AND DB."StatusId" = 4
+--(SELECT
+
+--"S"."Description" AS "STATUS"
+--FROM
+--"DBInvOne"."Process" AS "P"
+--INNER JOIN "DBInvOne"."ProcessHist" AS "H" ON
+--"P"."BatchId" = "H"."BatchId"
+--LEFT JOIN "DBInvOne"."ProcessStatus" AS "S" ON
+--"S"."ID" = "P"."StatusId"
+--WHERE "P"."DocEntry" = (SELECT "DocEntry" FROm OINV WHERE "U_NumTransf" = CAST(T0."DocNum" as nvarchar))
+--AND "P"."DocType" = 13
+--AND "P"."CompanyId" = (SELECT "BPLId" FROm OINV WHERE "U_NumTransf" = CAST(T0."DocNum" as nvarchar))) = 4
 
 GROUP BY 
 T1."BaseRef",

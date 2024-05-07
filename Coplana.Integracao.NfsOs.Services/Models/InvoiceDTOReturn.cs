@@ -30,6 +30,8 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         public int BPL_IDAssignedToInvoice { get; set; }
         public int SequenceCode { get; set; }
 
+        public string U_NumTransf { get; set; }
+
         public List<DocumentLineReturn> DocumentLines { get; set; }
 
         public ErrorInvoiceDtoReturn error { get; set; }

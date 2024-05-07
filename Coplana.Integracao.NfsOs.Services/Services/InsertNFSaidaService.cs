@@ -7,6 +7,7 @@ using Coplana.Integracao.NfsOs.Services.Interfaces;
 using Coplana.Integracao.NfsOs.Services.Models;
 using Integracao.Magis5.Services.SQLs;
 using Microsoft.Extensions.Options;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -120,7 +121,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                 //agrupa por DocNum
                 var groupedList = itens
-               .GroupBy(u => u.DocNumPedTransf)
+               .GroupBy(x => (x.DocNumPedTransf, x.DocNumTransf))
                .Select(grp => grp.ToList())
                .ToList();
 
@@ -181,7 +182,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
         {
             var nfsSAP = await _populateSOACollection(item);
 
-            var responseOrder = await _serviceLayerAdapter.Call<InvoiceDTOReturn>(
+            InvoiceDTOReturn responseOrder = await _serviceLayerAdapter.Call<InvoiceDTOReturn>(
                     $"Invoices", HttpMethod.Post, nfsSAP, _serviceLayerHttp.Uri);
 
             await _logger.Logger(new LogIntegration
@@ -190,7 +191,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 Message = $"Resposta da Service Layer",
                 Owner = nomeServico,
                 Method = "_createItemNFS",
-                Key = (object)responseOrder != null ? responseOrder.DocEntry.ToString() : "",//chave NFS
+                Key = (object)responseOrder != null ? responseOrder.DocEntry.ToString() : "",
                 Key2 ="",
                 RequestObject = JsonSerializer.Serialize(nfsSAP),
                 ResponseObject = JsonSerializer.Serialize(responseOrder)
@@ -198,9 +199,15 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
 
 
-            if ((object)responseOrder != null)
+            if (responseOrder != null)
             {
-
+                if (!String.IsNullOrEmpty(responseOrder.DocEntry.ToString()) && responseOrder.DocEntry.ToString() != "0")
+                {
+                    //atualiza flag
+                    var query = SQLSupport.GetConsultas("AtualizaFlagNFS");
+                    query = string.Format(query, nfsSAP.DocNumTransf);
+                    var result = await _hanaAdapter.Execute(query);
+                }
 
             }
 
@@ -234,6 +241,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
                     l.WarehouseCode = lines.WarehouseCode;
+                    
 
                     //lotes//////////////////////////
                     BatchNumbers b = new BatchNumbers();
@@ -275,6 +283,8 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 TaxExtension tax = new TaxExtension();
                 tax.Incoterms ="9";
                 obj.TaxExtension = tax;
+
+                obj.U_NumTransf = item.DocNumTransf;
 
                 return obj;
 

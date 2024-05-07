@@ -120,7 +120,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                 //agrupa por DocNum
                 var groupedList = itens
-               .GroupBy(u => u.DocNumPedTransf)
+               .GroupBy(x => (x.DocNumPedTransf, x.DocNumTransf))
                .Select(grp => grp.ToList())
                .ToList();
 
@@ -181,7 +181,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
         {
             var nfsSAP = await _populateSOACollection(item);
 
-            var responseOrder = await _serviceLayerAdapter.Call<InvoiceDTOReturn>(
+            InvoiceDTOReturn responseOrder = await _serviceLayerAdapter.Call<InvoiceDTOReturn>(
                     $"PurchaseInvoices", HttpMethod.Post, nfsSAP, _serviceLayerHttp.Uri);
 
             await _logger.Logger(new LogIntegration
@@ -198,9 +198,15 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
 
 
-            if ((object)responseOrder != null)
+            if (responseOrder != null)
             {
-
+                if (!String.IsNullOrEmpty(responseOrder.DocEntry.ToString()) && responseOrder.DocEntry.ToString() != "0")
+                {
+                    //atualiza flag
+                    var query = SQLSupport.GetConsultas("AtualizaFlagNFE");
+                    query = string.Format(query, nfsSAP.DocNumTransf);
+                    var result = await _hanaAdapter.Execute(query);
+                }
 
             }
 
@@ -275,6 +281,8 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 TaxExtension tax = new TaxExtension();
                 tax.Incoterms ="9";
                 obj.TaxExtension = tax;
+
+                obj.U_NumTransf = item.DocNumTransf;
 
                 return obj;
 

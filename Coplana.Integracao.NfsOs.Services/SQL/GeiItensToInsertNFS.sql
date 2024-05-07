@@ -1,4 +1,4 @@
-﻿SELECT 
+﻿SELECT DISTINCT
 IFNULL(T1."BaseRef",'') as "DocNumPedTransf",
 T0."DocNum" as "DocNumTransf",
 T0."DocEntry" as "DocEntryTransf",
@@ -64,7 +64,7 @@ UNION ALL
 
 --------------------------------******* Transferencia nao atreladas a pedidos de tr.----------------------------------------------
 
-SELECT 
+SELECT DISTINCT
 IFNULL(T1."BaseRef",'') as "DocNumPedTransf",
 T0."DocNum" as "DocNum Transf",
 T0."DocEntry" as "DocEntryTransf",
