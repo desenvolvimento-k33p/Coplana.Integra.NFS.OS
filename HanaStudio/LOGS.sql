@@ -1,0 +1,5 @@
+select 
+*
+ from "KEEPLOGS"."KEEP_LOG_NFS_OS"
+ WHERE LOGDATE = CURRENT_DATE
+ order by LOGHOUR desc
