@@ -119,9 +119,9 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             try
             {
 
-                //agrupa por DocNum
-                var groupedList = itens
-               .GroupBy(x => (x.DocNumPedTransf, x.DocNumTransf))
+                //agrupamento COM PEDIDO
+                var groupedList = itens.Where(c => c.DocNumPedTransf != "")
+               .GroupBy(x => x.DocNumPedTransf)//, x.DocNumTransf))
                .Select(grp => grp.ToList())
                .ToList();
 
@@ -133,8 +133,23 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 foreach (var item in groupedList)
                 {
 
+                    await _processUnitItem(item, "ComPedido");
 
-                    await _processUnitItem(item);
+                }
+
+                //agrupamento SEM PEDIDO
+                var groupedList2 = itens.Where(c => c.DocNumPedTransf == "")
+               .GroupBy(x => x.DocNumTransf)//, x.DocNumTransf))
+               .Select(grp => grp.ToList())
+               .ToList();
+
+                //if (groupedList2.Count() == 0)
+                //    return false;
+
+                foreach (var item in groupedList2)
+                {
+
+                    await _processUnitItem(item, "SemPedido");
 
                 }
 
@@ -152,15 +167,20 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             }
         }
 
-        private async Task<dynamic> _processUnitItem(List<InvoiceDTO> item)
+        private async Task<dynamic> _processUnitItem(List<InvoiceDTO> item, string tipo)
         {
             try
             {
+                string numTransf = "";
+
                 foreach (var lista in item)
                 {
+                    if (numTransf != lista.DocNumPedTransf || String.IsNullOrEmpty(lista.DocNumPedTransf))
+                    {
+                        var response = await _createItemNFS(lista, tipo);
 
-                    var response = await _createItemNFS(lista);
-
+                    }
+                    numTransf = lista.DocNumPedTransf;
                 }
 
                 return null;
@@ -178,9 +198,9 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             }
         }
 
-        private async Task<bool> _createItemNFS(dynamic item)
+        private async Task<bool> _createItemNFS(dynamic item, string tipo)
         {
-            var nfsSAP = await _populateSOACollection(item);
+            var nfsSAP = await _populateSOACollection(item, tipo);
 
             InvoiceDTOReturn responseOrder = await _serviceLayerAdapter.Call<InvoiceDTOReturn>(
                     $"Invoices", HttpMethod.Post, nfsSAP, _serviceLayerHttp.Uri);
@@ -192,7 +212,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 Owner = nomeServico,
                 Method = "_createItemNFS",
                 Key = (object)responseOrder != null ? responseOrder.DocEntry.ToString() : "",
-                Key2 ="",
+                Key2 = "",
                 RequestObject = JsonSerializer.Serialize(nfsSAP),
                 ResponseObject = JsonSerializer.Serialize(responseOrder)
             });
@@ -204,9 +224,18 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 if (!String.IsNullOrEmpty(responseOrder.DocEntry.ToString()) && responseOrder.DocEntry.ToString() != "0")
                 {
                     //atualiza flag
-                    var query = SQLSupport.GetConsultas("AtualizaFlagNFS");
-                    query = string.Format(query, nfsSAP.DocNumTransf);
-                    var result = await _hanaAdapter.Execute(query);
+                    if (tipo == "SemPedido")
+                    {
+                        var query = SQLSupport.GetConsultas("AtualizaFlagNFS");
+                        query = string.Format(query, nfsSAP.DocNumTransf);
+                        var result = await _hanaAdapter.Execute(query);
+                    }
+                    else
+                    {
+                        var query = SQLSupport.GetConsultas("AtualizaFlagNFSPed");
+                        query = string.Format(query, nfsSAP.DocNumPedTransf);
+                        var result = await _hanaAdapter.Execute(query);
+                    }
                 }
 
             }
@@ -214,7 +243,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             return false;
         }
 
-        private async Task<InvoiceDTO> _populateSOACollection(InvoiceDTO item)
+        private async Task<InvoiceDTO> _populateSOACollection(InvoiceDTO item, string tipo)
         {
 
             try
@@ -222,12 +251,22 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 List<BatchNumbers> lotes = new List<BatchNumbers>();
                 List<DocumentLine> linhas = new List<DocumentLine>();
                 InvoiceDTO obj = item;
-                //string itensLote = "";
+                string query = "";
 
-                var query = SQLSupport.GetConsultas("GeiItensToInsertNFS1");
-                query = String.Format(query, obj.DocNumTransf);
-                var retLinhas = await _hanaAdapter.Query<DocumentLine>(query);
-                var itensResult = retLinhas.ToList();
+                if (tipo == "SemPedido")
+                {
+                    query = SQLSupport.GetConsultas("GeiItensToInsertNFS1");
+                    query = String.Format(query, obj.DocNumTransf);
+                }
+                else
+                {
+                    query = SQLSupport.GetConsultas("GeiItensToInsertNFS1_Ped");
+                    query = String.Format(query, obj.DocNumPedTransf);
+                }
+
+                var itensResult = await _hanaAdapter.QueryList<DocumentLine>(query);
+                //var itensResult = retLinhas.ToList();
+                //itensResult.GroupBy(c => c.ItemCode);NÃO AGRUPA E SOMA POIS PODEM HAVER LINHAS DAS TRANSF COM DEPOSITOS DIFERENTES,
 
                 foreach (var lines in itensResult)
                 {
@@ -241,14 +280,14 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
                     l.WarehouseCode = lines.WarehouseCode;
-                    
+
 
                     //lotes//////////////////////////
                     BatchNumbers b = new BatchNumbers();
-                  
+
 
                     query = SQLSupport.GetConsultas("GetLotes");
-                    query = String.Format(query,obj.DocEntryTransf, lines.ItemCode);//itensLote
+                    query = String.Format(query, obj.DocEntryTransf, lines.ItemCode);//itensLote
                     BatchNumbers retlotes = await _hanaAdapter.QueryFirst<BatchNumbers>(query);
                     retlotes.Quantity = lines.Quantity;
                     retlotes.ItemCode = lines.ItemCode;
@@ -258,7 +297,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                     linhas.Add(l);
 
-                   //itensLote+= "'" + l.ItemCode +"'" + ","; 
+                    //itensLote+= "'" + l.ItemCode +"'" + ","; 
                 }
 
                 //foreach (var lines in itensResult)
@@ -275,16 +314,19 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 //    //lotes = retlotes.ToList();
                 //}
 
-               // obj.DocumentLines.BatchNumbers = lotes;
+                // obj.DocumentLines.BatchNumbers = lotes;
                 obj.DocumentLines = linhas;
                 //obj.Series = _configuration.Value.CoplanaBusiness.SeriesNFS;//ássa config
                 obj.SequenceCode = item.SequenceCode;
 
                 TaxExtension tax = new TaxExtension();
-                tax.Incoterms ="9";
+                tax.Incoterms = "9";
                 obj.TaxExtension = tax;
 
-                obj.U_NumTransf = item.DocNumTransf;
+                if (tipo == "SemPedido")
+                    obj.U_NumTransf = item.DocNumTransf;
+                if (tipo == "ComPedido")
+                    obj.U_NumPedTr = item.DocNumPedTransf;
 
                 return obj;
 

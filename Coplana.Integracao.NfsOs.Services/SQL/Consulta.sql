@@ -16,8 +16,8 @@ WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 26
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 26
 WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 10 
 END as "Para Filial",
-(SELECT max("DocNum") FROm OINV WHERE "U_NumTransf" = CAST(T0."DocNum" as nvarchar)) as "DocNum NF Saída",
-(SELECT max("DocNum") FROm OPCH WHERE "U_NumTransf" = CAST(T0."DocNum" as nvarchar)) as "DocNum NF Entrada"
+(SELECT max("DocNum") FROm OINV WHERE "U_NumPedTr" = CAST(TQ."DocNum" as nvarchar)AND "CANCELED" = 'N') as "DocNum NF Saída",
+(SELECT max("DocNum") FROm OPCH WHERE "U_NumPedTr" = CAST(TQ."DocNum" as nvarchar)AND "CANCELED" = 'N') as "DocNum NF Entrada"
 ,CASE WHEN DB."StatusId" = 4 then 'Autorizado o uso da Nfe'
 	  WHEN DB."StatusId" <> 4 then
 (SELECT "Hist" FROM "DBInvOne"."ProcessHist" WHERE "BatchId" = DB."BatchId" and "Id" = (SELECT MAX("Id") FROM "DBInvOne"."ProcessHist" WHERE "BatchId" = DB."BatchId" ))
@@ -29,7 +29,11 @@ END
 FROM OWTR T0 
 INNER JOIN WTR1 T1 ON T0."DocEntry" = T1."DocEntry"
 INNER JOIN OWTQ TQ ON CAST(TQ."DocNum" as nvarchar) = T1."BaseRef"
-LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum") AND DB."DocType" = 13
+--LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum") AND DB."DocType" = 13
+LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = 
+CASE WHEN IFNULL(T1."BaseRef",'') <> '' then  (select MAX("DocEntry") from OINV WHERE "U_NumPedTr" = T1."BaseRef") 
+	 WHEN IFNULL(T1."BaseRef",'') = '' then (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum")  END
+AND DB."DocType" = 13
 AND DB."CompanyId" = CASE 
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 51
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 51
@@ -81,8 +85,8 @@ WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 26
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 26
 WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 10 
 END as "Para Filial",
-(SELECT max("DocNum") FROm OINV WHERE "U_NumTransf" = CAST(T0."DocNum" as nvarchar)) as "DocNum NF Saída",
-(SELECT max("DocNum") FROm OPCH WHERE "U_NumTransf" = CAST(T0."DocNum" as nvarchar)) as "DocNum NF Entrada"
+(SELECT max("DocNum") FROm OINV WHERE "U_NumTransf" = CAST(T0."DocNum" as nvarchar)AND "CANCELED" = 'N') as "DocNum NF Saída",
+(SELECT max("DocNum") FROm OPCH WHERE "U_NumTransf" = CAST(T0."DocNum" as nvarchar)AND "CANCELED" = 'N') as "DocNum NF Entrada"
 
 ,CASE WHEN DB."StatusId" = 4 then 'Autorizado o uso da Nfe'
 	  WHEN DB."StatusId" <> 4 then
@@ -93,7 +97,11 @@ END
 
 FROM OWTR T0 
 INNER JOIN WTR1 T1 ON T0."DocEntry" = T1."DocEntry"
-LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum") AND DB."DocType" = 13
+--LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum") AND DB."DocType" = 13
+LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = 
+CASE WHEN IFNULL(T1."BaseRef",'') <> '' then  (select MAX("DocEntry") from OINV WHERE "U_NumPedTr" = T1."BaseRef") 
+	 WHEN IFNULL(T1."BaseRef",'') = '' then (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum")  END
+AND DB."DocType" = 13
 AND DB."CompanyId" = CASE 
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 51
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 51

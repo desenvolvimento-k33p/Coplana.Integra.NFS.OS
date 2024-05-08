@@ -40,7 +40,11 @@ T1."WhsCode" as "Destino",
 FROM OWTR T0 
 INNER JOIN WTR1 T1 ON T0."DocEntry" = T1."DocEntry"
 INNER JOIN OWTQ TQ ON CAST(TQ."DocNum" as nvarchar) = T1."BaseRef"
-LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum") AND DB."DocType" = 13
+--LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum") AND DB."DocType" = 13
+LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = 
+CASE WHEN IFNULL(T1."BaseRef",'') <> '' then  (select MAX("DocEntry") from OINV WHERE "U_NumPedTr" = T1."BaseRef") 
+	 WHEN IFNULL(T1."BaseRef",'') = '' then (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum")  END
+AND DB."DocType" = 13
 AND DB."CompanyId" = CASE 
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 51
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 51
@@ -125,7 +129,11 @@ T1."WhsCode" as "Destino",
 
 FROM OWTR T0 
 INNER JOIN WTR1 T1 ON T0."DocEntry" = T1."DocEntry"
-LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum") AND DB."DocType" = 13
+--LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum") AND DB."DocType" = 13
+LEFT JOIN "DBInvOne"."Process" DB ON DB."DocEntry" = 
+CASE WHEN IFNULL(T1."BaseRef",'') <> '' then  (select MAX("DocEntry") from OINV WHERE "U_NumPedTr" = T1."BaseRef") 
+	 WHEN IFNULL(T1."BaseRef",'') = '' then (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum")  END
+AND DB."DocType" = 13
 AND DB."CompanyId" = CASE 
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 51
 WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 51

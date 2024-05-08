@@ -32,6 +32,8 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
         public string U_NumTransf { get; set; }
 
+        public string U_NumPedTr { get; set; }
+
         public List<DocumentLine> DocumentLines { get; set; }
 
         public ErrorInvoiceDto error { get; set; }
