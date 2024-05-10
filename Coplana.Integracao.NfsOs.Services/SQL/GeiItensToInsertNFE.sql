@@ -46,10 +46,10 @@ CASE WHEN IFNULL(T1."BaseRef",'') <> '' then  (select MAX("DocEntry") from OINV 
 	 WHEN IFNULL(T1."BaseRef",'') = '' then (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum")  END
 AND DB."DocType" = 13
 AND DB."CompanyId" = CASE 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 51
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 51
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 51
-WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 56 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 8
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 8
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 8
+WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 18 
 END
 
 WHERE 
@@ -135,10 +135,10 @@ CASE WHEN IFNULL(T1."BaseRef",'') <> '' then  (select MAX("DocEntry") from OINV 
 	 WHEN IFNULL(T1."BaseRef",'') = '' then (select MAX("DocEntry") from OINV WHERE "U_NumTransf" = T0."DocNum")  END
 AND DB."DocType" = 13
 AND DB."CompanyId" = CASE 
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 51
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 51
-WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 51
-WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 56 
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRPAS' THEN 8
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-PRSEL' THEN 8
+WHEN T1."FromWhsCod" = '10-ARM01' AND T1."WhsCode" = '10-26AR1' THEN 8
+WHEN T1."FromWhsCod" = '26-ARM01' AND T1."WhsCode" = '26-10AR1' THEN 18 
 END
 --INNER JOIN OWTQ TQ ON CAST(TQ."DocNum" as nvarchar) = T1."BaseRef"
 

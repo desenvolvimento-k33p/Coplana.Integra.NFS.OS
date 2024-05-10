@@ -332,6 +332,8 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 if (tipo == "ComPedido")
                     obj.U_NumPedTr = item.DocNumPedTransf;
 
+                obj.U_StSentWMS = "0";
+
                 return obj;
 
             }

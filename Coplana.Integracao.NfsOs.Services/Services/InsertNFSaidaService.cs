@@ -323,6 +323,8 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 tax.Incoterms = "9";
                 obj.TaxExtension = tax;
 
+                obj.U_StSentWMS = "0";
+
                 if (tipo == "SemPedido")
                     obj.U_NumTransf = item.DocNumTransf;
                 if (tipo == "ComPedido")
