@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RbzGL0W4avZGaGXL2KV/Tn7pb5dKH5Pokx+biPCyR7JTgUPtqx5HPwrjbE9D3NwC5n02N4x+Tb+bMx9ynQzrGg==",
+  "dgSpecHash": "Yb2c6Cba6p32WvEUX5W1ygt4AxoFvcRcuB4RxJRT/bJDpb45aE8DBjKJ8xs+41R5Z1V9UsPxtz9CLI0KbNgYBA==",
   "success": true,
   "projectFilePath": "C:\\Osvaldo\\GIT\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,10 @@
     "C:\\Users\\partner\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\partner\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\partner\\.nuget\\packages\\restsharp\\108.0.3\\restsharp.108.0.3.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\partner\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\partner\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.27\\microsoft.windowsdesktop.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\partner\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.27\\microsoft.netcore.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\partner\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.27\\microsoft.aspnetcore.app.ref.6.0.27.nupkg.sha512"
   ],
   "logs": []
 }

@@ -35,6 +35,9 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         public string U_NumPedTr { get; set; }
 
         public string U_StSentWMS { get; set; }
+       
+
+      
 
         public List<DocumentLine> DocumentLines { get; set; }
 
@@ -50,8 +53,8 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         public decimal Price { get; set; }
         public string WarehouseCode { get; set; }
 
-        public string TaxCode { get; set; }
-        public string CFOPCode { get; set; }
+       // public string TaxCode { get; set; }
+       // public string CFOPCode { get; set; }
         public int Usage { get; set; }
 
         public List<BatchNumbers> BatchNumbers { get; set; }

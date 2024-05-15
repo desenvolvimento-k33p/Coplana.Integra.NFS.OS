@@ -80,17 +80,17 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             }
         }
 
-        private async Task<List<InvoiceDTO>> _getItensPendent()
+        private async Task<List<InvoiceDTO2>> _getItensPendent()
         {
 
-            List<InvoiceDTO> itensResult = new List<InvoiceDTO>();
+            List<InvoiceDTO2> itensResult = new List<InvoiceDTO2>();
 
             try
             {
 
                 var query = SQLSupport.GetConsultas("GeiItensToInsertNFE");
                 //query = String.Format(query, "", "");
-                var allItens = await _hanaAdapter.Query<InvoiceDTO>(query);
+                var allItens = await _hanaAdapter.Query<InvoiceDTO2>(query);
                 itensResult = allItens.ToList();
 
             }
@@ -109,11 +109,11 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             return itensResult;
         }
 
-        private async Task _processItems(List<InvoiceDTO> itens)
+        private async Task _processItems(List<InvoiceDTO2> itens)
         {
 
             int cont = 0;
-            List<InvoiceDTO> newLista;
+            List<InvoiceDTO2> newLista;
 
             try
             {
@@ -166,7 +166,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             }
         }
 
-        private async Task<dynamic> _processUnitItem(List<InvoiceDTO> item,string tipo)
+        private async Task<dynamic> _processUnitItem(List<InvoiceDTO2> item,string tipo)
         {
             try
             {
@@ -246,15 +246,15 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             return false;
         }
 
-        private async Task<InvoiceDTO> _populateSOACollection(InvoiceDTO item,string tipo)
+        private async Task<InvoiceDTO2> _populateSOACollection(InvoiceDTO2 item,string tipo)
         {
 
 
             try
             {
-                List<BatchNumbers> lotes = new List<BatchNumbers>();
-                List<DocumentLine> linhas = new List<DocumentLine>();
-                InvoiceDTO obj = item;
+                List<BatchNumbers2> lotes = new List<BatchNumbers2>();
+                List<DocumentLine2> linhas = new List<DocumentLine2>();
+                InvoiceDTO2 obj = item;
                 string query = "";
 
                 if (tipo == "SemPedido")
@@ -274,12 +274,12 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                 foreach (var lines in itensResult)
                 {
-                    lotes = new List<BatchNumbers>();
-                    DocumentLine l = new DocumentLine();
+                    lotes = new List<BatchNumbers2>();
+                    DocumentLine2 l = new DocumentLine2();
                     l.Price = lines.Price;
 
-                    l.TaxCode = _configuration.Value.CoplanaBusiness.TaxCodeNFS;
-                    l.CFOPCode = _configuration.Value.CoplanaBusiness.CFOPNFS;
+                    //l.TaxCode = _configuration.Value.CoplanaBusiness.TaxCodeNFS;
+                   // l.CFOPCode = _configuration.Value.CoplanaBusiness.CFOPNFS;
                     l.Quantity = lines.Quantity;
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
@@ -292,7 +292,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                     query = SQLSupport.GetConsultas("GetLotes");
                     query = String.Format(query, obj.DocEntryTransf, lines.ItemCode);//itensLote
-                    BatchNumbers retlotes = await _hanaAdapter.QueryFirst<BatchNumbers>(query);
+                    BatchNumbers2 retlotes = await _hanaAdapter.QueryFirst<BatchNumbers2>(query);
                     retlotes.Quantity = lines.Quantity;
                     retlotes.ItemCode = lines.ItemCode;
                     lotes.Add(retlotes);
@@ -323,7 +323,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 //obj.Series = _configuration.Value.CoplanaBusiness.SeriesNFS;//ássa config
                 obj.SequenceCode = item.SequenceCode;
 
-                TaxExtension tax = new TaxExtension();
+                TaxExtension2 tax = new TaxExtension2();
                 tax.Incoterms = "9";
                 obj.TaxExtension = tax;
 
@@ -333,6 +333,11 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     obj.U_NumPedTr = item.DocNumPedTransf;
 
                 obj.U_StSentWMS = "0";
+
+
+                obj.U_ChaveAcesso =  item.U_ChaveAcesso;
+                obj.SequenceSerial = item.SequenceSerial;
+                obj.SequenceModel = "39";
 
                 return obj;
 

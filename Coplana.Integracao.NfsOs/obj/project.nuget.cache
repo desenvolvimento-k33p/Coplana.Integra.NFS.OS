@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FRrUdx0fZ5+PogMIH163F7k69kunQn1Av861ywegKKMncLTc6mo17upfNQTasAnFRz5kFSKLvARJ8xAQon7Vmw==",
+  "dgSpecHash": "0K3feLiPoX6vbZeNP202i5TQhj3U/zswEHZoeAGpsD0Z5YuJx4UTpzWsOFVIIvmWo1beBRKqBt7AH5qLL71iSw==",
   "success": true,
   "projectFilePath": "C:\\Osvaldo\\GIT\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj",
   "expectedPackageFiles": [
@@ -64,7 +64,11 @@
     "C:\\Users\\partner\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\partner\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
     "C:\\Users\\partner\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
+    "C:\\Users\\partner\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\partner\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.27\\microsoft.windowsdesktop.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\partner\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.27\\microsoft.netcore.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\partner\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.27\\microsoft.aspnetcore.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\partner\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.27\\microsoft.netcore.app.host.win-x64.6.0.27.nupkg.sha512"
   ],
   "logs": []
 }

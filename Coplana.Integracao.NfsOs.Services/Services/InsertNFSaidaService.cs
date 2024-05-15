@@ -274,8 +274,8 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     DocumentLine l = new DocumentLine();
                     l.Price = lines.Price;
 
-                    l.TaxCode = _configuration.Value.CoplanaBusiness.TaxCodeNFS;
-                    l.CFOPCode = _configuration.Value.CoplanaBusiness.CFOPNFS;
+                    //l.TaxCode = _configuration.Value.CoplanaBusiness.TaxCodeNFS;
+                    //l.CFOPCode = _configuration.Value.CoplanaBusiness.CFOPNFS;
                     l.Quantity = lines.Quantity;
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
