@@ -1,4 +1,4 @@
-CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
+alter VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 "DocNumTransf",
 	 "DocEntryTransf",
 	 "CardCode",
@@ -11,10 +11,10 @@ CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 "Origem",
 	 "Destino",
 	 "Tipo",
-	 "Serial",
+	 "SequenceSerial",
 	 "U_ChaveAcesso" ) AS ((SELECT
 	 DISTINCT IFNULL(WTR1."BaseRef",
-	'') AS "DocNumPedTransf",
+	 '') AS "DocNumPedTransf",
 	 0 AS "DocNumTransf",
 	 OWTR."DocEntry" AS "DocEntryTransf",
 	 "@K33P_TRAN_PADC"."U_PNEntrada" AS "CardCode",
@@ -27,7 +27,7 @@ CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 WTQ1."FromWhsCod" AS "Origem",
 	 OWHS."U_DepDePara" AS "Destino",
 	 'Com Pedido' as "Tipo" ,
-	 OINV."Serial" ,
+	 OINV."Serial" as "SequenceSerial",
 	 PRO."KeyNfe" AS "U_ChaveAcesso" 
 		FROM OWTR 
 		INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
@@ -76,10 +76,12 @@ CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 		WHERE IFNULL(OWHS."U_DepDePara",
 	 '') <> '' 
 		AND OWTQ.CANCELED = 'N' 
-		AND PRO."StatusId" = 4) 
+		AND PRO."StatusId" = 4 
+		AND IFNULL(OWTR."U_ImportNFE",
+	 'N') = 'N') 
 	UNION (SELECT
 	 DISTINCT IFNULL(WTR1."BaseRef",
-	'') AS "DocNumPedTransf",
+	 '') AS "DocNumPedTransf",
 	 IFNULL(OWTR."DocNum",
 	 0) AS "DocNumTransf",
 	 OWTR."DocEntry" AS "DocEntryTransf",
@@ -93,7 +95,7 @@ CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 WTR1."FromWhsCod" AS "Origem",
 	 OWHS."U_DepDePara" AS "Destino",
 	 'Sem Pedido' as "Tipo" ,
-	 OINV."Serial" ,
+	 OINV."Serial" as "SequenceSerial",
 	 PRO."KeyNfe" AS "U_ChaveAcesso" 
 		FROM OWTR 
 		INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
@@ -144,4 +146,6 @@ CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 		AND IFNULL(WTQ1."DocEntry",
 	 0) = 0 
 		AND OWTR.CANCELED = 'N' 
-		AND PRO."StatusId" = 4)) WITH READ ONLY
+		AND PRO."StatusId" = 4 
+		AND IFNULL(OWTR."U_ImportNFE",
+	 'N') = 'N')) WITH READ ONLY

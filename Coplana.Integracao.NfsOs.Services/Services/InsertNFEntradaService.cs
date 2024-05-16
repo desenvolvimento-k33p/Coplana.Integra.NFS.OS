@@ -322,6 +322,10 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 obj.DocumentLines = linhas;
                 //obj.Series = _configuration.Value.CoplanaBusiness.SeriesNFS;//ássa config
                 obj.SequenceCode = item.SequenceCode;
+                obj.SeriesString = item.SeriesString;
+                obj.U_ChaveAcesso = item.U_ChaveAcesso;
+                obj.SequenceSerial = item.SequenceSerial;
+                obj.SequenceModel = "39";
 
                 TaxExtension2 tax = new TaxExtension2();
                 tax.Incoterms = "9";
@@ -332,12 +336,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 if (tipo == "ComPedido")
                     obj.U_NumPedTr = item.DocNumPedTransf;
 
-                obj.U_StSentWMS = "0";
-
-
-                obj.U_ChaveAcesso =  item.U_ChaveAcesso;
-                obj.SequenceSerial = item.SequenceSerial;
-                obj.SequenceModel = "39";
+                obj.U_StSentWMS = "0";              
 
                 return obj;
 

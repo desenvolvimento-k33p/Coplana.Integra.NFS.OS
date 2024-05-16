@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Coplana.Integracao.NfsOs.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+459919bca8bf1034eb4c97a7ea4b6ef6f13f1318")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1ae97399b53aa0f796a70e5654ca9783eb68e5d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Coplana.Integracao.NfsOs.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Coplana.Integracao.NfsOs.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

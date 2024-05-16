@@ -1,4 +1,4 @@
-CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
+ALTER VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 "INV12 Incoterms",
 	 "Quantity",
 	 "Price",
@@ -62,8 +62,8 @@ CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 '') <> '' 
 		AND OWTQ.CANCELED = 'N' 
 		AND OWTR.CANCELED = 'N' 
-		AND PRO."StatusId" = 4 --AND IFNULL(OWTQ."U_ImportNFS",'N') = 'N'
- 
+		AND PRO."StatusId" = 4 
+ 		AND IFNULL(OWTR."U_ImportNFE",'N') = 'N' 
 		AND OWTQ."DocStatus" = 'C' 
 		GROUP BY OWTQ."DocNum" ,
 	 "@K33P_TRAN_PADC"."U_Incoterms" ,
@@ -127,7 +127,8 @@ CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 		WHERE IFNULL(OWHS."U_DepDePara",
 	 '') <> '' 
 		AND OWTR.CANCELED = 'N' 
-		AND PRO."StatusId" = 4 --AND IFNULL(OWTR."U_ImportNFS",'N') = 'N'
+		AND PRO."StatusId" = 4 
+		AND IFNULL(OWTR."U_ImportNFE",'N') = 'N' 
  
 		AND IFNULL(WTQ1."DocEntry",
 	0) = 0 

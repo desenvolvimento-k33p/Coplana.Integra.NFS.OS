@@ -42,6 +42,8 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
         public string SequenceModel { get; set; }
 
+        public string SeriesString { get; set; }
+
         public List<DocumentLine2> DocumentLines { get; set; }
 
         public ErrorInvoiceDto2 error { get; set; }
