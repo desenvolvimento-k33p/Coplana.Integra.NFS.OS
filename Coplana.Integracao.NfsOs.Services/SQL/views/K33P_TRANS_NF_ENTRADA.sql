@@ -1,4 +1,4 @@
-alter VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
+CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 "DocNumTransf",
 	 "DocEntryTransf",
 	 "CardCode",
@@ -12,7 +12,8 @@ alter VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 "Destino",
 	 "Tipo",
 	 "SequenceSerial",
-	 "U_ChaveAcesso" ) AS ((SELECT
+	 "U_ChaveAcesso",
+	 "SeriesString" ) AS ((SELECT
 	 DISTINCT IFNULL(WTR1."BaseRef",
 	 '') AS "DocNumPedTransf",
 	 0 AS "DocNumTransf",
@@ -28,7 +29,8 @@ alter VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 OWHS."U_DepDePara" AS "Destino",
 	 'Com Pedido' as "Tipo" ,
 	 OINV."Serial" as "SequenceSerial",
-	 PRO."KeyNfe" AS "U_ChaveAcesso" 
+	 PRO."KeyNfe" AS "U_ChaveAcesso" ,
+	 OINV."SeriesStr" AS "SeriesString" 
 		FROM OWTR 
 		INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
 		INNER JOIN OBPL ON OWTR."BPLId" = OBPL."BPLId" 
@@ -96,7 +98,8 @@ alter VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 OWHS."U_DepDePara" AS "Destino",
 	 'Sem Pedido' as "Tipo" ,
 	 OINV."Serial" as "SequenceSerial",
-	 PRO."KeyNfe" AS "U_ChaveAcesso" 
+	 PRO."KeyNfe" AS "U_ChaveAcesso" ,
+	 OINV."SeriesStr" AS "SeriesString" 
 		FROM OWTR 
 		INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
 		INNER JOIN OBPL ON OWTR."BPLId" = OBPL."BPLId" 

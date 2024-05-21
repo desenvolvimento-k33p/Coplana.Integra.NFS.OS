@@ -252,68 +252,62 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 List<DocumentLine> linhas = new List<DocumentLine>();
                 InvoiceDTO obj = item;
                 string query = "";
+                string consultaLote = "";
 
                 if (tipo == "SemPedido")
                 {
                     query = SQLSupport.GetConsultas("GeiItensToInsertNFS1");
                     query = String.Format(query, obj.DocNumTransf);
+                    consultaLote = "GetLotes";
                 }
                 else
                 {
                     query = SQLSupport.GetConsultas("GeiItensToInsertNFS1_Ped");
                     query = String.Format(query, obj.DocNumPedTransf);
+                    consultaLote = "GetLotesPed";
                 }
 
-                var itensResult = await _hanaAdapter.QueryList<DocumentLine>(query);
-                //var itensResult = retLinhas.ToList();
-                //itensResult.GroupBy(c => c.ItemCode);NÃO AGRUPA E SOMA POIS PODEM HAVER LINHAS DAS TRANSF COM DEPOSITOS DIFERENTES,
+                var itensResult = await _hanaAdapter.QueryList<DocumentLine>(query);               
+            
 
                 foreach (var lines in itensResult)
                 {
                     lotes = new List<BatchNumbers>();
                     DocumentLine l = new DocumentLine();
-                    l.Price = lines.Price;
+                    
 
-                    //l.TaxCode = _configuration.Value.CoplanaBusiness.TaxCodeNFS;
-                    //l.CFOPCode = _configuration.Value.CoplanaBusiness.CFOPNFS;
+                    l.Price = lines.Price;              
                     l.Quantity = lines.Quantity;
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
                     l.WarehouseCode = lines.WarehouseCode;
 
 
-                    //lotes//////////////////////////
+                    ///////////////////////////lotes//////////////////////////
                     BatchNumbers b = new BatchNumbers();
+                    query = SQLSupport.GetConsultas(consultaLote);
+                    query = String.Format(query, (tipo == "SemPedido" ? obj.DocEntryTransf : obj.DocNumPedTransf), lines.ItemCode);
 
+                    List<BatchNumbers> retlotes = await _hanaAdapter.QueryList<BatchNumbers>(query);
 
-                    query = SQLSupport.GetConsultas("GetLotes");
-                    query = String.Format(query, obj.DocEntryTransf, lines.ItemCode);//itensLote
-                    BatchNumbers retlotes = await _hanaAdapter.QueryFirst<BatchNumbers>(query);
-                    retlotes.Quantity = lines.Quantity;
-                    retlotes.ItemCode = lines.ItemCode;
-                    lotes.Add(retlotes);
+                    foreach (var lote in retlotes)
+                    {
+                        BatchNumbers batch = new BatchNumbers();
+                        batch.SystemSerialNumber = lote.SystemSerialNumber;
+                        batch.BatchNumber = lote.BatchNumber;
+                        batch.Quantity = lote.Quantity;
+                        batch.ItemCode = lines.ItemCode;
+                        lotes.Add(batch);
+                    }
 
                     l.BatchNumbers = lotes;
 
                     linhas.Add(l);
 
-                    //itensLote+= "'" + l.ItemCode +"'" + ","; 
+                   
                 }
 
-                //foreach (var lines in itensResult)
-                //{
-                //    BatchNumbers b = new BatchNumbers();
-                //    //itensLote = itensLote.Remove(itensLote.LastIndexOf(","));
-
-                //    query = SQLSupport.GetConsultas("GetLotes");
-                //    query = String.Format(query, lines.ItemCode);//itensLote
-                //    BatchNumbers retlotes = await _hanaAdapter.QueryFirst<BatchNumbers>(query);
-                //    retlotes.Quantity = lines.Quantity;
-                //    retlotes.ItemCode = lines.ItemCode;
-                //    lotes.Add(retlotes);
-                //    //lotes = retlotes.ToList();
-                //}
-
+             
                 // obj.DocumentLines.BatchNumbers = lotes;
                 obj.DocumentLines = linhas;
                 //obj.Series = _configuration.Value.CoplanaBusiness.SeriesNFS;//ássa config

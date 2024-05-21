@@ -169,7 +169,7 @@ using (var app = builder.Build())
 #if DEBUG == false
 
     var cronService_ = Cron.MinuteInterval(59);
-    var cronServicetr = Cron.MinuteInterval(10);
+    var cronServicetr = Cron.MinuteInterval(1);
 
     RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronService_, null, "insertitensqueue");
     RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronService_, null, "deleteitensqueue");

@@ -256,67 +256,61 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 List<DocumentLine2> linhas = new List<DocumentLine2>();
                 InvoiceDTO2 obj = item;
                 string query = "";
+                string consultaLote = "";
 
                 if (tipo == "SemPedido")
                 {
                     query = SQLSupport.GetConsultas("GeiItensToInsertNFE1");
                     query = String.Format(query, obj.DocNumTransf);
+                    consultaLote = "GetLotes";
                 }
                 else
                 {
                     query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Ped");
                     query = String.Format(query, obj.DocNumPedTransf);
+                    consultaLote = "GetLotesPed";
                 }
 
                 var itensResult = await _hanaAdapter.QueryList<DocumentLine>(query);
-                //var itensResult = retLinhas.ToList();
-                //itensResult.GroupBy(c => c.ItemCode);NÃO AGRUPA E SOMA POIS PODEM HAVER LINHAS DAS TRANSF COM DEPOSITOS DIFERENTES,
-
+             
                 foreach (var lines in itensResult)
                 {
                     lotes = new List<BatchNumbers2>();
                     DocumentLine2 l = new DocumentLine2();
                     l.Price = lines.Price;
 
-                    //l.TaxCode = _configuration.Value.CoplanaBusiness.TaxCodeNFS;
-                   // l.CFOPCode = _configuration.Value.CoplanaBusiness.CFOPNFS;
+                   
                     l.Quantity = lines.Quantity;
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
                     l.WarehouseCode = lines.WarehouseCode;
 
 
-                    //lotes//////////////////////////
+                    ///////////////////////////lotes//////////////////////////
                     BatchNumbers b = new BatchNumbers();
+                    query = SQLSupport.GetConsultas(consultaLote);
+                    query = String.Format(query, (tipo == "SemPedido" ? obj.DocEntryTransf : obj.DocNumPedTransf), lines.ItemCode);
 
+                    List<BatchNumbers2> retlotes = await _hanaAdapter.QueryList<BatchNumbers2>(query);
 
-                    query = SQLSupport.GetConsultas("GetLotes");
-                    query = String.Format(query, obj.DocEntryTransf, lines.ItemCode);//itensLote
-                    BatchNumbers2 retlotes = await _hanaAdapter.QueryFirst<BatchNumbers2>(query);
-                    retlotes.Quantity = lines.Quantity;
-                    retlotes.ItemCode = lines.ItemCode;
-                    lotes.Add(retlotes);
+                    foreach (var lote in retlotes)
+                    {
+                        BatchNumbers2 batch = new BatchNumbers2();
+                        batch.SystemSerialNumber = lote.SystemSerialNumber;
+                        batch.BatchNumber = lote.BatchNumber;
+                        batch.Quantity = lote.Quantity;
+                        batch.ItemCode = lines.ItemCode;
+                        lotes.Add(batch);
+                    }
 
                     l.BatchNumbers = lotes;
 
                     linhas.Add(l);
 
-                    //itensLote+= "'" + l.ItemCode +"'" + ","; 
+
                 }
 
-                //foreach (var lines in itensResult)
-                //{
-                //    BatchNumbers b = new BatchNumbers();
-                //    //itensLote = itensLote.Remove(itensLote.LastIndexOf(","));
-
-                //    query = SQLSupport.GetConsultas("GetLotes");
-                //    query = String.Format(query, lines.ItemCode);//itensLote
-                //    BatchNumbers retlotes = await _hanaAdapter.QueryFirst<BatchNumbers>(query);
-                //    retlotes.Quantity = lines.Quantity;
-                //    retlotes.ItemCode = lines.ItemCode;
-                //    lotes.Add(retlotes);
-                //    //lotes = retlotes.ToList();
-                //}
+            
 
                 // obj.DocumentLines.BatchNumbers = lotes;
                 obj.DocumentLines = linhas;

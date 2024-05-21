@@ -1,4 +1,4 @@
-ALTER VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_SAIDA" ( "DocNumPedTransf",
+CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_SAIDA" ( "DocNumPedTransf",
 	 "DocNumTransf",
 	 "DocEntryTransf",
 	 "CardCode",
@@ -12,7 +12,7 @@ ALTER VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_SAIDA" ( "DocNumPedTransf",
 	 "Destino",
 	 "Tipo" ) AS ((SELECT
 	 DISTINCT IFNULL(WTR1."BaseRef",
-	'') AS "DocNumPedTransf",
+	 '') AS "DocNumPedTransf",
 	 IFNULL(OWTR."DocNum",
 	 0) AS "DocNumTransf",
 	 OWTR."DocEntry" AS "DocEntryTransf",
@@ -79,7 +79,7 @@ ALTER VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_SAIDA" ( "DocNumPedTransf",
 		AND OWTQ."DocStatus" = 'C') 
 	UNION (SELECT
 	 DISTINCT IFNULL(WTR1."BaseRef",
-	'') AS "DocNumPedTransf",
+	 '') AS "DocNumPedTransf",
 	 IFNULL(OWTR."DocNum",
 	 0) AS "DocNumTransf",
 	 OWTR."DocEntry" AS "DocEntryTransf",

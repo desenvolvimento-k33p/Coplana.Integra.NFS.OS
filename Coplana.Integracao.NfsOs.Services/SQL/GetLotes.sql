@@ -1,20 +1,5 @@
-﻿--select 
-
---TOP 1 
-
---"DistNumber" as "BatchNumber",
---"SysNumber" as "SystemSerialNumber"
-
---from OBTN 
-
---WHERE 
-
---"ItemCode" ='{0}'
---AND "Status"  = 0
---AND CURRENT_DATE <= "ExpDate"
---AND "MnfDate" = (SELECT MIN("MnfDate") FROM OBTN WHERE "ItemCode" = '{0}' AND "Status"  = 0 AND CURRENT_DATE <= "ExpDate")
-
-SELECT 
+﻿SELECT 
+IBT1."Quantity",
 IBT1."BatchNum" as "BatchNumber",
 (SELECT "SysNumber" FROM OBTN WHERE  "ItemCode" ='{1}' AND "DistNumber" = IBT1."BatchNum" ) as "SystemSerialNumber"
 

@@ -1,4 +1,4 @@
-ALTER VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
+CREATE VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 "INV12 Incoterms",
 	 "Quantity",
 	 "Price",
@@ -11,13 +11,13 @@ ALTER VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 DISTINCT OWTQ."DocNum" ,
 	 "@K33P_TRAN_PADC"."U_Incoterms" AS "INV12 Incoterms",
 	 SUM(WTR1."Quantity") AS "Quantity",
-	 SUM(WTR1."StockPrice") AS "Price",
+	 MAX(WTR1."StockPrice") AS "Price",
 	 OWHS."U_DepDePara" AS "WarehouseCode",
 	 "@K33P_TRAN_PADC"."U_UtilizEnt" AS "Usage",
 	 WTR1."FromWhsCod" as "Origem",
 	 OWHS."U_DepDePara" as "Destino",
 	 'Com Pedido' as "Tipo",
-	WTR1."ItemCode" 
+	 WTR1."ItemCode" 
 		FROM OWTR 
 		INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
 		INNER JOIN OBPL ON OWTR."BPLId" = OBPL."BPLId" 
@@ -63,7 +63,8 @@ ALTER VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 		AND OWTQ.CANCELED = 'N' 
 		AND OWTR.CANCELED = 'N' 
 		AND PRO."StatusId" = 4 
- 		AND IFNULL(OWTR."U_ImportNFE",'N') = 'N' 
+		AND IFNULL(OWTR."U_ImportNFE",
+	'N') = 'N' 
 		AND OWTQ."DocStatus" = 'C' 
 		GROUP BY OWTQ."DocNum" ,
 	 "@K33P_TRAN_PADC"."U_Incoterms" ,
@@ -83,7 +84,7 @@ ALTER VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 WTR1."FromWhsCod" as "Origem",
 	 OWHS."U_DepDePara" as "Destino",
 	 'Sem Pedido' as "Tipo",
-	WTR1."ItemCode" 
+	 WTR1."ItemCode" 
 		FROM OWTR 
 		INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
 		INNER JOIN OBPL ON OWTR."BPLId" = OBPL."BPLId" 
@@ -128,10 +129,10 @@ ALTER VIEW "COPLANA_QAS_08082023"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 '') <> '' 
 		AND OWTR.CANCELED = 'N' 
 		AND PRO."StatusId" = 4 
-		AND IFNULL(OWTR."U_ImportNFE",'N') = 'N' 
- 
+		AND IFNULL(OWTR."U_ImportNFE",
+	'N') = 'N' 
 		AND IFNULL(WTQ1."DocEntry",
-	0) = 0 
+	 0) = 0 
 		GROUP BY OWTR."DocNum" ,
 	 "@K33P_TRAN_PADC"."U_Incoterms" ,
 	 WTQ1."FromWhsCod" ,
