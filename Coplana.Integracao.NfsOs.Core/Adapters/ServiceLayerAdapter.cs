@@ -108,9 +108,9 @@ namespace Coplana.Integracao.NfsOs.Core.Adapters
                 var baseUrl = new Uri($"{serviceLayerConfiguration.Uri}{_baseUrl}/");
                 var login = new LoginPost()
                 {
-                    CompanyDB = serviceLayerConfiguration.CompanyDB,
-                    Password = serviceLayerConfiguration.Password,
-                    UserName = serviceLayerConfiguration.UserName
+                    CompanyDB = Criptografia.Instancia.Descriptografar(serviceLayerConfiguration.CompanyDB),
+                    Password = Criptografia.Instancia.Descriptografar(serviceLayerConfiguration.Password),
+                    UserName = Criptografia.Instancia.Descriptografar(serviceLayerConfiguration.UserName)
                 };
 
                 if (_httpCookieContainer == null)

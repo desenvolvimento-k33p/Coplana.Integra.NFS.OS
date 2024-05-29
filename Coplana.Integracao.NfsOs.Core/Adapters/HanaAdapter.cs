@@ -21,7 +21,7 @@ namespace Coplana.Integracao.NfsOs.Core.Adapters
         {
 
             HanaDbConnection cfgFile = configurations.Value.HanaDbConnection;
-            _urlConnection = $"Server={cfgFile.Server};UserID={cfgFile.UserID};Password={cfgFile.Password};CS={cfgFile.Database}";
+            _urlConnection = $"Server={Criptografia.Instancia.Descriptografar(cfgFile.Server)};UserID={Criptografia.Instancia.Descriptografar(cfgFile.UserID)};Password={Criptografia.Instancia.Descriptografar(cfgFile.Password)};CS={Criptografia.Instancia.Descriptografar(cfgFile.Database)}";
         }
 
         public async Task<T> QueryFirst<T>(string sql)

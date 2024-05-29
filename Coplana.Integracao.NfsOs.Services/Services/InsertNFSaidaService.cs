@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Coplana.Integracao.NfsOs.Core;
 using Coplana.Integracao.NfsOs.Core.Interfaces;
 using Coplana.Integracao.NfsOs.Domain.Configuration;
 using Coplana.Integracao.NfsOs.Domain.Logger;
@@ -51,7 +52,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             _configuration = configuration;
             _hana = hana;
 
-            HANA_DB = _configuration.Value.HanaDbConnection.Database;
+            HANA_DB = Criptografia.Instancia.Descriptografar(_configuration.Value.HanaDbConnection.Database);
 
             _coplanaHttp = configurations.Value.CoplanaHttp;
             _coplanaBusiness = configurations.Value.CoplanaBusiness;
@@ -203,7 +204,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             var nfsSAP = await _populateSOACollection(item, tipo);
 
             InvoiceDTOReturn responseOrder = await _serviceLayerAdapter.Call<InvoiceDTOReturn>(
-                    $"Invoices", HttpMethod.Post, nfsSAP, _serviceLayerHttp.Uri);
+                    $"Invoices", HttpMethod.Post, nfsSAP, Criptografia.Instancia.Descriptografar(_serviceLayerHttp.Uri));
 
             await _logger.Logger(new LogIntegration
             {

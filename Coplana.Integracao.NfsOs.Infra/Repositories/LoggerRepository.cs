@@ -1,4 +1,5 @@
-﻿using Coplana.Integracao.NfsOs.Core.Interfaces;
+﻿using Coplana.Integracao.NfsOs.Core;
+using Coplana.Integracao.NfsOs.Core.Interfaces;
 using Coplana.Integracao.NfsOs.Domain.Configuration;
 using Coplana.Integracao.NfsOs.Domain.Logger;
 using Coplana.Integracao.NfsOs.Infra.Interfaces;
@@ -25,7 +26,7 @@ namespace Coplana.Integracao.NfsOs.Infra.Repositories
             _configuration = configuration;
             _hana = hana;
 
-            HANA_DB = _configuration.Value.HanaDbConnection.Database;
+            HANA_DB = Criptografia.Instancia.Descriptografar(_configuration.Value.HanaDbConnection.Database);
         }
 
         public async Task Logger(LogIntegration logData)
