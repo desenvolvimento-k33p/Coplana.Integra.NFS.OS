@@ -15,12 +15,14 @@
     <None Remove="SQL\GeiItensToInsertNFE.sql" />
     <None Remove="SQL\GeiItensToInsertNFE1.sql" />
     <None Remove="SQL\GeiItensToInsertNFE1_Ped.sql" />
+    <None Remove="SQL\GeiItensToInsertNFE1_Transf.sql" />
     <None Remove="SQL\GeiItensToInsertNFS.sql" />
     <None Remove="SQL\GeiItensToInsertNFS1.sql" />
     <None Remove="SQL\GeiItensToInsertNFS1_Ped.sql" />
     <None Remove="SQL\GeiItensToInsertOS.sql" />
     <None Remove="SQL\GetLotes.sql" />
     <None Remove="SQL\GetLotesPed.sql" />
+    <None Remove="SQL\GetLotesTransf.sql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,11 +30,13 @@
     <EmbeddedResource Include="SQL\AtualizaFlagNFSPed.sql" />
     <EmbeddedResource Include="SQL\GeiItensToDeleteOS.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFE.sql" />
+    <EmbeddedResource Include="SQL\GeiItensToInsertNFE1_Transf.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFE1_Ped.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFE1.sql" />
     <EmbeddedResource Include="SQL\AtualizaFlagNFS.sql" />
     <EmbeddedResource Include="SQL\AtualizaFlagNFE.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFS1_Ped.sql" />
+    <EmbeddedResource Include="SQL\GetLotesTransf.sql" />
     <EmbeddedResource Include="SQL\GetLotesPed.sql" />
     <EmbeddedResource Include="SQL\GetLotes.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFS1.sql" />

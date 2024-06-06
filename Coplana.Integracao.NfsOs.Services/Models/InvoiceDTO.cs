@@ -48,6 +48,8 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
     public class DocumentLine
     {
+        [JsonIgnore]
+        public string Destino { get; set; }
         public string ItemCode { get; set; }
         public decimal Quantity { get; set; }
         public decimal Price { get; set; }

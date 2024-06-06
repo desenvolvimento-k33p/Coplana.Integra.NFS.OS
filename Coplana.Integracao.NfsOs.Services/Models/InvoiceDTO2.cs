@@ -10,8 +10,15 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 {
     public class InvoiceDTO2
     {
+
+        [JsonIgnore]
+        public string Tipo { get; set; }
+
         [JsonIgnore]
         public string DocNumPedTransf { get; set; }
+
+        [JsonIgnore]
+        public string GerarEsboco { get; set; }
 
         [JsonIgnore]
         public string DocNumTransf { get; set; }
@@ -53,6 +60,8 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
     public class DocumentLine2
     {
+       
+
         public string ItemCode { get; set; }
         public decimal Quantity { get; set; }
         public decimal Price { get; set; }

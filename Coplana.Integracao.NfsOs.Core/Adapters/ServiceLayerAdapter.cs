@@ -105,7 +105,7 @@ namespace Coplana.Integracao.NfsOs.Core.Adapters
             try
             {
                 var serviceLayerConfiguration = _configurations.Value.ServiceLayer;
-                var baseUrl = new Uri($"{serviceLayerConfiguration.Uri}{_baseUrl}/");
+                var baseUrl = new Uri($"{Criptografia.Instancia.Descriptografar(serviceLayerConfiguration.Uri)}{_baseUrl}/");
                 var login = new LoginPost()
                 {
                     CompanyDB = Criptografia.Instancia.Descriptografar(serviceLayerConfiguration.CompanyDB),
