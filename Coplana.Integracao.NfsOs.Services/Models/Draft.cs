@@ -73,6 +73,12 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
         public List<BatchNumbersDraft> BatchNumbers { get; set; }
 
+        public int? BaseEntry { get; set; }
+
+        public int? BaseType { get; set; }
+
+        public int? BaseLine { get; set; }   
+
         // public string CostingCode { get; set; }
         //  public decimal UnitPrice { get; set; }
         //  public string COGSCostingCode { get; set; }

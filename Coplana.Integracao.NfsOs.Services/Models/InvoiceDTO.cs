@@ -70,6 +70,12 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         //    public string CostingCode4 { get; set; }
         //    public string CostingCode5 { get; set; }
 
+        public int? BaseEntry { get; set; } =-1;
+
+        public int? BaseType { get; set; } = -1;
+
+        public int? BaseLine { get; set; } = -1;
+
     }
 
     public class BatchNumbers

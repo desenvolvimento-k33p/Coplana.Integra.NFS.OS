@@ -282,7 +282,9 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
                     l.WarehouseCode = lines.WarehouseCode;
-
+                    l.BaseType = -1;
+                    l.BaseLine = null;
+                    l.BaseEntry = null;
 
                     ///////////////////////////lotes//////////////////////////
                     BatchNumbers b = new BatchNumbers();

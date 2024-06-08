@@ -120,7 +120,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             {
 
                 //agrupamento COM PEDIDO
-                var groupedList = itens.Where(c => c.DocNumPedTransf != "").Where(c => c.Tipo == "Sem Pedido")
+                var groupedList = itens.Where(c => c.DocNumPedTransf != "").Where(c => c.Tipo == "Com Pedido")
                .GroupBy(x => x.DocNumPedTransf)//, x.DocNumTransf))
                .Select(grp => grp.ToList())
                .ToList();
@@ -138,7 +138,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 }
 
                 //agrupamento SEM PEDIDO
-                var groupedList2 = itens.Where(c => c.DocNumPedTransf == "").Where(c => c.Tipo == "Com Pedido")
+                var groupedList2 = itens.Where(c => c.DocNumPedTransf == "").Where(c => c.Tipo == "Sem Pedido")
                .GroupBy(x => x.DocNumTransf)//, x.DocNumTransf))
                .Select(grp => grp.ToList())
                .ToList();
@@ -249,7 +249,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 Method = "_createItemNFS",
                 Key = (object)responseOrder != null ? responseOrder.DocEntry.ToString() : "",//chave NFS
                 Key2 = "",
-                RequestObject = JsonSerializer.Serialize(nfsSAP),
+                RequestObject = JsonSerializer.Serialize(geraEsboco == "N" ? nfsSAP : nfsSAPDraft),
                 ResponseObject = JsonSerializer.Serialize(responseOrder)
             });
 
@@ -333,6 +333,9 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
                     l.WarehouseCode = lines.Destino;
+                    l.BaseEntry = lines.BaseEntry;
+                    l.BaseLine = lines.BaseLine;
+                    l.BaseType = lines.BaseType;
 
 
                     ///////////////////////////lotes//////////////////////////
@@ -432,6 +435,8 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 obj.TaxDate = item.TaxDate;
                 obj.BPL_IDAssignedToInvoice = item.BPL_IDAssignedToInvoice;
                 obj.DocObjectCode="18";
+                obj.DocNumPedTransf = item.DocNumPedTransf;
+                obj.DocNumTransf = item.DocNumTransf;   
 
                 string query = "";
                 string consultaLote = "";
@@ -467,7 +472,10 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.Quantity = lines.Quantity;
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
-                    l.WarehouseCode = lines.WarehouseCode;
+                    l.WarehouseCode = lines.Destino;
+                    l.BaseEntry = lines.BaseEntry;
+                    l.BaseLine = lines.BaseLine;
+                    l.BaseType = lines.BaseType;
 
 
                     ///////////////////////////lotes//////////////////////////
@@ -517,6 +525,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 obj.U_ChaveAcesso = item.U_ChaveAcesso;
                 obj.SequenceSerial = item.SequenceSerial;
                 obj.SequenceModel = "39";
+               
 
                 TaxExtensionDraft tax = new TaxExtensionDraft();
                 tax.Incoterms = "9";

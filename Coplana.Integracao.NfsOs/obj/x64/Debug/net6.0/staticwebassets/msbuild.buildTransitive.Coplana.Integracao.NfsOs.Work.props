@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Coplana.Integracao.NfsOs.Work.props" />
+</Project>
