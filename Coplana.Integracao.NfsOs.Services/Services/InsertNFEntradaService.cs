@@ -267,13 +267,13 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     if (tipo == "SemPedido")
                     {
                         var query = SQLSupport.GetConsultas("AtualizaFlagNFE");
-                        query = string.Format(query, nfsSAP.DocNumTransf);
+                        query = string.Format(query, geraEsboco == "N" ? nfsSAP.DocNumTransf : nfsSAPDraft.DocNumTransf);
                         var result = await _hanaAdapter.Execute(query);
                     }
                     else if (tipo == "ComPedido")
                     {
                         var query = SQLSupport.GetConsultas("AtualizaFlagNFEPed");
-                        query = string.Format(query, nfsSAP.DocNumPedTransf);
+                        query = string.Format(query, geraEsboco == "N" ? nfsSAP.DocNumPedTransf : nfsSAPDraft.DocNumPedTransf);
                         var result = await _hanaAdapter.Execute(query);
                     }
                     //else if (tipo == "Transf.")
@@ -327,15 +327,16 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     lotes = new List<BatchNumbers2>();
                     DocumentLine2 l = new DocumentLine2();
                     l.Price = lines.Price;
+                    l.UnitPrice = lines.Price;
 
 
                     l.Quantity = lines.Quantity;
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
                     l.WarehouseCode = lines.Destino;
-                    l.BaseEntry = lines.BaseEntry;
-                    l.BaseLine = lines.BaseLine;
-                    l.BaseType = lines.BaseType;
+                    l.BaseEntry = lines.BaseEntry == -1 ? null : lines.BaseEntry;
+                    l.BaseLine = lines.BaseLine == -1 ? null : lines.BaseLine;
+                    l.BaseType = lines.BaseType == -1 ? null : lines.BaseType   ;
 
 
                     ///////////////////////////lotes//////////////////////////
@@ -346,7 +347,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                             varLotes = obj.DocEntryTransf;
                             break;
                         case "ComPedido":
-                            varLotes = obj.DocEntryTransf;
+                            varLotes = obj.DocNumPedTransf;
                             break;
                         case "Transf.":
                             varLotes = obj.DocNumPedTransf.ToString();
@@ -467,15 +468,15 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     lotes = new List<BatchNumbersDraft>();
                     DocumentLineDraft l = new DocumentLineDraft();
                     l.Price = lines.Price;
-
+                    l.UnitPrice = lines.Price;
 
                     l.Quantity = lines.Quantity;
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
                     l.WarehouseCode = lines.Destino;
-                    l.BaseEntry = lines.BaseEntry;
-                    l.BaseLine = lines.BaseLine;
-                    l.BaseType = lines.BaseType;
+                    l.BaseEntry = lines.BaseEntry == -1 ? null : lines.BaseEntry;
+                    l.BaseLine = lines.BaseLine == -1 ? null : lines.BaseLine;
+                    l.BaseType = lines.BaseType == -1 ? null : lines.BaseType;
 
 
                     ///////////////////////////lotes//////////////////////////
