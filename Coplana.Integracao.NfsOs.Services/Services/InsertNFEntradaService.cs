@@ -336,7 +336,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.WarehouseCode = lines.Destino;
                     l.BaseEntry = lines.BaseEntry == -1 ? null : lines.BaseEntry;
                     l.BaseLine = lines.BaseLine == -1 ? null : lines.BaseLine;
-                    l.BaseType = lines.BaseType == -1 ? null : lines.BaseType   ;
+                    l.BaseType = lines.BaseEntry == -1 ? null : lines.BaseType   ;
 
 
                     ///////////////////////////lotes//////////////////////////
@@ -476,7 +476,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.WarehouseCode = lines.Destino;
                     l.BaseEntry = lines.BaseEntry == -1 ? null : lines.BaseEntry;
                     l.BaseLine = lines.BaseLine == -1 ? null : lines.BaseLine;
-                    l.BaseType = lines.BaseType == -1 ? null : lines.BaseType;
+                    l.BaseType = lines.BaseEntry == -1 ? null : lines.BaseType;
 
 
                     ///////////////////////////lotes//////////////////////////
