@@ -181,7 +181,7 @@
 --//////////////////////////////////////////VIEW/////////////////////////////////////////////////////////////////
 
 
-SELECT * FROM K33P_TRANS_NF_ENTRADA ;
+SELECT * FROM K33P_TRANS_NF_ENTRADA;-- where "SequenceSerial" IN (29125,29126);
 --where "SequenceSerial" IN (29116,
 --29117,
 --29118,

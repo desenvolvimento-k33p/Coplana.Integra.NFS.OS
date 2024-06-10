@@ -118,43 +118,36 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
             try
             {
-
+                //DESCOMENTAR DEPOIS DIA 12
                 //agrupamento COM PEDIDO
-                var groupedList = itens.Where(c => c.DocNumPedTransf != "").Where(c => c.Tipo == "Com Pedido")
-               .GroupBy(x => x.DocNumPedTransf)//, x.DocNumTransf))
-               .Select(grp => grp.ToList())
-               .ToList();
+                // var groupedList = itens.Where(c => c.DocNumPedTransf != "").Where(c => c.Tipo == "Com Pedido")
+                //.GroupBy(x => x.DocNumPedTransf)//, x.DocNumTransf))
+                //.Select(grp => grp.ToList())
+                //.ToList();               
+
+                // foreach (var item in groupedList)
+                // {
+
+                //     await _processUnitItem(item, "ComPedido");
+
+                // }
+
+                // //agrupamento SEM PEDIDO
+                // var groupedList2 = itens.Where(c => c.DocNumPedTransf == "").Where(c => c.Tipo == "Sem Pedido")
+                //.GroupBy(x => x.DocNumTransf)//, x.DocNumTransf))
+                //.Select(grp => grp.ToList())
+                //.ToList();              
+
+                // foreach (var item in groupedList2)
+                // {
+
+                //     await _processUnitItem(item, "SemPedido");
+
+                // }
+                //DESCOMENTAR DEPOIS DIA 12
 
 
-
-                //if (groupedList.Count() == 0)
-                //    return false;
-
-                foreach (var item in groupedList)
-                {
-
-                    await _processUnitItem(item, "ComPedido");
-
-                }
-
-                //agrupamento SEM PEDIDO
-                var groupedList2 = itens.Where(c => c.DocNumPedTransf == "").Where(c => c.Tipo == "Sem Pedido")
-               .GroupBy(x => x.DocNumTransf)//, x.DocNumTransf))
-               .Select(grp => grp.ToList())
-               .ToList();
-
-                //if (groupedList2.Count() == 0)
-                //    return false;
-
-                foreach (var item in groupedList2)
-                {
-
-                    await _processUnitItem(item, "SemPedido");
-
-                }
-
-
-                //agrupamento SEM PEDIDO
+                //transf NFS
                 var groupedList3 = itens.Where(c => c.Tipo == "Transf.")
                .GroupBy(x => x.SequenceSerial)//, x.DocNumTransf))
                .Select(grp => grp.ToList())
@@ -189,16 +182,18 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             {
                 string numTransf = "";
 
-                if (tipo != "Transf.")
-                    foreach (var lista in item)
-                    {
-                        if (numTransf != lista.DocNumPedTransf || String.IsNullOrEmpty(lista.DocNumPedTransf))
-                        {
-                            var response = await _createItemNFS(lista, tipo, lista.GerarEsboco);
+                //DESCOMENTAR DEPOIS DIA 12
+                //if (tipo != "Transf.")
+                //    foreach (var lista in item)
+                //    {
+                //        if (numTransf != lista.DocNumPedTransf || String.IsNullOrEmpty(lista.DocNumPedTransf))
+                //        {
+                //            var response = await _createItemNFS(lista, tipo, lista.GerarEsboco);
 
-                        }
-                        numTransf = lista.DocNumPedTransf;
-                    }
+                //        }
+                //        numTransf = lista.DocNumPedTransf;
+                //    }
+                //DESCOMENTAR DEPOIS DIA 12
 
                 if (tipo == "Transf.")
                     foreach (var lista in item)
@@ -259,10 +254,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             {
                 if (!String.IsNullOrEmpty(responseOrder.DocEntry.ToString()) && responseOrder.DocEntry.ToString() != "0")
                 {
-                    ////atualiza flag
-                    //var query = SQLSupport.GetConsultas("AtualizaFlagNFE");
-                    //query = string.Format(query, nfsSAP.DocNumTransf);
-                    //var result = await _hanaAdapter.Execute(query);
+                    
                     //atualiza flag
                     if (tipo == "SemPedido")
                     {
@@ -276,12 +268,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                         query = string.Format(query, geraEsboco == "N" ? nfsSAP.DocNumPedTransf : nfsSAPDraft.DocNumPedTransf);
                         var result = await _hanaAdapter.Execute(query);
                     }
-                    //else if (tipo == "Transf.")
-                    //{
-                    //    var query = SQLSupport.GetConsultas("AtualizaFlagNFETransf");
-                    //    query = string.Format(query, nfsSAP.DocNumPedTransf);
-                    //    var result = await _hanaAdapter.Execute(query);
-                    //}
+                   
                 }
 
             }
@@ -301,19 +288,22 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 string query = "";
                 string consultaLote = "";
 
-                if (tipo == "SemPedido")
-                {
-                    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1");
-                    query = String.Format(query, obj.DocNumTransf);
-                    consultaLote = "GetLotes";
-                }
-                else if (tipo == "ComPedido")
-                {
-                    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Ped");
-                    query = String.Format(query, obj.DocNumPedTransf);
-                    consultaLote = "GetLotesPed";
-                }
-                else if (tipo == "Transf.")
+                //DESCOMENTAR DEPOIS DIA 12
+                //if (tipo == "SemPedido")
+                //{
+                //    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1");
+                //    query = String.Format(query, obj.DocNumTransf);
+                //    consultaLote = "GetLotes";
+                //}
+                //else if (tipo == "ComPedido")
+                //{
+                //    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Ped");
+                //    query = String.Format(query, obj.DocNumPedTransf);
+                //    consultaLote = "GetLotesPed";
+                //}
+                //DESCOMENTAR DEPOIS DIA 12
+
+                if (tipo == "Transf.")//elseif
                 {
                     query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Transf");
                     query = String.Format(query, obj.DocNumTransf);
@@ -391,10 +381,11 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 tax.Incoterms = "9";
                 obj.TaxExtension = tax;
 
-                if (tipo == "SemPedido")
-                    obj.U_NumTransf = item.DocNumTransf;
-                if (tipo == "ComPedido")
-                    obj.U_NumPedTr = item.DocNumPedTransf;
+                //DESCOMENTAR DEPOIS DIA 12
+                //if (tipo == "SemPedido")
+                //    obj.U_NumTransf = item.DocNumTransf;
+                //if (tipo == "ComPedido")
+                //    obj.U_NumPedTr = item.DocNumPedTransf;
                 if (tipo == "Transf.")
                     obj.U_NumPedTr = "TR " + item.SequenceSerial.ToString();
 
@@ -442,19 +433,20 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 string query = "";
                 string consultaLote = "";
 
-                if (tipo == "SemPedido")
-                {
-                    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1");
-                    query = String.Format(query, obj.DocNumTransf);
-                    consultaLote = "GetLotes";
-                }
-                else if (tipo == "ComPedido")
-                {
-                    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Ped");
-                    query = String.Format(query, obj.DocNumPedTransf);
-                    consultaLote = "GetLotesPed";
-                }
-                else if (tipo == "Transf.")
+                //DESCOMENTAR DEPOIS DIA 12
+                //if (tipo == "SemPedido")
+                //{
+                //    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1");
+                //    query = String.Format(query, obj.DocNumTransf);
+                //    consultaLote = "GetLotes";
+                //}
+                //else if (tipo == "ComPedido")
+                //{
+                //    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Ped");
+                //    query = String.Format(query, obj.DocNumPedTransf);
+                //    consultaLote = "GetLotesPed";
+                //}
+                if (tipo == "Transf.")//else if
                 {
                     query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Transf");
                     query = String.Format(query, obj.DocNumTransf);
@@ -532,10 +524,11 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 tax.Incoterms = "9";
                 obj.TaxExtension = tax;
 
-                if (tipo == "SemPedido")
-                    obj.U_NumTransf = item.DocNumTransf;
-                if (tipo == "ComPedido")
-                    obj.U_NumPedTr = item.DocNumPedTransf;
+                //DESCOMENTAR DEPOIS DIA 12
+                //if (tipo == "SemPedido")
+                //    obj.U_NumTransf = item.DocNumTransf;
+                //if (tipo == "ComPedido")
+                //    obj.U_NumPedTr = item.DocNumPedTransf;
                 if (tipo == "Transf.")
                     obj.U_NumPedTr = "TR " + item.SequenceSerial.ToString();
 
