@@ -120,17 +120,17 @@ namespace Coplana.Integracao.NfsOs.Services.Services
             {
                 //DESCOMENTAR DEPOIS DIA 12
                 //agrupamento COM PEDIDO
-                // var groupedList = itens.Where(c => c.DocNumPedTransf != "").Where(c => c.Tipo == "Com Pedido")
-                //.GroupBy(x => x.DocNumPedTransf)//, x.DocNumTransf))
-                //.Select(grp => grp.ToList())
-                //.ToList();               
+                var groupedList = itens.Where(c => c.DocNumPedTransf != "").Where(c => c.Tipo == "Com Pedido")
+               .GroupBy(x => x.DocNumPedTransf)//, x.DocNumTransf))
+               .Select(grp => grp.ToList())
+               .ToList();
 
-                // foreach (var item in groupedList)
-                // {
+                foreach (var item in groupedList)
+                {
 
-                //     await _processUnitItem(item, "ComPedido");
+                    await _processUnitItem(item, "ComPedido");
 
-                // }
+                }
 
                 // //agrupamento SEM PEDIDO
                 // var groupedList2 = itens.Where(c => c.DocNumPedTransf == "").Where(c => c.Tipo == "Sem Pedido")
@@ -183,16 +183,16 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 string numTransf = "";
 
                 //DESCOMENTAR DEPOIS DIA 12
-                //if (tipo != "Transf.")
-                //    foreach (var lista in item)
-                //    {
-                //        if (numTransf != lista.DocNumPedTransf || String.IsNullOrEmpty(lista.DocNumPedTransf))
-                //        {
-                //            var response = await _createItemNFS(lista, tipo, lista.GerarEsboco);
+                if (tipo != "Transf.")
+                    foreach (var lista in item)
+                    {
+                        if (numTransf != lista.DocNumPedTransf || String.IsNullOrEmpty(lista.DocNumPedTransf))
+                        {
+                            var response = await _createItemNFS(lista, tipo, lista.GerarEsboco);
 
-                //        }
-                //        numTransf = lista.DocNumPedTransf;
-                //    }
+                        }
+                        numTransf = lista.DocNumPedTransf;
+                    }
                 //DESCOMENTAR DEPOIS DIA 12
 
                 if (tipo == "Transf.")
@@ -289,18 +289,18 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 string consultaLote = "";
 
                 //DESCOMENTAR DEPOIS DIA 12
-                //if (tipo == "SemPedido")
-                //{
-                //    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1");
-                //    query = String.Format(query, obj.DocNumTransf);
-                //    consultaLote = "GetLotes";
-                //}
-                //else if (tipo == "ComPedido")
-                //{
-                //    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Ped");
-                //    query = String.Format(query, obj.DocNumPedTransf);
-                //    consultaLote = "GetLotesPed";
-                //}
+                if (tipo == "SemPedido")
+                {
+                    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1");
+                    query = String.Format(query, obj.DocNumTransf);
+                    consultaLote = "GetLotes";
+                }
+                else if (tipo == "ComPedido")
+                {
+                    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Ped");
+                    query = String.Format(query, obj.DocNumPedTransf);
+                    consultaLote = "GetLotesPed";
+                }
                 //DESCOMENTAR DEPOIS DIA 12
 
                 if (tipo == "Transf.")//elseif
@@ -382,10 +382,10 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 obj.TaxExtension = tax;
 
                 //DESCOMENTAR DEPOIS DIA 12
-                //if (tipo == "SemPedido")
-                //    obj.U_NumTransf = item.DocNumTransf;
-                //if (tipo == "ComPedido")
-                //    obj.U_NumPedTr = item.DocNumPedTransf;
+                if (tipo == "SemPedido")
+                    obj.U_NumTransf = item.DocNumTransf;
+                if (tipo == "ComPedido")
+                    obj.U_NumPedTr = item.DocNumPedTransf;
                 if (tipo == "Transf.")
                     obj.U_NumPedTr = "TR " + item.SequenceSerial.ToString();
 
@@ -434,18 +434,18 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 string consultaLote = "";
 
                 //DESCOMENTAR DEPOIS DIA 12
-                //if (tipo == "SemPedido")
-                //{
-                //    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1");
-                //    query = String.Format(query, obj.DocNumTransf);
-                //    consultaLote = "GetLotes";
-                //}
-                //else if (tipo == "ComPedido")
-                //{
-                //    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Ped");
-                //    query = String.Format(query, obj.DocNumPedTransf);
-                //    consultaLote = "GetLotesPed";
-                //}
+                if (tipo == "SemPedido")
+                {
+                    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1");
+                    query = String.Format(query, obj.DocNumTransf);
+                    consultaLote = "GetLotes";
+                }
+                else if (tipo == "ComPedido")
+                {
+                    query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Ped");
+                    query = String.Format(query, obj.DocNumPedTransf);
+                    consultaLote = "GetLotesPed";
+                }
                 if (tipo == "Transf.")//else if
                 {
                     query = SQLSupport.GetConsultas("GeiItensToInsertNFE1_Transf");
@@ -525,10 +525,10 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 obj.TaxExtension = tax;
 
                 //DESCOMENTAR DEPOIS DIA 12
-                //if (tipo == "SemPedido")
-                //    obj.U_NumTransf = item.DocNumTransf;
-                //if (tipo == "ComPedido")
-                //    obj.U_NumPedTr = item.DocNumPedTransf;
+                if (tipo == "SemPedido")
+                    obj.U_NumTransf = item.DocNumTransf;
+                if (tipo == "ComPedido")
+                    obj.U_NumPedTr = item.DocNumPedTransf;
                 if (tipo == "Transf.")
                     obj.U_NumPedTr = "TR " + item.SequenceSerial.ToString();
 
