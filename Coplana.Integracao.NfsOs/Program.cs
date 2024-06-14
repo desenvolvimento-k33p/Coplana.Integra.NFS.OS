@@ -151,8 +151,8 @@ using (var app = builder.Build())
     var cronServiceTeste = Cron.Minutely();
     var cronServiceDebug = Cron.Never();
 
-    //RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronServiceDebug);
-    //RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronServiceDebug);
+    RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronServiceDebug);
+    RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronServiceDebug);
 
     //RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronServiceDebug);
     RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServiceDebug);

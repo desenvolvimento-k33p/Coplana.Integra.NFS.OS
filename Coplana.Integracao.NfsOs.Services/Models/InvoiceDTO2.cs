@@ -12,6 +12,9 @@ namespace Coplana.Integracao.NfsOs.Services.Models
     {
 
         [JsonIgnore]
+        public string CustoDesp { get; set; }
+
+        [JsonIgnore]
         public string Tipo { get; set; }
 
         [JsonIgnore]
@@ -60,8 +63,8 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
     public class DocumentLine2
     {
-       
 
+        public string U_K_CustoDespesaAtivo { get; set; }
         public string ItemCode { get; set; }
         public decimal Quantity { get; set; }
         public decimal Price { get; set; }
