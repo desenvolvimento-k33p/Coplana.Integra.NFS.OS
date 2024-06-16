@@ -76,7 +76,7 @@ namespace Coplana.Integracao.NfsOs.Infra.Repositories
         {
             try
             {
-                string sql = $@"DELETE FROM ""KEEPLOGS"".""KEEP_LOG_NFS_OS"" WHERE LOGDATE < ADD_DAYS(CURRENT_DATE, -4) AND (IFNULL(KEY_PARC,'0') = '0' OR  IFNULL(KEY_PARC,'') = '')";
+                string sql = $@"DELETE FROM ""KEEPLOGS"".""KEEP_LOG_NFS_OS"" WHERE (OWNER = 'InsertNFEntradaService' OR OWNER = 'InsertNFSaidaService' ) AND LOGDATE < ADD_DAYS(CURRENT_DATE, -4) AND (IFNULL(KEY_PARC,'0') = '0' OR  IFNULL(KEY_PARC,'') = '')";
                 await _hana.Execute(sql);
             }
             catch (Exception e)
