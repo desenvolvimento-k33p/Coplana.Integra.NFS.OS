@@ -133,17 +133,17 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 }
 
                 // //agrupamento SEM PEDIDO
-                // var groupedList2 = itens.Where(c => c.DocNumPedTransf == "").Where(c => c.Tipo == "Sem Pedido")
-                //.GroupBy(x => x.DocNumTransf)//, x.DocNumTransf))
-                //.Select(grp => grp.ToList())
-                //.ToList();              
+                var groupedList2 = itens.Where(c => c.DocNumPedTransf == "").Where(c => c.Tipo == "Sem Pedido")
+               .GroupBy(x => x.DocNumTransf)//, x.DocNumTransf))
+               .Select(grp => grp.ToList())
+               .ToList();
 
-                // foreach (var item in groupedList2)
-                // {
+                foreach (var item in groupedList2)
+                {
 
-                //     await _processUnitItem(item, "SemPedido");
+                    await _processUnitItem(item, "SemPedido");
 
-                // }
+                }
                 //DESCOMENTAR DEPOIS DIA 12
 
 
