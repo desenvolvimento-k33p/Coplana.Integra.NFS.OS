@@ -22,6 +22,6 @@
 SELECT *
 FROM K33P_TRANS_NF_LOTE_ENTRADA  x
 WHERE
-	x."BaseType" = -1
+	x."BaseType" = 67-- -1
 AND x."DocEntry" = {0}
 AND x."ItemCode" = '{1}'
