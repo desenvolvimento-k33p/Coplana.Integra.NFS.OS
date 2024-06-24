@@ -58,6 +58,20 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         public ErrorInvoiceDtoDraft error { get; set; }
 
         public TaxExtensionDraft TaxExtension { get; set; }
+
+        public List<DocumentLinesBinAllocationsDraft> DocumentLinesBinAllocations { get; set; }
+    }
+
+    public class DocumentLinesBinAllocationsDraft
+    {
+        public int BinAbsEntry { get; set; }
+        public decimal Quantity { get; set; }
+
+        public string AllowNegativeQuantity { get; set; } = "tNO";
+
+        public int SerialAndBatchNumbersBaseLine { get; set; } = -1;
+
+        public int BaseLineNumber { get; set; }
     }
 
     public class DocumentLineDraft
@@ -76,13 +90,15 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         // public string CFOPCode { get; set; }
         public int Usage { get; set; }
 
-        public List<BatchNumbersDraft> BatchNumbers { get; set; }
-
         public int? BaseEntry { get; set; }
 
         public int? BaseType { get; set; }
 
-        public int? BaseLine { get; set; }   
+        public int? BaseLine { get; set; }
+
+        public List<BatchNumbersDraft> BatchNumbers { get; set; }
+
+        public List<DocumentLinesBinAllocationsDraft> DocumentLinesBinAllocations { get; set; }
 
         // public string CostingCode { get; set; }
         //  public decimal UnitPrice { get; set; }

@@ -282,6 +282,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
             try
             {
+                List<DocumentLinesBinAllocations2> location = new List<DocumentLinesBinAllocations2>();
                 List<BatchNumbers2> lotes = new List<BatchNumbers2>();
                 List<DocumentLine2> linhas = new List<DocumentLine2>();
                 InvoiceDTO2 obj = item;
@@ -312,8 +313,10 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                 var itensResult = await _hanaAdapter.QueryList<DocumentLine>(query);
 
+                int x = 0;
                 foreach (var lines in itensResult)
                 {
+                    location = new List<DocumentLinesBinAllocations2>(); 
                     lotes = new List<BatchNumbers2>();
                     DocumentLine2 l = new DocumentLine2();
                     l.Price = lines.Price;
@@ -326,7 +329,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.WarehouseCode = lines.Destino;
                     l.BaseEntry = lines.BaseEntry == -1 ? null : lines.BaseEntry;
                     l.BaseLine = lines.BaseLine == -1 ? null : lines.BaseLine;
-                    l.BaseType = lines.BaseEntry == -1 ? null : lines.BaseType   ;
+                    l.BaseType = lines.BaseEntry == -1 ? -1 : lines.BaseType   ;
                     l.U_K_CustoDespesaAtivo = item.CustoDesp;
 
                     ///////////////////////////lotes//////////////////////////
@@ -343,6 +346,8 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                             varLotes = obj.DocNumPedTransf.ToString();
                             break;
                     }
+
+                    //lotes
                     BatchNumbers b = new BatchNumbers();
                     query = SQLSupport.GetConsultas(consultaLote);
                     query = String.Format(query, varLotes, lines.ItemCode);
@@ -361,8 +366,24 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                     l.BatchNumbers = lotes;
 
-                    linhas.Add(l);
 
+
+                    //localizacao
+
+                    if (!String.IsNullOrEmpty(lines.BinAbsEntry.ToString()) && lines.BinAbsEntry != 0)
+                    {
+                        DocumentLinesBinAllocations2 loc = new DocumentLinesBinAllocations2();
+                        loc.BinAbsEntry = lines.BinAbsEntry;
+                        loc.Quantity = lines.Quantity;
+                        loc.BaseLineNumber = x;
+                        location.Add(loc);
+
+                        l.DocumentLinesBinAllocations = location;
+
+                    }
+
+                    linhas.Add(l);
+                    x++;
 
                 }
 
@@ -415,6 +436,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
             try
             {
+                List<DocumentLinesBinAllocationsDraft> location = new List<DocumentLinesBinAllocationsDraft>();
                 List<BatchNumbersDraft> lotes = new List<BatchNumbersDraft>();
                 List<DocumentLineDraft> linhas = new List<DocumentLineDraft>();
                 Draft obj = new Draft();
@@ -455,6 +477,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                 var itensResult = await _hanaAdapter.QueryList<DocumentLine>(query);
 
+                int x = 0;
                 foreach (var lines in itensResult)
                 {
                     lotes = new List<BatchNumbersDraft>();
@@ -485,6 +508,8 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                             varLotes = obj.DocNumPedTransf;
                             break;
                     }
+
+                    //lotes
                     BatchNumbersDraft b = new BatchNumbersDraft();
                     query = SQLSupport.GetConsultas(consultaLote);
                     query = String.Format(query, varLotes, lines.ItemCode);
@@ -503,7 +528,24 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                     l.BatchNumbers = lotes;
 
+
+                    //localizacao
+                    if (!String.IsNullOrEmpty(lines.BinAbsEntry.ToString()) && lines.BinAbsEntry != 0)
+                    {
+
+                        DocumentLinesBinAllocationsDraft loc = new DocumentLinesBinAllocationsDraft();
+                        loc.BinAbsEntry = lines.BinAbsEntry;
+                        loc.Quantity = lines.Quantity;
+                        loc.BaseLineNumber = x;
+                        location.Add(loc);
+
+                        l.DocumentLinesBinAllocations = location;
+                    }
+
                     linhas.Add(l);
+                    x++;
+
+                    
 
 
                 }

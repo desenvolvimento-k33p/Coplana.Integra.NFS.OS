@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Coplana.Integracao.NfsOs.Infra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6eab6da43448844727a3aafc4bcca7d4004553cc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+438e974a933861081bf04af964f1a630b3602d82")]
 [assembly: System.Reflection.AssemblyProductAttribute("Coplana.Integracao.NfsOs.Infra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Coplana.Integracao.NfsOs.Infra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

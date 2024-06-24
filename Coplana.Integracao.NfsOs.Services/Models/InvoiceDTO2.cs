@@ -73,15 +73,17 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
        // public string TaxCode { get; set; }
        // public string CFOPCode { get; set; }
-        public int Usage { get; set; }
-
-        public List<BatchNumbers2> BatchNumbers { get; set; }
+        public int Usage { get; set; }       
 
         public int? BaseEntry { get; set; }
 
         public int? BaseType { get; set; }
 
         public int? BaseLine { get; set; }
+
+        public List<BatchNumbers2> BatchNumbers { get; set; }
+
+        public List<DocumentLinesBinAllocations2> DocumentLinesBinAllocations { get; set; }
 
         // public string CostingCode { get; set; }
         //  public decimal UnitPrice { get; set; }
@@ -92,6 +94,18 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         //    public string CostingCode4 { get; set; }
         //    public string CostingCode5 { get; set; }
 
+    }
+
+    public class DocumentLinesBinAllocations2
+    {
+         public int BinAbsEntry { get; set; }
+        public decimal Quantity { get; set; }
+
+        public string AllowNegativeQuantity { get; set; } = "tNO";
+
+        public int SerialAndBatchNumbersBaseLine { get; set; } = -1;
+        
+        public int BaseLineNumber { get; set; }
     }
 
     public class BatchNumbers2
