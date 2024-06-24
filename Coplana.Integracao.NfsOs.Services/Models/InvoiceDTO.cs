@@ -53,7 +53,7 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
         public string AllowNegativeQuantity { get; set; } = "tNO";
 
-        public int SerialAndBatchNumbersBaseLine { get; set; } = -1;
+        public int SerialAndBatchNumbersBaseLine { get; set; } = 0;
 
         public int BaseLineNumber { get; set; }
     }
