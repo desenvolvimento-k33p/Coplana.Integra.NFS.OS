@@ -354,7 +354,16 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
                     List<BatchNumbers2> retlotes = await _hanaAdapter.QueryList<BatchNumbers2>(query);
 
-                    foreach (var lote in retlotes)
+                    //agrupa os lotes por BatchNumber**
+                    var groupedList = retlotes.GroupBy(x => x.BatchNumber).Select(grp => new BatchNumbers2
+                    {
+                        ItemCode = grp.First().ItemCode,
+                        BatchNumber = grp.First().BatchNumber,
+                        SystemSerialNumber = grp.First().SystemSerialNumber,
+                        Quantity = grp.Sum(c=>c.Quantity)
+                    }).ToList();
+
+                    foreach (var lote in groupedList)//***
                     {
                         BatchNumbers2 batch = new BatchNumbers2();
                         batch.SystemSerialNumber = lote.SystemSerialNumber;
@@ -369,18 +378,24 @@ namespace Coplana.Integracao.NfsOs.Services.Services
 
 
                     //localizacao
-
-                    if (!String.IsNullOrEmpty(lines.BinAbsEntry.ToString()) && lines.BinAbsEntry != 0)
+                    int y = 0;//**
+                    foreach (var lote in groupedList)//**
                     {
-                        DocumentLinesBinAllocations2 loc = new DocumentLinesBinAllocations2();
-                        loc.BinAbsEntry = lines.BinAbsEntry;
-                        loc.Quantity = lines.Quantity;
-                        loc.BaseLineNumber = x;
-                        location.Add(loc);
+                        if (!String.IsNullOrEmpty(lines.BinAbsEntry.ToString()) && lines.BinAbsEntry != 0)
+                        {
+                            DocumentLinesBinAllocations2 loc = new DocumentLinesBinAllocations2();
+                            loc.BinAbsEntry = lines.BinAbsEntry;
+                            loc.Quantity = lote.Quantity;
+                            loc.BaseLineNumber = x;
+                            loc.SerialAndBatchNumbersBaseLine = y;//**
+                            location.Add(loc);
 
-                        l.DocumentLinesBinAllocations = location;
+                            
 
-                    }
+                        }
+                        y++;//**
+                    }//**
+                    l.DocumentLinesBinAllocations = location;//**
 
                     linhas.Add(l);
                     x++;
