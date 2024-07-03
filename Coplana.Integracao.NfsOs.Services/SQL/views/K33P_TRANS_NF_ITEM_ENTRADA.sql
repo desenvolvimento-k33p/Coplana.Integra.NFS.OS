@@ -10,77 +10,8 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 "ItemCode",
 	 "BaseType",
 	 "BaseEntry",
-	 "BaseLine" ) AS (((SELECT
-	 DISTINCT OWTQ."DocNum" ,
-	 "@K33P_TRAN_PADC"."U_Incoterms" AS "INV12 Incoterms",
-	 SUM(WTR1."Quantity") AS "Quantity",
-	 MAX(WTR1."StockPrice") AS "Price",
-	 OWHS."U_DepDePara" AS "WarehouseCode",
-	 "@K33P_TRAN_PADC"."U_UtilizEnt" AS "Usage",
-	 WTR1."FromWhsCod" AS "Origem",
-	 OWHS."U_DepDePara" AS "Destino",
-	 'Com Pedido' AS "Tipo",
-	 WTR1."ItemCode",
-	 -1 "BaseType" ,
-	 NULL "BaseEntry" ,
-	 NULL "BaseLine" 
-			FROM OWTR 
-			INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
-			INNER JOIN OBPL ON OWTR."BPLId" = OBPL."BPLId" 
-			INNER JOIN OWHS ON WTR1."WhsCode" = OWHS."WhsCode" 
-			INNER JOIN WTQ1 ON WTR1."BaseEntry" = WTQ1."DocEntry" 
-			AND WTR1."BaseLine" = WTQ1."LineNum" 
-			AND WTR1."BaseType" = WTQ1."ObjType" 
-			INNER JOIN OWTQ ON WTQ1."DocEntry" = OWTQ."DocEntry" 
-			LEFT JOIN OINV ON OWTQ."DocNum" = OINV."U_NumPedTr" 
-			AND OINV.CANCELED = 'N' 
-			AND OINV."DocEntry" = ( SELECT
-	 MAX(OINV_MAX."DocEntry") 
-				FROM OINV OINV_MAX 
-				WHERE OWTQ."DocNum" = OINV_MAX."U_NumPedTr" 
-				AND OINV_MAX.CANCELED = 'N' ) 
-			LEFT JOIN OPCH ON OWTQ."DocNum" = OPCH."U_NumPedTr" 
-			AND OPCH.CANCELED = 'N' 
-			AND OPCH."DocEntry" = ( SELECT
-	 MAX(OPCH_MAX."DocEntry") 
-				FROM OPCH OPCH_MAX 
-				WHERE OWTQ."DocNum" = OPCH_MAX."U_NumPedTr" 
-				AND OPCH_MAX.CANCELED = 'N' ) 
-			LEFT JOIN ( SELECT
-	 "DBInvOne"."Process"."DocEntry" ,
-	 "DBInvOne"."Process"."DocType" ,
-	 "SBO_TaxOne"."Entidade"."BusinessPlaceId" ,
-	 "DBInvOne"."Process"."StatusId" ,
-	 "DBInvOne"."ProcessHist"."Hist" 
-				FROM "DBInvOne"."Process" 
-				INNER JOIN "SBO_TaxOne"."Entidade" ON "DBInvOne"."Process"."CompanyId" = "SBO_TaxOne"."Entidade".ID 
-				AND "SBO_TaxOne"."Entidade"."CompanyDb" = CURRENT_SCHEMA 
-				INNER JOIN "DBInvOne"."ProcessHist" ON "DBInvOne"."Process"."BatchId" = "DBInvOne"."ProcessHist" ."BatchId" 
-				AND "DBInvOne"."ProcessHist"."Id" = ( SELECT
-	 MAX(PRAHIS."Id") 
-					FROM "DBInvOne"."ProcessHist" PRAHIS 
-					WHERE "DBInvOne"."ProcessHist"."BatchId" = PRAHIS."BatchId" ) 
-				WHERE "DBInvOne"."Process"."DocType" = 13 ) PRO ON PRO."DocEntry" = OINV."DocEntry" 
-			AND PRO."DocType" = OINV."ObjType" 
-			LEFT JOIN "@K33P_TRAN_PADC" ON OBPL."BPLId" = "@K33P_TRAN_PADC"."U_FilialSai" 
-			AND OWHS."U_FilDePara" = "@K33P_TRAN_PADC"."U_FilialEnt" 
-			WHERE IFNULL(OWHS."U_DepDePara",
-	 '') <> '' 
-			AND OWTQ.CANCELED = 'N' 
-			AND OWTR.CANCELED = 'N' 
-			AND PRO."StatusId" = 4 
-			AND IFNULL(OWTR."U_ImportNFE",
-	 'N') = 'N' 
-			AND OWTQ."DocStatus" = 'C' 
-			GROUP BY OWTQ."DocNum" ,
-	 "@K33P_TRAN_PADC"."U_Incoterms" ,
-	 WTQ1."FromWhsCod" ,
-	 WTR1."ItemCode",
-	 "@K33P_TRAN_PADC"."U_UtilizEnt",
-	 WTR1."FromWhsCod" ,
-	 WTR1."WhsCode" ,
-	 OWHS."U_DepDePara") 
-		UNION (SELECT
+	 "BaseLine",
+	 "BinAbsEntry" ) AS ((SELECT
 	 DISTINCT OWTR."DocNum" ,
 	 "@K33P_TRAN_PADC"."U_Incoterms" AS "INV12 Incoterms",
 	 SUM(WTR1."Quantity") AS "Quantity",
@@ -93,63 +24,59 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 WTR1."ItemCode",
 	 -1 "BaseType" ,
 	 NULL "BaseEntry" ,
-	 NULL "BaseLine" 
-			FROM OWTR 
-			INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
-			INNER JOIN OBPL ON OWTR."BPLId" = OBPL."BPLId" 
-			INNER JOIN OWHS ON WTR1."WhsCode" = OWHS."WhsCode" 
-			LEFT JOIN WTQ1 ON WTR1."BaseEntry" = WTQ1."DocEntry" 
-			AND WTR1."BaseLine" = WTQ1."LineNum" 
-			AND WTR1."BaseType" = WTQ1."ObjType" 
-			LEFT JOIN OWTQ ON WTQ1."DocEntry" = OWTQ."DocEntry" 
-			LEFT JOIN OINV ON OWTR."DocNum" = OINV."U_NumTransf" 
-			AND OINV.CANCELED = 'N' 
-			AND OINV."DocEntry" = ( SELECT
+	 NULL "BaseLine" ,
+	 OWHS_DEP."DftBinAbs" AS "BinAbsEntry" 
+		FROM OWTR 
+		INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
+		INNER JOIN OBPL ON OWTR."BPLId" = OBPL."BPLId" 
+		INNER JOIN OWHS ON WTR1."WhsCode" = OWHS."WhsCode" 
+		LEFT JOIN OWHS OWHS_DEP ON OWHS."U_DepDePara" = OWHS_DEP."WhsCode" 
+		LEFT JOIN OINV ON OWTR."DocNum" = OINV."U_NumTransf" 
+		AND OINV.CANCELED = 'N' 
+		AND OINV."DocEntry" = ( SELECT
 	 MAX(OINV_MAX."DocEntry") 
-				FROM OINV OINV_MAX 
-				WHERE OWTR."DocNum" = OINV_MAX."U_NumTransf" 
-				AND OINV_MAX.CANCELED = 'N' ) 
-			LEFT JOIN OPCH ON OWTR."DocNum" = OPCH."U_NumTransf" 
-			AND OPCH.CANCELED = 'N' 
-			AND OPCH."DocEntry" = ( SELECT
+			FROM OINV OINV_MAX 
+			WHERE OWTR."DocNum" = OINV_MAX."U_NumTransf" 
+			AND OINV_MAX.CANCELED = 'N' ) 
+		LEFT JOIN OPCH ON OWTR."DocNum" = OPCH."U_NumTransf" 
+		AND OPCH.CANCELED = 'N' 
+		AND OPCH."DocEntry" = ( SELECT
 	 MAX(OPCH_MAX."DocEntry") 
-				FROM OPCH OPCH_MAX 
-				WHERE OWTR."DocNum" = OPCH_MAX."U_NumTransf" 
-				AND OPCH_MAX.CANCELED = 'N' ) 
-			LEFT JOIN ( SELECT
+			FROM OPCH OPCH_MAX 
+			WHERE OWTR."DocNum" = OPCH_MAX."U_NumTransf" 
+			AND OPCH_MAX.CANCELED = 'N' ) 
+		LEFT JOIN ( SELECT
 	 "DBInvOne"."Process"."DocEntry" ,
 	 "DBInvOne"."Process"."DocType" ,
 	 "SBO_TaxOne"."Entidade"."BusinessPlaceId" ,
 	 "DBInvOne"."Process"."StatusId" ,
 	 "DBInvOne"."ProcessHist"."Hist" 
-				FROM "DBInvOne"."Process" 
-				INNER JOIN "SBO_TaxOne"."Entidade" ON "DBInvOne"."Process"."CompanyId" = "SBO_TaxOne"."Entidade".ID 
-				AND "SBO_TaxOne"."Entidade"."CompanyDb" = CURRENT_SCHEMA 
-				INNER JOIN "DBInvOne"."ProcessHist" ON "DBInvOne"."Process"."BatchId" = "DBInvOne"."ProcessHist" ."BatchId" 
-				AND "DBInvOne"."ProcessHist"."Id" = ( SELECT
+			FROM "DBInvOne"."Process" 
+			INNER JOIN "SBO_TaxOne"."Entidade" ON "DBInvOne"."Process"."CompanyId" = "SBO_TaxOne"."Entidade".ID 
+			AND "SBO_TaxOne"."Entidade"."CompanyDb" = CURRENT_SCHEMA 
+			INNER JOIN "DBInvOne"."ProcessHist" ON "DBInvOne"."Process"."BatchId" = "DBInvOne"."ProcessHist" ."BatchId" 
+			AND "DBInvOne"."ProcessHist"."Id" = ( SELECT
 	 MAX(PRAHIS."Id") 
-					FROM "DBInvOne"."ProcessHist" PRAHIS 
-					WHERE "DBInvOne"."ProcessHist"."BatchId" = PRAHIS."BatchId" ) 
-				WHERE "DBInvOne"."Process"."DocType" = 13 ) PRO ON PRO."DocEntry" = OINV."DocEntry" 
-			AND PRO."DocType" = OINV."ObjType" 
-			LEFT JOIN "@K33P_TRAN_PADC" ON OBPL."BPLId" = "@K33P_TRAN_PADC"."U_FilialSai" 
-			AND OWHS."U_FilDePara" = "@K33P_TRAN_PADC"."U_FilialEnt" 
-			WHERE IFNULL(OWHS."U_DepDePara",
+				FROM "DBInvOne"."ProcessHist" PRAHIS 
+				WHERE "DBInvOne"."ProcessHist"."BatchId" = PRAHIS."BatchId" ) 
+			WHERE "DBInvOne"."Process"."DocType" = 13 ) PRO ON PRO."DocEntry" = OINV."DocEntry" 
+		AND PRO."DocType" = OINV."ObjType" 
+		LEFT JOIN "@K33P_TRAN_PADC" ON OBPL."BPLId" = "@K33P_TRAN_PADC"."U_FilialSai" 
+		AND OWHS."U_FilDePara" = "@K33P_TRAN_PADC"."U_FilialEnt" 
+		WHERE IFNULL(OWHS."U_DepDePara",
 	 '') <> '' 
-			AND OWTR.CANCELED = 'N' 
-			AND PRO."StatusId" = 4 
-			AND IFNULL(OWTR."U_ImportNFE",
+		AND OWTR.CANCELED = 'N' 
+		AND PRO."StatusId" = 4 
+		AND IFNULL(OWTR."U_ImportNFE",
 	 'N') = 'N' 
-			AND IFNULL(WTQ1."DocEntry",
-	 0) = 0 
-			GROUP BY OWTR."DocNum" ,
+		GROUP BY OWTR."DocNum" ,
 	 "@K33P_TRAN_PADC"."U_Incoterms" ,
-	 WTQ1."FromWhsCod" ,
 	 WTR1."ItemCode",
 	 "@K33P_TRAN_PADC"."U_UtilizEnt",
 	 WTR1."FromWhsCod" ,
 	 WTR1."WhsCode" ,
-	 OWHS."U_DepDePara")) 
+	 OWHS."U_DepDePara",
+	 OWHS_DEP."DftBinAbs") 
 	UNION (SELECT
 	 DISTINCT OINV."DocNum" ,
 	 INV12."Incoterms" "INV12 Incoterms",
@@ -162,12 +89,13 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 'Transf.' AS "Tipo",
 	 INV1."ItemCode",
 	 CASE WHEN IFNULL(INV1."U_xPed",
-	'') <> '' 
+	 '') <> '' 
 		THEN 22 
 		ELSE NULL 
 		END "BaseType" ,
 	 OPOR_DOC."DocEntry" AS "U_xPed" ,
-	 OPOR_DOC."LineNum" AS "U_nItem" 
+	 OPOR_DOC."LineNum" AS "U_nItem",
+	 OWHS_DEP."DftBinAbs" 
 		FROM OINV 
 		INNER JOIN INV1 ON OINV."DocEntry" = INV1."DocEntry" --WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
 
@@ -186,6 +114,7 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 			WHERE OPOR.CANCELED = 'N' ) OPOR_DOC ON INV1."U_xPed" = OPOR_DOC."DocNum" 
 		AND (INV1."U_nItem" -1) = OPOR_DOC."LineNum" 
 		INNER JOIN OWHS ON INV1."WhsCode" = OWHS."WhsCode" 
+		LEFT JOIN OWHS OWHS_DEP ON OBPL."DflWhs" = OWHS_DEP."WhsCode" 
 		LEFT JOIN ( SELECT
 	 "DBInvOne"."Process"."DocEntry" ,
 	 "DBInvOne"."Process"."DocType" ,
@@ -210,7 +139,8 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 			FROM OPCH 
 			WHERE OPCH."Serial" = OINV."Serial" 
 			AND OINV."SeriesStr" = OPCH."SeriesStr" 
-			AND OINV."Model" = OPCH."Model" ) 
+			AND OINV."Model" = OPCH."Model" 
+			AND OPCH.CANCELED = 'N') 
 		GROUP BY OINV."DocNum" ,
 	 INV12."Incoterms",
 	 OWHS."U_DepDePara",
@@ -222,4 +152,5 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 'Transf.' ,
 	 INV1."ItemCode",
 	 OPOR_DOC."DocEntry",
-	 OPOR_DOC."LineNum")) WITH READ ONLY
+	 OPOR_DOC."LineNum",
+	 OWHS_DEP."DftBinAbs")) WITH READ ONLY

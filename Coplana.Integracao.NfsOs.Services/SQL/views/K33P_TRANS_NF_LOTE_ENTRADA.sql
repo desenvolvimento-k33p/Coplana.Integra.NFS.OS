@@ -8,7 +8,7 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_LOTE_ENTRADA" ( "DocEntry",
 	 WTR1."DocEntry" ,
 	 WTR1."ItemCode",
 	 WTR1."BaseRef" ,
-	 WTR1."BaseType" ,
+	 WTR1."ObjType" "BaseType" ,
 	 IBT1."Quantity",
 	 IBT1."BatchNum" as "BatchNumber",
 	 (SELECT
@@ -18,14 +18,15 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_LOTE_ENTRADA" ( "DocEntry",
 			AND "DistNumber" = IBT1."BatchNum" ) as "SystemSerialNumber" 
 		FROM WTR1 
 		INNER JOIN OITM ON WTR1."ItemCode" = OITM."ItemCode" 
-		INNER JOIN OWTR ON WTR1."DocEntry" = OWTR."DocEntry" 
-		INNER JOIN IBT1 ON WTR1."ItemCode" = IBT1."ItemCode" 
+		INNER JOIN IBT1 ON WTR1 ."ItemCode" = IBT1."ItemCode" 
 		AND WTR1."WhsCode" = IBT1."WhsCode" 
 		AND WTR1."ObjType" = IBT1."BaseType" 
 		AND WTR1."DocEntry" = IBT1."BaseEntry" 
 		AND WTR1."LineNum" = IBT1."BaseLinNum" 
-		AND IBT1."Direction" <> 2) 
-	UNION (SELECT
+		WHERE WTR1."ObjType" = 67 
+		AND IBT1."Direction" <> 2 
+		AND IBT1."WhsCode" LIKE '10-26%') 
+	UNION ALL (SELECT
 	 INV1."DocEntry" ,
 	 INV1."ItemCode",
 	 INV1."BaseRef" ,
@@ -48,5 +49,6 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_LOTE_ENTRADA" ( "DocEntry",
 		WHERE IFNULL(OINV."U_NumTransf",
 	 '') = '' 
 		AND IBT1."Direction" <> 2 
+		AND INV1."ObjType" = 13 
 		AND IFNULL(OINV."U_NumPedTr",
 	 '') = '')) WITH READ ONLY
