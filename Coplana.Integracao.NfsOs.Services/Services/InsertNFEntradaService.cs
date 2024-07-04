@@ -330,7 +330,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.BaseEntry = lines.BaseEntry == -1 ? null : lines.BaseEntry;
                     l.BaseLine = lines.BaseLine == -1 ? null : lines.BaseLine;
                     l.BaseType = lines.BaseEntry == -1 ? -1 : lines.BaseType   ;
-                    l.U_K_CustoDespesaAtivo = item.CustoDesp;
+                    l.U_K_CustoDespesaAtivo = lines.U_K_CustoDespesaAtivo;
 
                     ///////////////////////////lotes//////////////////////////
                     string varLotes = "";

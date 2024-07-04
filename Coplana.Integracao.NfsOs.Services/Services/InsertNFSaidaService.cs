@@ -285,6 +285,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.BaseType = -1;
                     l.BaseLine = null;
                     l.BaseEntry = null;
+                    l.U_K_CustoDespesaAtivo = lines.U_K_CustoDespesaAtivo;
 
                     ///////////////////////////lotes//////////////////////////
                     BatchNumbers b = new BatchNumbers();

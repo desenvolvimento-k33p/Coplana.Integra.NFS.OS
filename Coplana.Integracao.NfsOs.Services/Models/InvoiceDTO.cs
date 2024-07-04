@@ -91,8 +91,8 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         //   public string CostingCode3 { get; set; }
         //    public string CostingCode4 { get; set; }
         //    public string CostingCode5 { get; set; }
+        public string U_K_CustoDespesaAtivo { get; set; }
 
-       
 
     }
 
