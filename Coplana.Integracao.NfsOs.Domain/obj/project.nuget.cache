@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zUyyjHcZGilJzlCHy/0Y/NQdSWU93GMpJknCCABHUNxRkMj9nWwNaLh39NsCUXGOq6MZtlG+t1PpbO8cREH+DA==",
+  "dgSpecHash": "O1SvMSCVaCBTjT85NXhk5V/KtO3UE3UVtVXHJChzH0PZgOLEKqIzDaPo9ji5kWJAJRfikLpQ+UV25zoSRj2D2Q==",
   "success": true,
-  "projectFilePath": "C:\\Osvaldo\\PRE_GOLIVE\\NFS_OS_TRANSF_EST\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\partner\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.27\\microsoft.windowsdesktop.app.ref.6.0.27.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.27\\microsoft.netcore.app.ref.6.0.27.nupkg.sha512",
-    "C:\\Users\\partner\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.27\\microsoft.aspnetcore.app.ref.6.0.27.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

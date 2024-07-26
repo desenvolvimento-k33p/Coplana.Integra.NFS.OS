@@ -115,13 +115,17 @@ using (var app = builder.Build())
         ServerName = string.Format("{0}:insertnfs", Environment.MachineName),
         Queues = new[] { "insertnfsqueue" },
         WorkerCount = 1
+        //,SchedulePollingInterval = TimeSpan.FromMilliseconds(30)
     };
     var insertNFE = new BackgroundJobServerOptions
     {
         ServerName = string.Format("{0}:insertnfe", Environment.MachineName),
         Queues = new[] { "insertnfequeue" },
         WorkerCount = 1
+        //,SchedulePollingInterval = TimeSpan.FromMilliseconds(30)
     };
+
+   
 
 
     app.UseHangfireDashboard("/scheduler", new DashboardOptions
@@ -129,6 +133,8 @@ using (var app = builder.Build())
         //Authorization = new[] { new HangFireAuthorization() },
         AppPath = "/"
     });
+
+
 
 
     app.UseHangfireServer(insertItensOS);
@@ -139,9 +145,7 @@ using (var app = builder.Build())
 
     app.UseHangfireDashboard();
 
-
-
-
+   
     #region [ Scheduler ]
 
     #region [ DEBUG ]
@@ -168,14 +172,15 @@ using (var app = builder.Build())
 
 #if DEBUG == false
 
+    var cronService_os = Cron.MinuteInterval(59);
     var cronService_ = Cron.MinuteInterval(5);
     var cronServicetr = Cron.MinuteInterval(1);
 
-    //RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronService_, null, "insertitensqueue");
-    //RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronService_, null, "deleteitensqueue");
+    //RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronService_os, null, "insertitensqueue");
+    //RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronService_os, null, "deleteitensqueue");
  
-    RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronService_, null, "insertnfsqueue");
-    RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronService_, null, "insertnfequeue");
+    RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronServicetr, null, "insertnfsqueue");
+    RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServicetr, null, "insertnfequeue");
 
 
 

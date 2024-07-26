@@ -448,23 +448,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\partner\\.nuget\\packages\\": {},
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Osvaldo\\PRE_GOLIVE\\NFS_OS_TRANSF_EST\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
+      "projectUniqueName": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
       "projectName": "Coplana.Integracao.NfsOs.Infra",
-      "projectPath": "C:\\Osvaldo\\PRE_GOLIVE\\NFS_OS_TRANSF_EST\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
-      "packagesPath": "C:\\Users\\partner\\.nuget\\packages\\",
-      "outputPath": "C:\\Osvaldo\\PRE_GOLIVE\\NFS_OS_TRANSF_EST\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\obj\\",
+      "projectPath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
+      "packagesPath": "C:\\Users\\Osvaldo\\.nuget\\packages\\",
+      "outputPath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\partner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Osvaldo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -479,11 +479,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Osvaldo\\PRE_GOLIVE\\NFS_OS_TRANSF_EST\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj": {
-              "projectPath": "C:\\Osvaldo\\PRE_GOLIVE\\NFS_OS_TRANSF_EST\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj"
+            "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj": {
+              "projectPath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj"
             },
-            "C:\\Osvaldo\\PRE_GOLIVE\\NFS_OS_TRANSF_EST\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj": {
-              "projectPath": "C:\\Osvaldo\\PRE_GOLIVE\\NFS_OS_TRANSF_EST\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj"
+            "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj": {
+              "projectPath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj"
             }
           }
         }
@@ -519,26 +519,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.27, 6.0.27]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.27, 6.0.27]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.27, 6.0.27]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
       }
     }
   }
