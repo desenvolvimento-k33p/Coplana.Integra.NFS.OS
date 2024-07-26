@@ -37,7 +37,7 @@ namespace Coplana.Integracao.NfsOs.Infra.Repositories
             var response = (object)logData.ResponseObject == null ? "" : logData.ResponseObject.ToString();
             response = System.Text.RegularExpressions.Regex.Unescape(response).Replace("'", "");
 
-            //await DeleteLogs();
+            await DeleteLogs();
 
             var sql = $@"INSERT INTO ""KEEPLOGS"".""KEEP_LOG_NFS_OS"" ( 
                 ""LOGDATE"", 
@@ -78,6 +78,8 @@ namespace Coplana.Integracao.NfsOs.Infra.Repositories
             {
                 string sql = $@"DELETE FROM ""KEEPLOGS"".""KEEP_LOG_NFS_OS"" WHERE (OWNER = 'InsertNFEntradaService' OR OWNER = 'InsertNFSaidaService' ) AND LOGDATE < ADD_DAYS(CURRENT_DATE, -4) AND (IFNULL(KEY_PARC,'0') = '0' OR  IFNULL(KEY_PARC,'') = '')";
                 await _hana.Execute(sql);
+
+                
             }
             catch (Exception e)
             {

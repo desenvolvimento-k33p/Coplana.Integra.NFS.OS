@@ -44,3 +44,15 @@ C:\Osvaldo\PRE_GOLIVE\NFS_OS_TRANSF_EST\Coplana.Integra.NFS.OS\Coplana.Integraca
 C:\Osvaldo\PRE_GOLIVE\NFS_OS_TRANSF_EST\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\refint\Coplana.Integracao.NfsOs.Domain.dll
 C:\Osvaldo\PRE_GOLIVE\NFS_OS_TRANSF_EST\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.pdb
 C:\Osvaldo\PRE_GOLIVE\NFS_OS_TRANSF_EST\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\ref\Coplana.Integracao.NfsOs.Domain.dll
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\bin\Release\net6.0\Coplana.Integracao.NfsOs.Domain.deps.json
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\bin\Release\net6.0\Coplana.Integracao.NfsOs.Domain.dll
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\bin\Release\net6.0\Coplana.Integracao.NfsOs.Domain.pdb
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.AssemblyInfoInputs.cache
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.AssemblyInfo.cs
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.csproj.CoreCompileInputs.cache
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.sourcelink.json
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.dll
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\refint\Coplana.Integracao.NfsOs.Domain.dll
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.pdb
+C:\Osvaldo\PRE_GOLIVE\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\ref\Coplana.Integracao.NfsOs.Domain.dll
