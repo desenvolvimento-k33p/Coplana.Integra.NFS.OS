@@ -61,6 +61,9 @@ namespace Coplana.Integracao.NfsOs.Services.Models
     public class DocumentLine
     {
         [JsonIgnore]
+        public int LineNum { get; set; }
+
+        [JsonIgnore]
         public int BinAbsEntry { get; set; }
         [JsonIgnore]
         public string Destino { get; set; }

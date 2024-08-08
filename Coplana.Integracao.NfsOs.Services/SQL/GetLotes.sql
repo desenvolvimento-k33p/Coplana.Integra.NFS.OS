@@ -24,4 +24,4 @@ FROM K33P_TRANS_NF_LOTE_ENTRADA  x
 WHERE
 	x."BaseType" = 67-- -1
 AND x."DocEntry" = {0}
-AND x."ItemCode" = '{1}'
+AND x."LineNum" = '{1}'

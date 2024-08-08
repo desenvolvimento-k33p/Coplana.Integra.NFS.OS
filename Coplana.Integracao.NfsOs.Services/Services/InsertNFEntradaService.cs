@@ -350,7 +350,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     //lotes
                     BatchNumbers b = new BatchNumbers();
                     query = SQLSupport.GetConsultas(consultaLote);
-                    query = String.Format(query, varLotes, lines.ItemCode);
+                    query = String.Format(query, varLotes, lines.LineNum);// lines.ItemCode);
 
                     List<BatchNumbers2> retlotes = await _hanaAdapter.QueryList<BatchNumbers2>(query);
 
@@ -360,7 +360,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                         ItemCode = grp.First().ItemCode,
                         BatchNumber = grp.First().BatchNumber,
                         SystemSerialNumber = grp.First().SystemSerialNumber,
-                        Quantity = grp.Sum(c=>c.Quantity)
+                        Quantity = grp.Sum(c => c.Quantity)
                     }).ToList();
 
                     foreach (var lote in groupedList)//***

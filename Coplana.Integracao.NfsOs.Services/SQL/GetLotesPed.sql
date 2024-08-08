@@ -25,4 +25,4 @@ FROM K33P_TRANS_NF_LOTE_ENTRADA  x
 WHERE
 	x."BaseType" = 1250000001
 AND x."BaseRef" = '{0}'
-AND x."ItemCode" = '{1}'	
+AND x."LineNum" = '{1}'	
