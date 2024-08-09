@@ -275,8 +275,8 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 {
                     lotes = new List<BatchNumbers>();
                     DocumentLine l = new DocumentLine();
-                    
 
+                    l.UnitPrice = lines.Price;
                     l.Price = lines.Price;              
                     l.Quantity = lines.Quantity;
                     l.Usage = lines.Usage;
