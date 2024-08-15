@@ -527,11 +527,20 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     //lotes
                     BatchNumbersDraft b = new BatchNumbersDraft();
                     query = SQLSupport.GetConsultas(consultaLote);
-                    query = String.Format(query, varLotes, lines.ItemCode);
+                    query = String.Format(query, varLotes, lines.LineNum);
 
                     List<BatchNumbersDraft> retlotes = await _hanaAdapter.QueryList<BatchNumbersDraft>(query);
 
-                    foreach (var lote in retlotes)
+                    //agrupa os lotes por BatchNumber**
+                    var groupedList = retlotes.GroupBy(x => x.BatchNumber).Select(grp => new BatchNumbers2
+                    {
+                        ItemCode = grp.First().ItemCode,
+                        BatchNumber = grp.First().BatchNumber,
+                        SystemSerialNumber = grp.First().SystemSerialNumber,
+                        Quantity = grp.Sum(c => c.Quantity)
+                    }).ToList();
+
+                    foreach (var lote in groupedList)//***
                     {
                         BatchNumbersDraft batch = new BatchNumbersDraft();
                         batch.SystemSerialNumber = lote.SystemSerialNumber;
@@ -542,6 +551,20 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     }
 
                     l.BatchNumbers = lotes;
+
+                    //List<BatchNumbersDraft> retlotes = await _hanaAdapter.QueryList<BatchNumbersDraft>(query);
+
+                    //foreach (var lote in retlotes)
+                    //{
+                    //    BatchNumbersDraft batch = new BatchNumbersDraft();
+                    //    batch.SystemSerialNumber = lote.SystemSerialNumber;
+                    //    batch.BatchNumber = lote.BatchNumber;
+                    //    batch.Quantity = lote.Quantity;
+                    //    batch.ItemCode = lines.ItemCode;
+                    //    lotes.Add(batch);
+                    //}
+
+                    //l.BatchNumbers = lotes;
 
 
                     //localizacao

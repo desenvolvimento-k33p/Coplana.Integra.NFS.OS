@@ -290,11 +290,32 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     ///////////////////////////lotes//////////////////////////
                     BatchNumbers b = new BatchNumbers();
                     query = SQLSupport.GetConsultas(consultaLote);
-                    query = String.Format(query, (tipo == "SemPedido" ? obj.DocEntryTransf : obj.DocNumPedTransf), lines.ItemCode);
+                    query = String.Format(query, (tipo == "SemPedido" ? obj.DocEntryTransf : obj.DocNumPedTransf), lines.LineNum);
 
                     List<BatchNumbers> retlotes = await _hanaAdapter.QueryList<BatchNumbers>(query);
 
-                    foreach (var lote in retlotes)
+                    //foreach (var lote in retlotes)
+                    //{
+                    //    BatchNumbers batch = new BatchNumbers();
+                    //    batch.SystemSerialNumber = lote.SystemSerialNumber;
+                    //    batch.BatchNumber = lote.BatchNumber;
+                    //    batch.Quantity = lote.Quantity;
+                    //    batch.ItemCode = lines.ItemCode;
+                    //    lotes.Add(batch);
+                    //}
+
+                    //l.BatchNumbers = lotes;
+
+                    //agrupa os lotes por BatchNumber**
+                    var groupedList = retlotes.GroupBy(x => x.BatchNumber).Select(grp => new BatchNumbers2
+                    {
+                        ItemCode = grp.First().ItemCode,
+                        BatchNumber = grp.First().BatchNumber,
+                        SystemSerialNumber = grp.First().SystemSerialNumber,
+                        Quantity = grp.Sum(c => c.Quantity)
+                    }).ToList();
+
+                    foreach (var lote in groupedList)//***
                     {
                         BatchNumbers batch = new BatchNumbers();
                         batch.SystemSerialNumber = lote.SystemSerialNumber;

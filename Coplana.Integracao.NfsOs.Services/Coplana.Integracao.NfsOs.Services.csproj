@@ -22,8 +22,11 @@
     <None Remove="SQL\GeiItensToInsertNFS1_Ped.sql" />
     <None Remove="SQL\GeiItensToInsertOS.sql" />
     <None Remove="SQL\GetLotes.sql" />
+    <None Remove="SQL\GetLotesNFS.sql" />
     <None Remove="SQL\GetLotesPed.sql" />
+    <None Remove="SQL\GetLotesPedNFS.sql" />
     <None Remove="SQL\GetLotesTransf.sql" />
+    <None Remove="SQL\GetLotesTransfNFS.sql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +40,9 @@
     <EmbeddedResource Include="SQL\AtualizaFlagNFS.sql" />
     <EmbeddedResource Include="SQL\AtualizaFlagNFE.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFS1_Ped.sql" />
+    <EmbeddedResource Include="SQL\GetLotesNFS.sql" />
+    <EmbeddedResource Include="SQL\GetLotesPedNFS.sql" />
+    <EmbeddedResource Include="SQL\GetLotesTransfNFS.sql" />
     <EmbeddedResource Include="SQL\GetLotesTransf.sql" />
     <EmbeddedResource Include="SQL\GetLotesPed.sql" />
     <EmbeddedResource Include="SQL\GetLotes.sql" />

@@ -17,7 +17,7 @@
           "Hangfire.MemoryStorage": "1.7.0",
           "Microsoft.Extensions.Hosting.WindowsServices": "6.0.0",
           "Swashbuckle.AspNetCore": "6.2.3",
-          "Sap.Data.Hana.Core.v2.1": "2.4.167.0"
+          "Sap.Data.Hana.Core.v2.1": "2.5.86.0"
         },
         "runtime": {
           "Coplana.Integracao.NfsOs.Work.dll": {}
@@ -583,11 +583,11 @@
           "Coplana.Integracao.NfsOs.Services.dll": {}
         }
       },
-      "Sap.Data.Hana.Core.v2.1/2.4.167.0": {
+      "Sap.Data.Hana.Core.v2.1/2.5.86.0": {
         "runtime": {
           "Sap.Data.Hana.Core.v2.1.dll": {
-            "assemblyVersion": "2.4.167.0",
-            "fileVersion": "2.4.167.0"
+            "assemblyVersion": "2.5.86.0",
+            "fileVersion": "2.5.86.0"
           }
         }
       }
@@ -1046,7 +1046,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Sap.Data.Hana.Core.v2.1/2.4.167.0": {
+    "Sap.Data.Hana.Core.v2.1/2.5.86.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

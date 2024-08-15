@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "lmPxAZnkqfT1vBGQoX4BcmOj4lXGNs4EMBfCQ/7Tb15s57IyIpUolBl8wclsWWlUpEJiGATuJf6t9hbKZyzvoA==",
+  "dgSpecHash": "0PBtvzixstrPVMmiw+LGkMKBVOqOl/gBnPOnvZwIPI/Y5P17eH6eAYskfQb5p7lLlPpFH9AlJ08n/18X5xlRLQ==",
   "success": true,
-  "projectFilePath": "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\fastmember\\1.5.0\\fastmember.1.5.0.nupkg.sha512",
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\restsharp\\108.0.3\\restsharp.108.0.3.nupkg.sha512",
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
