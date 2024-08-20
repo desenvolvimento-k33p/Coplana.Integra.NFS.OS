@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3sTdRQpbYMBXR+wZ66YH6QvXDwzlfoKrvVALZHVG90GXb7F1wiG5K/GRc/zZAz4q7ygsstHz374bMvJA8AHGZQ==",
+  "dgSpecHash": "fk09JU6f16Y=",
   "success": true,
-  "projectFilePath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj",
+  "projectFilePath": "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Osvaldo\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\Osvaldo\\.nuget\\packages\\fastmember\\1.5.0\\fastmember.1.5.0.nupkg.sha512",

@@ -124,8 +124,15 @@ using (var app = builder.Build())
         WorkerCount = 1
         //,SchedulePollingInterval = TimeSpan.FromMilliseconds(30)
     };
+    var cancelNFE = new BackgroundJobServerOptions
+    {
+        ServerName = string.Format("{0}:cancelnfe", Environment.MachineName),
+        Queues = new[] { "cancelnfequeue" },
+        WorkerCount = 1
+        //,SchedulePollingInterval = TimeSpan.FromMilliseconds(30)
+    };
 
-   
+
 
 
     app.UseHangfireDashboard("/scheduler", new DashboardOptions
@@ -142,10 +149,11 @@ using (var app = builder.Build())
 
     app.UseHangfireServer(insertNFS);
     app.UseHangfireServer(insertNFE);
+    app.UseHangfireServer(cancelNFE);
 
     app.UseHangfireDashboard();
 
-   
+
     #region [ Scheduler ]
 
     #region [ DEBUG ]
@@ -160,6 +168,8 @@ using (var app = builder.Build())
 
     RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronServiceDebug);
     RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServiceDebug);
+
+    RecurringJob.AddOrUpdate<CancelNFEService>("CancelNFEService", job => job.ProcessAsync(), cronServiceDebug);
 
 
 
@@ -181,6 +191,8 @@ using (var app = builder.Build())
  
     RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronServicetr, null, "insertnfsqueue");
     RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServicetr, null, "insertnfequeue");
+
+    RecurringJob.AddOrUpdate<CancelNFEService>("CancelNFEService", job => job.ProcessAsync(), cronServicetr, null, "cancelnfequeue");
 
 
 
