@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj": {}
+    "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj": {
+    "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj",
+        "projectUniqueName": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj",
         "projectName": "Coplana.Integracao.NfsOs.Domain",
-        "projectPath": "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj",
+        "projectPath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj",
         "packagesPath": "C:\\Users\\Osvaldo\\.nuget\\packages\\",
-        "outputPath": "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\obj\\",
+        "outputPath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Osvaldo\\AppData\\Roaming\\NuGet\\NuGet.Config",

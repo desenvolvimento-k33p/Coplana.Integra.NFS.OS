@@ -433,11 +433,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj",
+      "projectUniqueName": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj",
       "projectName": "Coplana.Integracao.NfsOs.Core",
-      "projectPath": "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj",
+      "projectPath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj",
       "packagesPath": "C:\\Users\\Osvaldo\\.nuget\\packages\\",
-      "outputPath": "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\obj\\",
+      "outputPath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Osvaldo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -455,8 +455,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj": {
-              "projectPath": "C:\\Osvaldo\\GIt\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj"
+            "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj": {
+              "projectPath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj"
             }
           }
         }

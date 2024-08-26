@@ -158,7 +158,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
         {
 
 
-            string endpoint = "PurchaseInvoices(" + item.DocEntryNFE + ")/ Cancel";
+            string endpoint = "PurchaseInvoices(" + item.DocEntryNFE + ")/Cancel";
 
             InvoiceDTOReturn responseOrder = await _serviceLayerAdapter.Call<InvoiceDTOReturn>(
                     $"{endpoint}", HttpMethod.Post, null, Criptografia.Instancia.Descriptografar(_serviceLayerHttp.Uri));
@@ -172,7 +172,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                 Key = item.DocEntryNFE,
                 Key2 = item.DocEntryNFE,
                 RequestObject = JsonSerializer.Serialize(item),
-                ResponseObject = JsonSerializer.Serialize(item)
+                ResponseObject = JsonSerializer.Serialize(responseOrder)
             });
 
 

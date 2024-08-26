@@ -1,4 +1,4 @@
-﻿SELECT
+﻿SELECT DISTINCT
 OPCH."DocEntry" AS "DocEntryNFE",
 OPCH."DocNum" AS "DocNumNFE",
 OINV."Serial" AS "SerialSaída",

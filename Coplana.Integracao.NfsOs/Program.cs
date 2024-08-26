@@ -182,7 +182,7 @@ using (var app = builder.Build())
 
 #if DEBUG == false
 
-    var cronService_os = Cron.MinuteInterval(59);
+    var cronService_os = Cron.MinuteInterval(30);
     var cronService_ = Cron.MinuteInterval(5);
     var cronServicetr = Cron.MinuteInterval(1);
 
