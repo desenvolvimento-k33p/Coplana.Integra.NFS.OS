@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos.services\\sql\\geiitenstocanceldenegados.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|solutionrelative:coplana.integracao.nfsos.services\\sql\\geiitenstocanceldenegados.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos.services\\sql\\geiitenstocancelnfe.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
       "RelativeMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|solutionrelative:coplana.integracao.nfsos.services\\sql\\geiitenstocancelnfe.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|solutionrelative:coplana.integracao.nfsos\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos.services\\models\\cancelnfe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|solutionrelative:coplana.integracao.nfsos.services\\models\\cancelnfe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9A4DF04-4DE3-41B2-8490-FDCDDFDC4C34}|Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos.core\\adapters\\servicelayeradapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9A4DF04-4DE3-41B2-8490-FDCDDFDC4C34}|Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj|solutionrelative:coplana.integracao.nfsos.core\\adapters\\servicelayeradapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos\\coplana.integracao.nfsos.work.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|solutionrelative:coplana.integracao.nfsos\\coplana.integracao.nfsos.work.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|solutionrelative:coplana.integracao.nfsos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,32 +47,16 @@
       "RelativeMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|solutionrelative:coplana.integracao.nfsos.services\\services\\insertnfentradaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9A4DF04-4DE3-41B2-8490-FDCDDFDC4C34}|Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos.core\\adapters\\servicelayeradapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9A4DF04-4DE3-41B2-8490-FDCDDFDC4C34}|Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj|solutionrelative:coplana.integracao.nfsos.core\\adapters\\servicelayeradapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos\\coplana.integracao.nfsos.work.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|solutionrelative:coplana.integracao.nfsos\\coplana.integracao.nfsos.work.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos.services\\services\\cancelnfeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|solutionrelative:coplana.integracao.nfsos.services\\services\\cancelnfeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|solutionrelative:coplana.integracao.nfsos\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2EE45731-04E3-489E-87EE-6847C13479E2}|Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj|solutionrelative:coplana.integracao.nfsos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos.services\\models\\cancelnfe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|solutionrelative:coplana.integracao.nfsos.services\\models\\cancelnfe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos.services\\sql\\geiitenstocancelnfe.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
       "RelativeMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|solutionrelative:coplana.integracao.nfsos.services\\sql\\geiitenstocancelnfe.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|c:\\osvaldo\\git\\transferenciaentrefiliais\\coplana.integra.nfs.os\\coplana.integracao.nfsos.services\\sql\\geiitenstocanceldenegados.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{D703457B-D8BE-4B66-A9AE-53DD4DE5C526}|Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj|solutionrelative:coplana.integracao.nfsos.services\\sql\\geiitenstocanceldenegados.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 24,
+          "SelectedChildIndex": 20,
           "Children": [
             {
               "$type": "Bookmark",
@@ -142,7 +150,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "GeiItensToCancelDenegados.sql ",
+              "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\SQL\\GeiItensToCancelDenegados.sql",
+              "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs.Services\\SQL\\GeiItensToCancelDenegados.sql",
+              "ToolTip": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\SQL\\GeiItensToCancelDenegados.sql",
+              "RelativeToolTip": "Coplana.Integracao.NfsOs.Services\\SQL\\GeiItensToCancelDenegados.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-09-03T19:15:21.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "InsertNFSaidaService.cs",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\Services\\InsertNFSaidaService.cs",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs.Services\\Services\\InsertNFSaidaService.cs",
@@ -150,12 +170,11 @@
               "RelativeToolTip": "Coplana.Integracao.NfsOs.Services\\Services\\InsertNFSaidaService.cs",
               "ViewState": "AQIAAHEAAAAAAAAAAAAtwI0AAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-26T13:47:41.085Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-26T13:47:41.085Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "InsertNFEntradaService.cs",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\Services\\InsertNFEntradaService.cs",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs.Services\\Services\\InsertNFEntradaService.cs",
@@ -163,24 +182,22 @@
               "RelativeToolTip": "Coplana.Integracao.NfsOs.Services\\Services\\InsertNFEntradaService.cs",
               "ViewState": "AQIAADAAAAAAAAAAAAAtwFEAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-26T13:47:41.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-26T13:47:41.129Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Coplana.Integracao.NfsOs.Work",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj",
               "ToolTip": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj",
               "RelativeToolTip": "Coplana.Integracao.NfsOs\\Coplana.Integracao.NfsOs.Work.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-26T13:25:49.196Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-26T13:25:49.196Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "LoggerRepository.cs",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Repositories\\LoggerRepository.cs",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs.Infra\\Repositories\\LoggerRepository.cs",
@@ -188,12 +205,11 @@
               "RelativeToolTip": "Coplana.Integracao.NfsOs.Infra\\Repositories\\LoggerRepository.cs",
               "ViewState": "AQIAADAAAAAAAAAAAAAowEMAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T12:55:52.624Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T12:55:52.624Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GeiItensToCancelNFE.sql ",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\SQL\\GeiItensToCancelNFE.sql",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs.Services\\SQL\\GeiItensToCancelNFE.sql",
@@ -205,19 +221,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 3,
               "Title": "CancelNFE.cs",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\Models\\CancelNFE.cs",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs.Services\\Models\\CancelNFE.cs",
               "ToolTip": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\Models\\CancelNFE.cs",
               "RelativeToolTip": "Coplana.Integracao.NfsOs.Services\\Models\\CancelNFE.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAtAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T12:28:58.481Z"
+              "WhenOpened": "2024-08-20T12:28:58.481Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "CancelNFEService.cs",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\Services\\CancelNFEService.cs",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs.Services\\Services\\CancelNFEService.cs",
@@ -225,12 +242,11 @@
               "RelativeToolTip": "Coplana.Integracao.NfsOs.Services\\Services\\CancelNFEService.cs",
               "ViewState": "AQIAAIwAAAAAAAAAAAAEwKsAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T12:06:39.979Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T12:06:39.979Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "ServiceLayerAdapter.cs",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Adapters\\ServiceLayerAdapter.cs",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs.Core\\Adapters\\ServiceLayerAdapter.cs",
@@ -243,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs\\appsettings.json",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs\\appsettings.json",
@@ -255,19 +271,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs\\appsettings.Development.json",
               "ToolTip": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs\\appsettings.Development.json",
               "RelativeToolTip": "Coplana.Integracao.NfsOs\\appsettings.Development.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-16T14:33:40.266Z"
+              "WhenOpened": "2024-07-16T14:33:40.266Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs\\Program.cs",
               "RelativeDocumentMoniker": "Coplana.Integracao.NfsOs\\Program.cs",
@@ -275,8 +292,7 @@
               "RelativeToolTip": "Coplana.Integracao.NfsOs\\Program.cs",
               "ViewState": "AQIAAKAAAAAAAAAAAAAAAMkAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T14:34:24.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T14:34:24.425Z"
             }
           ]
         }
