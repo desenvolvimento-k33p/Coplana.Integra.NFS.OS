@@ -132,6 +132,14 @@ using (var app = builder.Build())
         //,SchedulePollingInterval = TimeSpan.FromMilliseconds(30)
     };
 
+    var cancelDenegados = new BackgroundJobServerOptions
+    {
+        ServerName = string.Format("{0}:canceldenegados", Environment.MachineName),
+        Queues = new[] { "canceldenegadosqueue" },
+        WorkerCount = 1
+        //,SchedulePollingInterval = TimeSpan.FromMilliseconds(30)
+    };
+
 
 
 
@@ -150,6 +158,7 @@ using (var app = builder.Build())
     app.UseHangfireServer(insertNFS);
     app.UseHangfireServer(insertNFE);
     app.UseHangfireServer(cancelNFE);
+    app.UseHangfireServer(cancelDenegados);
 
     app.UseHangfireDashboard();
 
@@ -170,6 +179,7 @@ using (var app = builder.Build())
     RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServiceDebug);
 
     RecurringJob.AddOrUpdate<CancelNFEService>("CancelNFEService", job => job.ProcessAsync(), cronServiceDebug);
+    RecurringJob.AddOrUpdate<CancelDenegadosService>("CancelDenegadosService", job => job.ProcessAsync(), cronServiceDebug);
 
 
 
@@ -193,6 +203,7 @@ using (var app = builder.Build())
     RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServicetr, null, "insertnfequeue");
 
     RecurringJob.AddOrUpdate<CancelNFEService>("CancelNFEService", job => job.ProcessAsync(), cronServicetr, null, "cancelnfequeue");
+    RecurringJob.AddOrUpdate<CancelDenegadosService>("CancelDenegadosService", job => job.ProcessAsync(), cronServicetr, null, "canceldenegadosqueue");
 
 
 
