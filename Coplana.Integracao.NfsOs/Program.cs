@@ -172,14 +172,14 @@ using (var app = builder.Build())
     var cronServiceTeste = Cron.Minutely();
     var cronServiceDebug = Cron.Never();
 
-    RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronServiceDebug);
-    RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronServiceDebug);
+    //RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronServiceDebug);
+    //RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronServiceDebug);
 
     RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronServiceDebug);
     RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServiceDebug);
 
     RecurringJob.AddOrUpdate<CancelNFEService>("CancelNFEService", job => job.ProcessAsync(), cronServiceDebug);
-    RecurringJob.AddOrUpdate<CancelDenegadosService>("CancelDenegadosService", job => job.ProcessAsync(), cronServiceDebug);
+    //RecurringJob.AddOrUpdate<CancelDenegadosService>("CancelDenegadosService", job => job.ProcessAsync(), cronServiceDebug);
 
 
 
@@ -203,7 +203,7 @@ using (var app = builder.Build())
     RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServicetr, null, "insertnfequeue");
 
     RecurringJob.AddOrUpdate<CancelNFEService>("CancelNFEService", job => job.ProcessAsync(), cronServicetr, null, "cancelnfequeue");
-    RecurringJob.AddOrUpdate<CancelDenegadosService>("CancelDenegadosService", job => job.ProcessAsync(), cronServicetr, null, "canceldenegadosqueue");
+   // RecurringJob.AddOrUpdate<CancelDenegadosService>("CancelDenegadosService", job => job.ProcessAsync(), cronServicetr, null, "canceldenegadosqueue");
 
 
 
