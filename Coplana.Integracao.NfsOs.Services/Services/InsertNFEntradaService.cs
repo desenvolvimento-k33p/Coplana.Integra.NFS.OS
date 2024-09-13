@@ -331,6 +331,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.BaseLine = lines.BaseLine == -1 ? null : lines.BaseLine;
                     l.BaseType = lines.BaseEntry == -1 ? -1 : lines.BaseType   ;
                     l.U_K_CustoDespesaAtivo = lines.U_K_CustoDespesaAtivo;
+                    l.CostingCode = lines.CostingCode;
 
                     ///////////////////////////lotes//////////////////////////
                     string varLotes = "";
@@ -508,7 +509,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.BaseLine = lines.BaseLine == -1 ? null : lines.BaseLine;
                     l.BaseType = lines.BaseEntry == -1 ? null : lines.BaseType;
                     l.U_K_CustoDespesaAtivo = item.CustoDesp;
-
+                    l.CostingCode = lines.CostingCode;
                     ///////////////////////////lotes//////////////////////////
                     string varLotes = "";
                     switch (tipo)

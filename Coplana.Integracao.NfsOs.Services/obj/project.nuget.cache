@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tiD69NwuCZA=",
+  "dgSpecHash": "UV+Eaflsg/e3M3juIetbJKjulCc5Bs0wzonGOR1JrRqSEXng4rm74PQdWHA8Xn7duIZhC5sXNnYiqYTBQbMF7A==",
   "success": true,
-  "projectFilePath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj",
+  "projectFilePath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Services\\Coplana.Integracao.NfsOs.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Osvaldo\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Osvaldo\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",

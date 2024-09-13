@@ -100,7 +100,7 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
         public List<DocumentLinesBinAllocationsDraft> DocumentLinesBinAllocations { get; set; }
 
-        // public string CostingCode { get; set; }
+         public string CostingCode { get; set; }
         //  public decimal UnitPrice { get; set; }
         //  public string COGSCostingCode { get; set; }
         //   public string COGSAccountCode { get; set; }
