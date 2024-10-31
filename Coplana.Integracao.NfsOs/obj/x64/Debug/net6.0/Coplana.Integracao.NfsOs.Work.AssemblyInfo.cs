@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Coplana.Integracao.NfsOs.Work")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b72bf15a05e62d4e9803a79c12aa3ff68fe7ce00")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31e150b51085c0f9749d87a0e16b3a7b3207e9d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Coplana.Integracao.NfsOs.Work")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Coplana.Integracao.NfsOs.Work")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

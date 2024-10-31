@@ -371,6 +371,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                         batch.BatchNumber = lote.BatchNumber;
                         batch.Quantity = lote.Quantity;
                         batch.ItemCode = lines.ItemCode;
+                        //batch.BaseLineNumber = lines.LineNum;
                         lotes.Add(batch);
                     }
 

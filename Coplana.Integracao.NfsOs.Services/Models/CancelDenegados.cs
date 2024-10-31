@@ -14,7 +14,7 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         public string CardName { get; set; }
         public string DocEntry { get; set; }
         public string KeyNfe { get; set; }
-        public string Description { get; set; }
+       // string Description { get; set; }
 
 
     }

@@ -15,7 +15,7 @@
           "Microsoft.Extensions.Options": "7.0.0",
           "Newtonsoft.Json": "13.0.2",
           "RestSharp": "108.0.3",
-          "Sap.Data.Hana.Core.v2.1": "2.5.86.0"
+          "Sap.Data.Hana.Core.v2.1": "2.4.167.0"
         },
         "runtime": {
           "Coplana.Integracao.NfsOs.Core.dll": {}
@@ -95,17 +95,14 @@
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "Coplana.Integracao.NfsOs.Domain/1.0.0": {
         "runtime": {
-          "Coplana.Integracao.NfsOs.Domain.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "Coplana.Integracao.NfsOs.Domain.dll": {}
         }
       },
-      "Sap.Data.Hana.Core.v2.1/2.5.86.0": {
+      "Sap.Data.Hana.Core.v2.1/2.4.167.0": {
         "runtime": {
           "Sap.Data.Hana.Core.v2.1.dll": {
-            "assemblyVersion": "2.5.86.0",
-            "fileVersion": "2.5.86.0"
+            "assemblyVersion": "2.4.167.0",
+            "fileVersion": "2.4.167.0"
           }
         }
       }
@@ -185,7 +182,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Sap.Data.Hana.Core.v2.1/2.5.86.0": {
+    "Sap.Data.Hana.Core.v2.1/2.4.167.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

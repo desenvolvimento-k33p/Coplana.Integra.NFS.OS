@@ -448,24 +448,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Osvaldo\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Osvaldo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
+      "projectUniqueName": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\15102024\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
       "projectName": "Coplana.Integracao.NfsOs.Infra",
-      "projectPath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
+      "projectPath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\15102024\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\Coplana.Integracao.NfsOs.Infra.csproj",
       "packagesPath": "C:\\Users\\Osvaldo\\.nuget\\packages\\",
-      "outputPath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\obj\\",
+      "outputPath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\15102024\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Infra\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\Osvaldo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -473,17 +468,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj": {
-              "projectPath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj"
+            "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\15102024\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj": {
+              "projectPath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\15102024\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Core\\Coplana.Integracao.NfsOs.Core.csproj"
             },
-            "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj": {
-              "projectPath": "C:\\Osvaldo\\PRE_GOLIVE\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj"
+            "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\15102024\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj": {
+              "projectPath": "C:\\Osvaldo\\GIt\\TransferenciaEntreFiliais\\15102024\\Coplana.Integra.NFS.OS\\Coplana.Integracao.NfsOs.Domain\\Coplana.Integracao.NfsOs.Domain.csproj"
             }
           }
         }
@@ -524,7 +520,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
       }
     }
   }

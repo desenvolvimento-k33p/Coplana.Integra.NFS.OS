@@ -115,6 +115,8 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         public decimal Quantity { get; set; }
 
         public int SystemSerialNumber { get; set; }
+
+        //public int BaseLineNumber { get; set; }
     }
 
     public class TaxExtension2
