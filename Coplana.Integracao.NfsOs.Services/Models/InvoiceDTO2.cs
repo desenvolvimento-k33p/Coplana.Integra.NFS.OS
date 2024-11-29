@@ -94,6 +94,8 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         //    public string CostingCode4 { get; set; }
         //    public string CostingCode5 { get; set; }
 
+      //  public int LineNum { get; set; }
+
     }
 
     public class DocumentLinesBinAllocations2
@@ -116,7 +118,7 @@ namespace Coplana.Integracao.NfsOs.Services.Models
 
         public int SystemSerialNumber { get; set; }
 
-        //public int BaseLineNumber { get; set; }
+        public int BaseLineNumber { get; set; }
     }
 
     public class TaxExtension2

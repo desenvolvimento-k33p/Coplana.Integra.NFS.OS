@@ -322,7 +322,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.Price = lines.Price;
                     l.UnitPrice = lines.Price;
 
-
+                    //l.LineNum = lines.LineNum;
                     l.Quantity = lines.Quantity;
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
@@ -371,7 +371,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                         batch.BatchNumber = lote.BatchNumber;
                         batch.Quantity = lote.Quantity;
                         batch.ItemCode = lines.ItemCode;
-                        //batch.BaseLineNumber = lines.LineNum;
+                        batch.BaseLineNumber = lines.LineNum;
                         lotes.Add(batch);
                     }
 
