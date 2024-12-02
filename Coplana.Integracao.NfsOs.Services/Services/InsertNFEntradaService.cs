@@ -322,14 +322,14 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                     l.Price = lines.Price;
                     l.UnitPrice = lines.Price;
 
-                    //l.LineNum = lines.LineNum;
+                    l.LineNum = lines.LineNum;
                     l.Quantity = lines.Quantity;
                     l.Usage = lines.Usage;
                     l.ItemCode = lines.ItemCode;
                     l.WarehouseCode = lines.Destino;
                     l.BaseEntry = lines.BaseEntry == -1 ? null : lines.BaseEntry;
                     l.BaseLine = lines.BaseLine == -1 ? null : lines.BaseLine;
-                    l.BaseType = lines.BaseEntry == -1 ? -1 : lines.BaseType   ;
+                    l.BaseType = lines.BaseEntry == -1 ? -1 : lines.BaseType ;
                     l.U_K_CustoDespesaAtivo = lines.U_K_CustoDespesaAtivo;
                     l.CostingCode = lines.CostingCode;
 
@@ -388,7 +388,7 @@ namespace Coplana.Integracao.NfsOs.Services.Services
                             DocumentLinesBinAllocations2 loc = new DocumentLinesBinAllocations2();
                             loc.BinAbsEntry = lines.BinAbsEntry;
                             loc.Quantity = lote.Quantity;
-                            loc.BaseLineNumber = x;
+                            loc.BaseLineNumber = lines.LineNum;// x;
                             loc.SerialAndBatchNumbersBaseLine = y;//**
                             location.Add(loc);
 

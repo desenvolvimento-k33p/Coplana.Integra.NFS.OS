@@ -94,7 +94,7 @@ namespace Coplana.Integracao.NfsOs.Services.Models
         //    public string CostingCode4 { get; set; }
         //    public string CostingCode5 { get; set; }
 
-      //  public int LineNum { get; set; }
+        public int LineNum { get; set; }
 
     }
 
