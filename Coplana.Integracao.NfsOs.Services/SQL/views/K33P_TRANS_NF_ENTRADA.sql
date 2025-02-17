@@ -21,13 +21,16 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 0) AS "DocNumTransf",
 	 OWTR."DocEntry" AS "DocEntryTransf",
 	 "@K33P_TRAN_PADC"."U_PNEntrada" AS "CardCode",
-	 OINV."DocDate",
-	 OINV."TaxDate",
-	 OINV."DocDueDate",
+	 TO_VARCHAR(OINV."DocDate",
+	 'YYYY-MM-DD') AS "DocDate",
+	 TO_VARCHAR(OINV."TaxDate",
+	 'YYYY-MM-DD') AS "TaxDate",
+	 TO_VARCHAR(OINV."DocDueDate",
+	 'YYYY-MM-DD') AS "DocDueDate",
 	 "@K33P_TRAN_PADC"."U_FinalidSai" AS "U_K_TipoOrdem",
 	 "@K33P_TRAN_PADC"."U_FilialEnt" AS "BPL_IDAssignedToInvoice",
 	 -2 AS "SequenceCode",
-	 WTR1."FromWhsCod" AS "Origem",
+	 MAX(WTR1."FromWhsCod") AS "Origem",
 	 OWHS."U_DepDePara" AS "Destino",
 	 'Sem Pedido' AS "Tipo" ,
 	 OINV."Serial" AS "SequenceSerial",
@@ -35,7 +38,7 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 OINV."SeriesStr" AS "SeriesString",
 	 '99' AS "CustoDesp",
 	 'N' AS "GerarEsboco" -- N = Não e E = Sim -- 0 = Não e 1 = Sim 
-
+ 
 		FROM OWTR 
 		INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
 		INNER JOIN OBPL ON OWTR."BPLId" = OBPL."BPLId" 
@@ -95,16 +98,34 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 			WHERE ODRF."Serial" = OINV."Serial" 
 			AND OINV."SeriesStr" = ODRF."SeriesStr" 
 			AND OINV."Model" = ODRF."Model" 
-			AND "@K33P_TRAN_PADC"."U_PNEntrada" = ODRF."CardCode")) 
+			AND "@K33P_TRAN_PADC"."U_PNEntrada" = ODRF."CardCode" ) 
+		GROUP BY OWTR."DocNum",
+	 OWTR."DocEntry" ,
+	 "@K33P_TRAN_PADC"."U_PNEntrada" ,
+	 TO_VARCHAR(OINV."DocDate",
+	 'YYYY-MM-DD'),
+	 TO_VARCHAR(OINV."TaxDate",
+	 'YYYY-MM-DD'),
+	 TO_VARCHAR(OINV."DocDueDate",
+	 'YYYY-MM-DD'),
+	 "@K33P_TRAN_PADC"."U_FinalidSai" ,
+	 "@K33P_TRAN_PADC"."U_FilialEnt" ,
+	 OWHS."U_DepDePara",
+	 OINV."Serial" ,
+	 PRO."KeyNfe" ,
+	 OINV."SeriesStr") 
 	UNION (SELECT
 	 DISTINCT IFNULL(TO_NVARCHAR( OINV."DocEntry"),
 	 '') AS "DocNumPedTransf",
 	 OINV."DocNum" AS "DocNumTransf",
 	 OINV."DocEntry" AS "DocEntryTransf",
 	 F."DflVendor" AS "CardCode",
-	 OINV."DocDate",
-	 OINV."TaxDate",
-	 OINV."DocDueDate",
+	 TO_VARCHAR(OINV."DocDate",
+	 'YYYY-MM-DD') AS "DocDate",
+	 TO_VARCHAR(OINV."TaxDate",
+	 'YYYY-MM-DD') AS "TaxDate",
+	 TO_VARCHAR(OINV."DocDueDate",
+	 'YYYY-MM-DD') AS "DocDueDate",
 	 'E' AS "U_K_TipoOrdem",
 	 OBPL."BPLId" AS "BPL_IDAssignedToInvoice",
 	 -2 AS "SequenceCode",
@@ -117,15 +138,16 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 INV1."U_K_CustoDespesaAtivo" AS "CustoDesp",
 	 CASE WHEN OUSG."U_K33P_EscrituraNF" = 'E' 
 		AND OBPL."BPLId" NOT IN (21,
-	6,
-	24) 
+	 6,
+	 24 ,
+	 15) 
 		THEN 'Y' 
 		ELSE 'N' 
 		END AS "GerarEsboco" -- N = Não e E = Sim
-
+ 
 		FROM OINV 
 		INNER JOIN INV1 ON OINV."DocEntry" = INV1."DocEntry" --WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
-
+ 
 		INNER JOIN OBPL ON OINV."CardCode" = OBPL."DflCust" 
 		INNER JOIN OBPL F ON OINV."BPLId" = F."BPLId" 
 		INNER JOIN NFN1 ON NFN1."BPLId" = OBPL."BPLId" 
@@ -176,9 +198,12 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ENTRADA" ( "DocNumPedTransf",
 	 OINV."DocNum" ,
 	 OINV."DocEntry" ,
 	 F."DflVendor" ,
-	 OINV."DocDate",
-	 OINV."TaxDate",
-	 OINV."DocDueDate",
+	 TO_VARCHAR(OINV."DocDate",
+	 'YYYY-MM-DD'),
+	 TO_VARCHAR(OINV."TaxDate",
+	 'YYYY-MM-DD'),
+	 TO_VARCHAR(OINV."DocDueDate",
+	 'YYYY-MM-DD'),
 	 OBPL."BPLId" ,
 	 OINV."Serial" ,
 	 PRO."KeyNfe" ,

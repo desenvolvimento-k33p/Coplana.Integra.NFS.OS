@@ -1,4 +1,5 @@
 CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_LOTE_ENTRADA" ( "DocEntry",
+	 "LineNum",
 	 "ItemCode",
 	 "BaseRef",
 	 "BaseType",
@@ -6,6 +7,7 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_LOTE_ENTRADA" ( "DocEntry",
 	 "BatchNumber",
 	 "SystemSerialNumber" ) AS ((SELECT
 	 WTR1."DocEntry" ,
+	 WTR1."LineNum",
 	 WTR1."ItemCode",
 	 WTR1."BaseRef" ,
 	 WTR1."ObjType" "BaseType" ,
@@ -28,6 +30,7 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_LOTE_ENTRADA" ( "DocEntry",
 		AND IBT1."WhsCode" LIKE '10-26%') 
 	UNION ALL (SELECT
 	 INV1."DocEntry" ,
+	 INV1."LineNum",
 	 INV1."ItemCode",
 	 INV1."BaseRef" ,
 	 INV1."ObjType" "BaseType" ,
@@ -51,4 +54,6 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_LOTE_ENTRADA" ( "DocEntry",
 		AND IBT1."Direction" <> 2 
 		AND INV1."ObjType" = 13 
 		AND IFNULL(OINV."U_NumPedTr",
-	 '') = '')) WITH READ ONLY
+	 '') = '') 
+	ORDER BY 1,
+	2) WITH READ ONLY

@@ -1,4 +1,5 @@
 CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_SAIDA" ( "DocNum",
+	 "LineNum",
 	 "INV12 Incoterms",
 	 "Quantity",
 	 "Price",
@@ -9,13 +10,15 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_SAIDA" ( "DocNum",
 	 "Tipo",
 	 "ItemCode",
 	 "BinAbsEntry",
-	 "U_K_TipoOrdem" ) AS SELECT
+	 "U_K_CustoDespesaAtivo" ) AS SELECT
 	 DISTINCT OWTR."DocNum" ,
+	 WTR1."LineNum",
 	 "@K33P_TRAN_PADC"."U_Incoterms" AS "INV12 Incoterms",
 	 SUM(WTR1."Quantity") AS "Quantity",
-	 SUM(WTR1."StockPrice") AS "Price",
+	 SUM(OITW."AvgPrice" ) AS "Price",
 	 WTR1."WhsCode" AS "WarehouseCode",
 	 CASE WHEN WTR1."ItemCode" LIKE 'EM%' 
+OR WTR1."ItemCode" LIKE 'UC%' 
 THEN 5 
 ELSE "@K33P_TRAN_PADC"."U_UtilizSai" 
 END AS "Usage",
@@ -25,13 +28,16 @@ END AS "Usage",
 	 WTR1."ItemCode",
 	 OWHS."DftBinAbs" AS "BinAbsEntry",
 	 CASE WHEN WTR1."ItemCode" LIKE 'EM%' 
-THEN 'D' 
-ELSE 'E' 
-END AS "U_K_TipoOrdem" 
+OR WTR1."ItemCode" LIKE 'UC%' 
+THEN 1 
+ELSE 5 
+END AS "U_K_CustoDespesaAtivo" 
 FROM OWTR 
 INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
 INNER JOIN OBPL ON OWTR."BPLId" = OBPL."BPLId" 
 INNER JOIN OWHS ON WTR1."WhsCode" = OWHS."WhsCode" 
+INNER JOIN OITW ON WTR1."ItemCode" = OITW."ItemCode" 
+AND WTR1."WhsCode" = OITW."WhsCode" 
 LEFT JOIN WTQ1 ON WTR1."BaseEntry" = WTQ1."DocEntry" 
 AND WTR1."BaseLine" = WTQ1."LineNum" 
 AND WTR1."BaseType" = WTQ1."ObjType" 
@@ -74,7 +80,12 @@ AND OWTR.CANCELED = 'N'
 AND WTR1."Quantity" > 0 
 AND IFNULL(OWTR."U_ImportNFS",
 	 'N') = 'N' 
+AND EXISTS (SELECT
+	 * 
+	FROM K33P_TRANS_NF_SAIDA 
+	WHERE K33P_TRANS_NF_SAIDA."DocNumTransf" = OWTR."DocNum") 
 GROUP BY OWTR."DocNum" ,
+	 WTR1."LineNum",
 	 "@K33P_TRAN_PADC"."U_Incoterms" ,
 	 WTQ1."FromWhsCod" ,
 	 "@K33P_TRAN_PADC"."U_UtilizSai",

@@ -68,7 +68,7 @@ AND PRO."DocType" = OINV."ObjType"
 LEFT JOIN "@K33P_TRAN_PADC" ON OBPL."BPLId" = "@K33P_TRAN_PADC"."U_FilialSai" 
 AND OWHS."U_FilDePara" = "@K33P_TRAN_PADC"."U_FilialEnt" 
 WHERE IFNULL(OWHS."U_DepDePara",
-	'') <> '' 
+	 '') <> '' 
 AND OWTR.CANCELED = 'N' 
 AND WTR1."Quantity" > 0 
 AND IFNULL(OWTR."U_ImportNFS",

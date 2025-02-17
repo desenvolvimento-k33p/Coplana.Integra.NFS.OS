@@ -1,4 +1,5 @@
 CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
+	 "LineNum",
 	 "INV12 Incoterms",
 	 "Quantity",
 	 "Price",
@@ -11,13 +12,21 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 "BaseType",
 	 "BaseEntry",
 	 "BaseLine",
-	 "BinAbsEntry" ) AS ((SELECT
+	 "BinAbsEntry",
+	 "U_K_CustoDespesaAtivo",
+	 "DocEntry",
+	 "CostingCode" ) AS ((SELECT
 	 DISTINCT OWTR."DocNum" ,
+	 WTR1."LineNum",
 	 "@K33P_TRAN_PADC"."U_Incoterms" AS "INV12 Incoterms",
-	 SUM(WTR1."Quantity") AS "Quantity",
-	 SUM(WTR1."StockPrice") AS "Price",
+	 WTR1."Quantity" AS "Quantity",
+	 INV1."Price" AS "Price",
 	 OWHS."U_DepDePara" AS "WarehouseCode",
-	 "@K33P_TRAN_PADC"."U_UtilizEnt" AS "Usage",
+	 CASE WHEN WTR1."ItemCode" LIKE 'EM%' 
+		OR WTR1."ItemCode" LIKE 'UC%' 
+		THEN 5 
+		ELSE "@K33P_TRAN_PADC"."U_UtilizEnt" 
+		END AS "Usage",
 	 WTR1."FromWhsCod" AS "Origem",
 	 OWHS."U_DepDePara" AS "Destino",
 	 'Sem Pedido' AS "Tipo",
@@ -25,11 +34,20 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 -1 "BaseType" ,
 	 NULL "BaseEntry" ,
 	 NULL "BaseLine" ,
-	 OWHS_DEP."DftBinAbs" AS "BinAbsEntry" 
+	 OWHS_DEP."DftBinAbs" AS "BinAbsEntry",
+	 CASE WHEN WTR1."ItemCode" LIKE 'EM%' 
+		OR WTR1."ItemCode" LIKE 'UC%' 
+		THEN 1 
+		ELSE 5 
+		END AS "U_K_CustoDespesaAtivo" ,
+	 WTR1."DocEntry",
+	 '' AS "CostingCode" 
 		FROM OWTR 
 		INNER JOIN WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
 		INNER JOIN OBPL ON OWTR."BPLId" = OBPL."BPLId" 
 		INNER JOIN OWHS ON WTR1."WhsCode" = OWHS."WhsCode" 
+		INNER JOIN OITW ON WTR1."ItemCode" = OITW."ItemCode" 
+		AND WTR1."WhsCode" = OITW."WhsCode" 
 		LEFT JOIN OWHS OWHS_DEP ON OWHS."U_DepDePara" = OWHS_DEP."WhsCode" 
 		LEFT JOIN OINV ON OWTR."DocNum" = OINV."U_NumTransf" 
 		AND OINV.CANCELED = 'N' 
@@ -38,6 +56,8 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 			FROM OINV OINV_MAX 
 			WHERE OWTR."DocNum" = OINV_MAX."U_NumTransf" 
 			AND OINV_MAX.CANCELED = 'N' ) 
+		LEFT JOIN INV1 ON OINV."DocEntry" = INV1."DocEntry" 
+		AND WTR1."ItemCode" = INV1."ItemCode" 
 		LEFT JOIN OPCH ON OWTR."DocNum" = OPCH."U_NumTransf" 
 		AND OPCH.CANCELED = 'N' 
 		AND OPCH."DocEntry" = ( SELECT
@@ -69,16 +89,23 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 		AND PRO."StatusId" = 4 
 		AND IFNULL(OWTR."U_ImportNFE",
 	 'N') = 'N' 
-		GROUP BY OWTR."DocNum" ,
-	 "@K33P_TRAN_PADC"."U_Incoterms" ,
-	 WTR1."ItemCode",
-	 "@K33P_TRAN_PADC"."U_UtilizEnt",
-	 WTR1."FromWhsCod" ,
-	 WTR1."WhsCode" ,
-	 OWHS."U_DepDePara",
-	 OWHS_DEP."DftBinAbs") 
+		AND NOT EXISTS ( SELECT
+	 OPCH."DocEntry" 
+			FROM OPCH 
+			WHERE OPCH."Serial" = OINV."Serial" 
+			AND OINV."SeriesStr" = OPCH."SeriesStr" 
+			AND OINV."Model" = OPCH."Model" 
+			AND "@K33P_TRAN_PADC"."U_PNEntrada" = OPCH."CardCode" 
+			UNION SELECT
+	 ODRF."DocEntry" 
+			FROM ODRF 
+			WHERE ODRF."Serial" = OINV."Serial" 
+			AND OINV."SeriesStr" = ODRF."SeriesStr" 
+			AND OINV."Model" = ODRF."Model" 
+			AND "@K33P_TRAN_PADC"."U_PNEntrada" = ODRF."CardCode")) 
 	UNION (SELECT
 	 DISTINCT OINV."DocNum" ,
+	 INV1."LineNum" ,
 	 INV12."Incoterms" "INV12 Incoterms",
 	 SUM(INV1."Quantity") AS "Quantity",
 	 MAX(INV1."PriceBefDi") AS "Price",
@@ -95,9 +122,12 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 		END "BaseType" ,
 	 OPOR_DOC."DocEntry" AS "U_xPed" ,
 	 OPOR_DOC."LineNum" AS "U_nItem",
-	 OWHS_DEP."DftBinAbs" 
+	 OWHS_DEP."DftBinAbs",
+	 INV1."U_K_CustoDespesaAtivo" ,
+	 INV1."DocEntry",
+	 INV1."OcrCode" AS "CostingCode" 
 		FROM OINV 
-		INNER JOIN INV1 ON OINV."DocEntry" = INV1."DocEntry" --WTR1 ON OWTR."DocEntry" = WTR1."DocEntry" 
+		INNER JOIN INV1 ON OINV."DocEntry" = INV1."DocEntry" --WTR1 ON OWTR."DocEntry" = WTR1."DocEntry"  
 
 		INNER JOIN INV12 ON OINV."DocEntry" = INV12."DocEntry" 
 		INNER JOIN OBPL ON OINV."CardCode" = OBPL."DflCust" 
@@ -111,8 +141,9 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 POR1."LineNum" 
 			FROM OPOR 
 			INNER JOIN POR1 ON OPOR."DocEntry" = POR1."DocEntry" 
-			WHERE OPOR.CANCELED = 'N' ) OPOR_DOC ON INV1."U_xPed" = OPOR_DOC."DocNum" 
-		AND (INV1."U_nItem" -1) = OPOR_DOC."LineNum" 
+			WHERE OPOR.CANCELED = 'N' ) OPOR_DOC ON CAST(INV1."U_xPed" AS NVARCHAR(30)) = CAST(OPOR_DOC."DocNum" AS NVARCHAR(30)) 
+		AND CAST((IFNULL(INV1."U_nItem",
+	1) -1)AS NVARCHAR(30)) = CAST(OPOR_DOC."LineNum" AS NVARCHAR(20)) 
 		INNER JOIN OWHS ON INV1."WhsCode" = OWHS."WhsCode" 
 		LEFT JOIN OWHS OWHS_DEP ON OBPL."DflWhs" = OWHS_DEP."WhsCode" 
 		LEFT JOIN ( SELECT
@@ -134,14 +165,26 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 		WHERE OINV.CANCELED = 'N' 
 		AND PRO."StatusId" = 4 
 		AND OINV."DocDate" >= '2024-06-06' 
+		AND IFNULL(OINV."U_NumTransf",
+	 '') = '' 
 		AND NOT EXISTS ( SELECT
-	 * 
+	 OPCH."DocEntry" 
 			FROM OPCH 
 			WHERE OPCH."Serial" = OINV."Serial" 
 			AND OINV."SeriesStr" = OPCH."SeriesStr" 
 			AND OINV."Model" = OPCH."Model" 
-			AND OPCH.CANCELED = 'N') 
+			AND F."DflVendor" = OPCH."CardCode" 
+			AND OPCH."CANCELED" = 'N' 
+			UNION SELECT
+	 ODRF."DocEntry" 
+			FROM ODRF 
+			WHERE ODRF."Serial" = OINV."Serial" 
+			AND OINV."SeriesStr" = ODRF."SeriesStr" 
+			AND OINV."Model" = ODRF."Model" 
+			AND F."DflVendor" = ODRF."CardCode" 
+			AND ODRF."CANCELED" = 'N') 
 		GROUP BY OINV."DocNum" ,
+	 INV1."LineNum" ,
 	 INV12."Incoterms",
 	 OWHS."U_DepDePara",
 	 INV1."Usage",
@@ -153,4 +196,7 @@ CREATE VIEW "COPLANA_PRD"."K33P_TRANS_NF_ITEM_ENTRADA" ( "DocNum",
 	 INV1."ItemCode",
 	 OPOR_DOC."DocEntry",
 	 OPOR_DOC."LineNum",
-	 OWHS_DEP."DftBinAbs")) WITH READ ONLY
+	 OWHS_DEP."DftBinAbs",
+	 INV1."U_K_CustoDespesaAtivo",
+	 INV1."DocEntry",
+	 INV1."OcrCode")) WITH READ ONLY
