@@ -13,6 +13,7 @@
     <None Remove="SQL\AtualizaFlagNFS.sql" />
     <None Remove="SQL\AtualizaFlagNFSPed.sql" />
     <None Remove="SQL\GeiItensToCancelDenegados.sql" />
+    <None Remove="SQL\GeiItensToCancelDraftsNFE.sql" />
     <None Remove="SQL\GeiItensToCancelNFE.sql" />
     <None Remove="SQL\GeiItensToDeleteOS.sql" />
     <None Remove="SQL\GeiItensToInsertNFE.sql" />
@@ -35,6 +36,7 @@
     <EmbeddedResource Include="SQL\AtualizaFlagNFEPed.sql" />
     <EmbeddedResource Include="SQL\AtualizaFlagNFSPed.sql" />
     <EmbeddedResource Include="SQL\GeiItensToCancelDenegados.sql" />
+    <EmbeddedResource Include="SQL\GeiItensToCancelDraftsNFE.sql" />
     <EmbeddedResource Include="SQL\GeiItensToDeleteOS.sql" />
     <EmbeddedResource Include="SQL\GeiItensToCancelNFE.sql" />
     <EmbeddedResource Include="SQL\GeiItensToInsertNFE.sql" />

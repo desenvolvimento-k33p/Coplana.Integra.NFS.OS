@@ -20,7 +20,12 @@ using Coplana.Integracao.NfsOs.Services.Mapper.Profiles.BusinessPartner;
 //using Coplana.Integracao.NfsOs.Services.Mapper.Profiles;
 
 
-var builder = WebApplication.CreateBuilder(args);
+//var builder = WebApplication.CreateBuilder(args);
+var options = new WebApplicationOptions
+{
+    EnvironmentName = "Staging"
+};
+var builder = WebApplication.CreateBuilder(options);
 var configuration = builder.Configuration;
 var devCorsPolicy = "devCorsPolicy";
 GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 0 });
@@ -140,6 +145,14 @@ using (var app = builder.Build())
         //,SchedulePollingInterval = TimeSpan.FromMilliseconds(30)
     };
 
+    var cancelDraftsNFE = new BackgroundJobServerOptions
+    {
+        ServerName = string.Format("{0}:canceldraftsnfe", Environment.MachineName),
+        Queues = new[] { "canceldraftsnfequeue" },
+        WorkerCount = 1
+        //,SchedulePollingInterval = TimeSpan.FromMilliseconds(30)
+    };
+
 
 
 
@@ -159,6 +172,7 @@ using (var app = builder.Build())
     app.UseHangfireServer(insertNFE);
     app.UseHangfireServer(cancelNFE);
     app.UseHangfireServer(cancelDenegados);
+    app.UseHangfireServer(cancelDraftsNFE);
 
     app.UseHangfireDashboard();
 
@@ -175,11 +189,12 @@ using (var app = builder.Build())
     //RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronServiceDebug);
     //RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronServiceDebug);
 
-    RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronServiceDebug);
-    RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServiceDebug);
+    //RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronServiceDebug);
+    //RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServiceDebug);
 
-    RecurringJob.AddOrUpdate<CancelNFEService>("CancelNFEService", job => job.ProcessAsync(), cronServiceDebug);
-    RecurringJob.AddOrUpdate<CancelDenegadosService>("CancelDenegadosService", job => job.ProcessAsync(), cronServiceDebug);
+    //RecurringJob.AddOrUpdate<CancelNFEService>("CancelNFEService", job => job.ProcessAsync(), cronServiceDebug);
+    //RecurringJob.AddOrUpdate<CancelDenegadosService>("CancelDenegadosService", job => job.ProcessAsync(), cronServiceDebug);
+    RecurringJob.AddOrUpdate<CancelDraftsNFEService>("CancelDraftsNFEService", job => job.ProcessAsync(), cronServiceDebug);
 
 
 
@@ -197,14 +212,15 @@ using (var app = builder.Build())
     var cronServicetr = Cron.MinuteInterval(1);
     var cronServiceCancel = Cron.MinuteInterval(59);
 
-    //RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronService_os, null, "insertitensqueue");
-    //RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronService_os, null, "deleteitensqueue");
- 
+    RecurringJob.AddOrUpdate<InsertItensOSService>("InsertItensOSService", job => job.ProcessAsync(), cronService_os, null, "insertitensqueue");
+    RecurringJob.AddOrUpdate<DeleteItensOSService>("DeleteItensOSService", job => job.ProcessAsync(), cronService_os, null, "deleteitensqueue");
+
     RecurringJob.AddOrUpdate<InsertNFSaidaService>("InsertNFSaidaService", job => job.ProcessAsync(), cronServicetr, null, "insertnfsqueue");
     RecurringJob.AddOrUpdate<InsertNFEntradaService>("InsertNFEntradaService", job => job.ProcessAsync(), cronServicetr, null, "insertnfequeue");
 
     RecurringJob.AddOrUpdate<CancelNFEService>("CancelNFEService", job => job.ProcessAsync(), cronServiceCancel, null, "cancelnfequeue");
     RecurringJob.AddOrUpdate<CancelDenegadosService>("CancelDenegadosService", job => job.ProcessAsync(), cronServicetr, null, "canceldenegadosqueue");
+    RecurringJob.AddOrUpdate<CancelDraftsNFEService>("CancelDraftsNFEService", job => job.ProcessAsync(), cronServicetr, null, "canceldraftsnfequeue");
 
 
 

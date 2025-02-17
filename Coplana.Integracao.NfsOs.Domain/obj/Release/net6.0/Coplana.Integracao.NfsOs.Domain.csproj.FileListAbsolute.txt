@@ -80,3 +80,15 @@ C:\Osvaldo\GIt\TransferenciaEntreFiliais\15102024\Coplana.Integra.NFS.OS\Coplana
 C:\Osvaldo\GIt\TransferenciaEntreFiliais\15102024\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\refint\Coplana.Integracao.NfsOs.Domain.dll
 C:\Osvaldo\GIt\TransferenciaEntreFiliais\15102024\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.pdb
 C:\Osvaldo\GIt\TransferenciaEntreFiliais\15102024\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\ref\Coplana.Integracao.NfsOs.Domain.dll
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\bin\Release\net6.0\Coplana.Integracao.NfsOs.Domain.deps.json
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\bin\Release\net6.0\Coplana.Integracao.NfsOs.Domain.dll
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\bin\Release\net6.0\Coplana.Integracao.NfsOs.Domain.pdb
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.AssemblyInfoInputs.cache
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.AssemblyInfo.cs
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.csproj.CoreCompileInputs.cache
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.sourcelink.json
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.dll
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\refint\Coplana.Integracao.NfsOs.Domain.dll
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\Coplana.Integracao.NfsOs.Domain.pdb
+C:\Breno\GitHub\Coplana.Integra.NFS.OS\Coplana.Integracao.NfsOs.Domain\obj\Release\net6.0\ref\Coplana.Integracao.NfsOs.Domain.dll
