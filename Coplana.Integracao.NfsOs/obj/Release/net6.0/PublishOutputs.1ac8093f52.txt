@@ -1,7 +1,0 @@
-C:\Users\partner\source\repos\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs\obj\Release\net6.0\PubTmp\Out\Coplana.Integracao.NfsOs.Work.exe
-C:\Users\partner\source\repos\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
-C:\Users\partner\source\repos\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs\obj\Release\net6.0\PubTmp\Out\appsettings.json
-C:\Users\partner\source\repos\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs\obj\Release\net6.0\PubTmp\Out\Coplana.Integracao.NfsOs.Work.dll
-C:\Users\partner\source\repos\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs\obj\Release\net6.0\PubTmp\Out\Coplana.Integracao.NfsOs.Work.deps.json
-C:\Users\partner\source\repos\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs\obj\Release\net6.0\PubTmp\Out\Coplana.Integracao.NfsOs.Work.runtimeconfig.json
-C:\Users\partner\source\repos\Coplana.Integracao.NfsOs\Coplana.Integracao.NfsOs\obj\Release\net6.0\PubTmp\Out\Coplana.Integracao.NfsOs.Work.pdb
